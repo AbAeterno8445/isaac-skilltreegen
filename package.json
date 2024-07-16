@@ -1,0 +1,17 @@
+{
+  "name": "isaac-skilltreegen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Ab Aeterno",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^31.2.1"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.4.0"
+  }
+}
