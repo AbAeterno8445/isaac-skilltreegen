@@ -10,8 +10,5 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^31.2.1"
-  },
-  "dependencies": {
-    "fast-xml-parser": "^4.4.0"
   }
 }
