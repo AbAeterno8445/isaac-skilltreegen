@@ -344,7 +344,7 @@ function loadTreeData(data) {
     nodesContainer.addChild(nodeSprite);
     nodeSprites[nodeID] = nodeSprite;
 
-    if (nodeID > nodeCounter) nodeCounter = nodeID;
+    if (parseInt(nodeID) > nodeCounter) nodeCounter = parseInt(nodeID);
   }
   updateNodeLinks();
 }
