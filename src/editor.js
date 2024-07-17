@@ -8,6 +8,18 @@ const spriteAtlas = {
   },
 };
 
+let treeData = {};
+let stageSprites = [];
+
+let tileSprites = undefined;
+
+let nodesContainer = new PIXI.Container();
+
+let camera = { x: 400, y: 300 };
+
+nodesContainer.x = camera.x;
+nodesContainer.y = camera.y;
+
 async function main() {
   // Load assets
   await PIXI.Assets.load(["assets/tree_nodes.png", "assets/node_links.png"]);
@@ -47,14 +59,65 @@ async function main() {
 
   document.body.append(app.canvas);
 
-  const tileSprites = new PIXI.Spritesheet(
+  tileSprites = new PIXI.Spritesheet(
     PIXI.Texture.from(spriteAtlas.meta.image),
     spriteAtlas
   );
 
   await tileSprites.parse();
 
-  const testSprite = new PIXI.Sprite(tileSprites.textures["Small XP"]);
-  app.stage.addChild(testSprite);
+  app.stage.addChild(nodesContainer);
+  /*const testSprite = new PIXI.Sprite(tileSprites.textures["Small XP"]);
+  app.stage.addChild(testSprite);*/
 }
 main();
+
+function loadTreeData(data) {
+  treeData = data;
+
+  if (stageSprites.length > 0) {
+    for (let sprite of stageSprites) {
+      app.stage.removeChild(sprite);
+    }
+  }
+  stageSprites = [];
+
+  for (let [nodeID, node] of Object.entries(treeData)) {
+    const nodeSprite = new PIXI.Sprite(tileSprites.textures[node.type]);
+
+    const nodeX = node.pos[0] * 38;
+    const nodeY = node.pos[1] * 38;
+
+    nodeSprite.x = nodeX;
+    nodeSprite.y = nodeY;
+
+    stageSprites.push(nodeSprite);
+    nodesContainer.addChild(nodeSprite);
+  }
+}
+
+function readSingleFile(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    console.warn("Could not load the specified file.");
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    var contents = e.target.result;
+    loadTreeData(JSON.parse(contents));
+  };
+  reader.readAsText(file);
+}
+
+document.getElementById("file-input").addEventListener(
+  "change",
+  function (e) {
+    if (this.value.split(".").pop()?.toLowerCase() == "json") {
+      readSingleFile(e);
+    } else {
+      console.warn("Not a JSON file!");
+    }
+  },
+  false
+);

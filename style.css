@@ -1,3 +1,7 @@
 body {
   background: #777;
 }
+
+input[type="file"] {
+  margin-bottom: 4px;
+}
