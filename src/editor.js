@@ -46,6 +46,7 @@ let nodeCounter = 0;
 let stageSprites = [];
 
 let shiftHeld = false;
+let ctrlHeld = false;
 
 let tileSprites = undefined;
 let linkSprites = undefined;
@@ -381,25 +382,33 @@ document.getElementById("file-input").addEventListener(
 
 // Add node at position
 function addNodeAt(x, y) {
-  nodeCounter++;
-  const tmpNode = {
-    pos: [x, y],
-    type: inputElems.type.value,
-    size: inputElems.size.value,
-    name: inputElems.name.value,
-    description: inputElems.description.value,
-    modifiers: inputElems.modifiers.value,
-    alwaysAvailable: inputElems.alwaysAvail.checked,
-    adjacent: [],
-    requires: [],
-  };
-  const nodeSprite = new PIXI.Sprite(tileSprites.textures[tmpNode.type]);
-  nodeSprite.x = x * 38;
-  nodeSprite.y = y * 38;
-  nodesContainer.addChild(nodeSprite);
-  nodeSprites[nodeCounter] = nodeSprite;
+  try {
+    const tmpNode = {
+      pos: [x, y],
+      type: inputElems.type.value,
+      size: inputElems.size.value,
+      name: inputElems.name.value,
+      description: inputElems.description.value?.split("\n") || [""],
+      modifiers: JSON.parse(
+        "{" + inputElems.modifiers.value.replace("\n", "") + "}"
+      ),
+      alwaysAvailable: inputElems.alwaysAvail.checked,
+      adjacent: [],
+      requires: [],
+    };
+    nodeCounter++;
 
-  treeData[nodeCounter] = tmpNode;
+    const nodeSprite = new PIXI.Sprite(tileSprites.textures[tmpNode.type]);
+    nodeSprite.x = x * 38;
+    nodeSprite.y = y * 38;
+    nodesContainer.addChild(nodeSprite);
+    nodeSprites[nodeCounter] = nodeSprite;
+
+    treeData[nodeCounter] = tmpNode;
+  } catch (err) {
+    console.warn(err);
+    console.warn("Could not place node.");
+  }
 }
 
 // Get node at position
@@ -509,7 +518,12 @@ function clickCanvas(ev) {
     const tmpNode = getNodeAt(tileX, tileY);
     if (!connecting) {
       if (tmpNode != undefined) {
-        removeNode(tmpNode.nodeID);
+        if (ctrlHeld) {
+          // Ctrl + click: print node data (for debugging)
+          console.log(tmpNode.nodeID, tmpNode.node);
+        } else {
+          removeNode(tmpNode.nodeID);
+        }
       } else {
         addNodeAt(tileX, tileY);
       }
@@ -604,17 +618,21 @@ function isInputFocused() {
 // Key event funcs
 document.addEventListener("keydown", (ev) => {
   if (ev.shiftKey) shiftHeld = true;
+  if (ev.ctrlKey) ctrlHeld = true;
 });
 document.addEventListener("keyup", (ev) => {
   if (!ev.shiftKey) shiftHeld = false;
-  if ((ev.key == "c" || ev.key == "C") && !isInputFocused()) {
-    connecting = !connecting;
-    if (connecting) {
-      selectedSprite.alpha = 0;
-    } else {
-      connectFirst = undefined;
-      connectorSprite.alpha = 0;
-      connectingSprite.alpha = 0;
+  if (!ev.ctrlKey) ctrlHeld = false;
+  if (!isInputFocused()) {
+    if (ev.key == "c" || ev.key == "C") {
+      connecting = !connecting;
+      if (connecting) {
+        selectedSprite.alpha = 0;
+      } else {
+        connectFirst = undefined;
+        connectorSprite.alpha = 0;
+        connectingSprite.alpha = 0;
+      }
     }
   }
 });
