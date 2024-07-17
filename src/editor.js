@@ -8,6 +8,27 @@ const spriteAtlas = {
   },
 };
 
+const linksAtlas = {
+  frames: {
+    diagonal: {
+      frame: { x: 0, y: 0, w: 76, h: 76 },
+      sourceSize: { w: 76, h: 76 },
+      spriteSourceSize: { x: -38, y: -38, w: 76, h: 76 },
+    },
+    vertical: {
+      frame: { x: 76, y: 0, w: 38, h: 76 },
+      sourceSize: { w: 38, h: 76 },
+      spriteSourceSize: { x: -19, y: -38, w: 38, h: 76 },
+    },
+  },
+  meta: {
+    image: "assets/node_links.png",
+    format: "RGBA8888",
+    size: { w: 114, h: 76 },
+    scale: 1,
+  },
+};
+
 const app = new PIXI.Application();
 
 const canvasDivElem = document.getElementById("canvasContainer");
@@ -24,7 +45,10 @@ let treeData = {};
 let nodeCounter = 0;
 let stageSprites = [];
 
+let shiftHeld = false;
+
 let tileSprites = undefined;
+let linkSprites = undefined;
 let paletteContainer = new PIXI.Container();
 let paletteBG = new PIXI.Sprite(PIXI.Texture.WHITE);
 paletteBG.width = 162;
@@ -35,29 +59,54 @@ paletteContainer.addChild(paletteBG);
 let paletteNodes = [];
 let nodeSprites = {};
 
+// Selected palette node indicator sprite
 let selectorSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
 selectorSprite.width = 32;
 selectorSprite.height = 32;
 selectorSprite.tint = 0x888888;
 paletteContainer.addChild(selectorSprite);
 
+// Visual sprite displayed at position (0, 0)
 let centerSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
 centerSprite.width = 8;
 centerSprite.height = 8;
 centerSprite.anchor.set(0.5);
 centerSprite.tint = 0xaaaaaa;
 
+// Visual sprite displayed at mouse position when connecting nodes
+let connectorSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
+connectorSprite.width = 32;
+connectorSprite.height = 32;
+connectorSprite.anchor.set(0.5);
+connectorSprite.tint = 0x44aaaa;
+connectorSprite.alpha = 0;
+
+// Visual sprite displayed at the first connection position while connecting nodes
+let connectingSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
+connectingSprite.width = 32;
+connectingSprite.height = 32;
+connectingSprite.anchor.set(0.5);
+connectingSprite.tint = 0x44aaaa;
+connectingSprite.alpha = 0;
+
 let selectedNode = undefined;
 let selectedSprite = new PIXI.Sprite();
 selectedSprite.alpha = 0;
 
+let linksContainer = new PIXI.Container();
 let nodesContainer = new PIXI.Container();
+nodesContainer.addChild(connectorSprite);
+nodesContainer.addChild(connectingSprite);
 nodesContainer.addChild(centerSprite);
 nodesContainer.addChild(selectedSprite);
 
 let camera = { x: 400, y: 300 };
 let dragging = false;
 let dragStart = { x: 0, y: 0 };
+
+let connecting = false;
+let connectFirst = undefined;
+let connectedNodes = [];
 
 nodesContainer.x = camera.x;
 nodesContainer.y = camera.y;
@@ -110,7 +159,13 @@ async function main() {
     spriteAtlas
   );
 
+  linkSprites = new PIXI.Spritesheet(
+    PIXI.Texture.from(linksAtlas.meta.image),
+    linksAtlas
+  );
+
   await tileSprites.parse();
+  await linkSprites.parse();
 
   // Populate palette once spritesheet is generated
   let i = 0;
@@ -150,6 +205,7 @@ async function main() {
 
   document.getElementById("canvasContainer").append(app.canvas);
 
+  nodesContainer.addChild(linksContainer);
   app.stage.addChild(nodesContainer);
   app.stage.addChild(paletteContainer);
 
@@ -181,12 +237,95 @@ function resetSelection() {
   selectedSprite.texture = tileSprites.textures[selectedNode.type];
 }
 
+function updateNodeLinks() {
+  for (let connection of connectedNodes) {
+    linksContainer.removeChild(connection.link.sprite);
+  }
+  connectedNodes = [];
+  for (let [nodeID, node] of Object.entries(treeData)) {
+    if (!node.adjacent) continue;
+    nodeID = parseInt(nodeID);
+
+    for (let adjacentID of node.adjacent) {
+      if (!treeData.hasOwnProperty(adjacentID)) continue;
+
+      // Check connection hasn't been made already
+      let connectionMade = false;
+      for (let connection of connectedNodes) {
+        if (
+          (connection.node1.nodeID == nodeID &&
+            connection.node2.nodeID == adjacentID) ||
+          (connection.node1.nodeID == adjacentID &&
+            connection.node2.nodeID == nodeID)
+        ) {
+          connectionMade = true;
+          break;
+        }
+      }
+      if (connectionMade) break;
+
+      const adjacentNode = treeData[adjacentID];
+      let linkType = undefined;
+      let dirX = adjacentNode.pos[0] - node.pos[0];
+      let dirY = adjacentNode.pos[1] - node.pos[1];
+
+      if (Math.abs(dirX) <= 2 && Math.abs(dirY) <= 2) {
+        if (node.pos[0] == adjacentNode.pos[0]) {
+          linkType = "Vertical";
+        } else if (node.pos[1] == adjacentNode.pos[1]) {
+          linkType = "Horizontal";
+        } else if (Math.abs(dirX) == Math.abs(dirY)) {
+          linkType = "Diagonal";
+        }
+      }
+      if (!linkType) continue;
+
+      const tmpLink = {
+        sprite:
+          linkType == "Diagonal"
+            ? new PIXI.Sprite(linkSprites.textures["diagonal"])
+            : new PIXI.Sprite(linkSprites.textures["vertical"]),
+      };
+      if (linkType == "Horizontal") tmpLink.sprite.rotation = Math.PI / 2;
+      if (
+        (adjacentNode.pos[0] <= node.pos[0] &&
+          adjacentNode.pos[1] > node.pos[1]) ||
+        (adjacentNode.pos[0] > node.pos[0] &&
+          adjacentNode.pos[1] <= node.pos[1])
+      )
+        tmpLink.sprite.scale.x = -1;
+      if (linkType == "Diagonal" && Math.abs(dirX) == 2)
+        tmpLink.sprite.scale.x *= 2;
+      if (
+        Math.abs(dirY) == 2 ||
+        (linkType == "Horizontal" && Math.abs(dirX) == 2)
+      )
+        tmpLink.sprite.scale.y *= 2;
+
+      tmpLink.sprite.x = node.pos[0] * 38 + 19 * dirX;
+      tmpLink.sprite.y = node.pos[1] * 38 + 19 * dirY;
+
+      connectedNodes.push({
+        node1: { node, nodeID },
+        node2: { node: adjacentNode, nodeID: adjacentID },
+        link: tmpLink,
+      });
+
+      linksContainer.addChild(tmpLink.sprite);
+    }
+  }
+}
+
 function loadTreeData(data) {
   // Remove old sprites
   for (let sprite of Object.values(nodeSprites)) {
     nodesContainer.removeChild(sprite);
   }
   nodeSprites = {};
+  for (let connection of connectedNodes) {
+    linksContainer.removeChild(connection.link.sprite);
+  }
+  connectedNodes = [];
 
   treeData = data;
   nodeCounter = 0;
@@ -206,6 +345,7 @@ function loadTreeData(data) {
 
     if (nodeID > nodeCounter) nodeCounter = nodeID;
   }
+  updateNodeLinks();
 }
 
 // Read input file and set tree data
@@ -273,7 +413,18 @@ function getNodeAt(x, y) {
 // Remove given node from tree data
 function removeNode(nodeID) {
   if (treeData.hasOwnProperty(nodeID)) {
-    const node = treeData[nodeID];
+    // Remove connections to this node
+    for (let i = connectedNodes.length - 1; i >= 0; i--) {
+      const connection = connectedNodes[i];
+      if (
+        connection.node1.nodeID == nodeID ||
+        connection.node2.nodeID == nodeID
+      ) {
+        linksContainer.removeChild(connection.link.sprite);
+        connectedNodes.splice(i, 1);
+      }
+    }
+
     if (nodeSprites.hasOwnProperty(nodeID)) {
       nodesContainer.removeChild(nodeSprites[nodeID]);
       delete nodeSprites[nodeID];
@@ -305,15 +456,29 @@ document.addEventListener("mousemove", (ev) => {
     nodesContainer.x = camera.x - xOff;
     nodesContainer.y = camera.y - yOff;
   } else {
-    // Draw selected node on mouse
     const canvasRect = canvasDivElem.getBoundingClientRect();
-    selectedSprite.x =
+    const tileX =
       Math.floor((ev.pageX - camera.x - canvasRect.x + 19) / 38) * 38;
-    selectedSprite.y =
+    const tileY =
       Math.floor((ev.pageY - camera.y - canvasRect.y + 19) / 38) * 38;
-    selectedSprite.alpha = 0.4;
+    if (!connecting) {
+      // Draw selected node on mouse
+      selectedSprite.x = tileX;
+      selectedSprite.y = tileY;
+      selectedSprite.alpha = 0.4;
+    } else {
+      connectorSprite.x = tileX;
+      connectorSprite.y = tileY;
+      connectorSprite.alpha = 0.5;
+    }
   }
 });
+
+function removeFromArr(arr, item) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] == item) arr.splice(i, 1);
+  }
+}
 
 // Canvas click handler
 function clickCanvas(ev) {
@@ -342,13 +507,104 @@ function clickCanvas(ev) {
       (ev.pageY - canvasRect.y - nodesContainer.y + 19) / 38
     );
     const tmpNode = getNodeAt(tileX, tileY);
-    if (tmpNode != undefined) {
-      removeNode(tmpNode.nodeID);
-    } else {
-      addNodeAt(tileX, tileY);
+    if (!connecting) {
+      if (tmpNode != undefined) {
+        removeNode(tmpNode.nodeID);
+      } else {
+        addNodeAt(tileX, tileY);
+      }
+    } else if (tmpNode) {
+      const selectFirst = () => {
+        connectFirst = tmpNode;
+        connectingSprite.x = tileX * 38;
+        connectingSprite.y = tileY * 38;
+        connectingSprite.alpha = 0.8;
+      };
+
+      // Shift + click: connect nodes
+      if (!connectFirst) {
+        selectFirst();
+      } else {
+        if (connectFirst.nodeID != tmpNode.nodeID) {
+          let existingConn = undefined;
+          for (let connection of connectedNodes) {
+            if (
+              (connection.node1.nodeID == connectFirst.nodeID &&
+                connection.node2.nodeID == tmpNode.nodeID) ||
+              (connection.node1.nodeID == tmpNode.nodeID &&
+                connection.node2.nodeID == connectFirst.nodeID)
+            ) {
+              existingConn = connection;
+            }
+          }
+
+          if (existingConn) {
+            // Existing connection, remove it
+            linksContainer.removeChild(existingConn.link.sprite);
+            const tmpIndex = connectedNodes.indexOf(existingConn);
+            if (tmpIndex != -1) connectedNodes.splice(tmpIndex, 1);
+
+            if (connectFirst.node.requires)
+              removeFromArr(connectFirst.node.requires, tmpNode.nodeID);
+            if (connectFirst.node.adjacent)
+              removeFromArr(connectFirst.node.adjacent, tmpNode.nodeID);
+            if (tmpNode.node.requires)
+              removeFromArr(tmpNode.node.requires, connectFirst.nodeID);
+            if (tmpNode.node.adjacent)
+              removeFromArr(tmpNode.node.adjacent, connectFirst.nodeID);
+          } else {
+            // Create new connection
+            const dirX = tmpNode.node.pos[0] - connectFirst.node.pos[0];
+            const dirY = tmpNode.node.pos[1] - connectFirst.node.pos[1];
+
+            if (
+              Math.abs(dirX) <= 2 &&
+              Math.abs(dirY) <= 2 &&
+              (dirX == 0 || dirY == 0 || Math.abs(dirX) == Math.abs(dirY))
+            ) {
+              if (connectFirst.node.adjacent.indexOf(tmpNode.nodeID) == -1)
+                connectFirst.node.adjacent.push(parseInt(tmpNode.nodeID));
+              if (tmpNode.node.adjacent.indexOf(connectFirst.nodeID) == -1)
+                tmpNode.node.adjacent.push(parseInt(connectFirst.nodeID));
+              if (tmpNode.node.requires.indexOf(connectFirst.nodeID) == -1)
+                tmpNode.node.requires.push(parseInt(connectFirst.nodeID));
+
+              updateNodeLinks();
+            } else {
+              console.warn("This node connection is not possible.");
+            }
+          }
+        }
+
+        // Shift + click: continue connecting
+        if (shiftHeld && connectFirst.nodeID != tmpNode.nodeID) {
+          selectFirst();
+        } else {
+          connectFirst = undefined;
+          connectingSprite.alpha = 0;
+        }
+      }
     }
   }
 }
+
+// Key event funcs
+document.addEventListener("keydown", (ev) => {
+  if (ev.shiftKey) shiftHeld = true;
+});
+document.addEventListener("keyup", (ev) => {
+  if (!ev.shiftKey) shiftHeld = false;
+  if (ev.key == "c" || ev.key == "C") {
+    connecting = !connecting;
+    if (connecting) {
+      selectedSprite.alpha = 0;
+    } else {
+      connectFirst = undefined;
+      connectorSprite.alpha = 0;
+      connectingSprite.alpha = 0;
+    }
+  }
+});
 
 // Save tree data
 async function saveTreeData() {
