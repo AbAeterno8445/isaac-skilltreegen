@@ -8,7 +8,12 @@
   <body>
     <div id="mainContainer">
       <div id="fileContainer">
-        <input type="file" id="file-input" accept="application/JSON" />
+        <input
+          type="file"
+          id="file-input"
+          accept="application/JSON"
+          onclick="this.value=null;"
+        />
         <input type="text" id="inpFilename" spellcheck="false" />
         <button onclick="saveTreeData();">Save Tree</button>
       </div>
