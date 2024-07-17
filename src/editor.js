@@ -16,6 +16,8 @@ let tileSprites = undefined;
 let nodesContainer = new PIXI.Container();
 
 let camera = { x: 400, y: 300 };
+let dragging = false;
+let dragStart = { x: 0, y: 0 };
 
 nodesContainer.x = camera.x;
 nodesContainer.y = camera.y;
@@ -67,8 +69,6 @@ async function main() {
   await tileSprites.parse();
 
   app.stage.addChild(nodesContainer);
-  /*const testSprite = new PIXI.Sprite(tileSprites.textures["Small XP"]);
-  app.stage.addChild(testSprite);*/
 }
 main();
 
@@ -96,6 +96,7 @@ function loadTreeData(data) {
   }
 }
 
+// Read input file and set tree data
 function readSingleFile(e) {
   var file = e.target.files[0];
   if (!file) {
@@ -110,6 +111,7 @@ function readSingleFile(e) {
   reader.readAsText(file);
 }
 
+// On file input
 document.getElementById("file-input").addEventListener(
   "change",
   function (e) {
@@ -121,3 +123,28 @@ document.getElementById("file-input").addEventListener(
   },
   false
 );
+
+// Mouse event funcs
+document.addEventListener("mousedown", (ev) => {
+  if (ev.button == 2 && !dragging) {
+    dragging = true;
+    dragStart.x = ev.pageX;
+    dragStart.y = ev.pageY;
+  }
+});
+document.addEventListener("mouseup", (ev) => {
+  if (ev.button == 2 && dragging) {
+    dragging = false;
+    camera.x = nodesContainer.x;
+    camera.y = nodesContainer.y;
+  }
+});
+document.addEventListener("mousemove", (ev) => {
+  if (dragging) {
+    const xOff = dragStart.x - ev.pageX;
+    const yOff = dragStart.y - ev.pageY;
+
+    nodesContainer.x = camera.x - xOff;
+    nodesContainer.y = camera.y - yOff;
+  }
+});
