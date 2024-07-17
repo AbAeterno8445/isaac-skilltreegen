@@ -7,8 +7,10 @@
   </head>
   <body>
     <div id="mainContainer">
-      <div>
+      <div id="fileContainer">
         <input type="file" id="file-input" accept="application/JSON" />
+        <input type="text" id="inpFilename" spellcheck="false" />
+        <button onclick="saveTreeData();">Save Tree</button>
       </div>
       <div id="subContainer">
         <div id="dataContainer">
@@ -23,13 +25,13 @@
           </select>
 
           <label for="inpNodeName">Name</label>
-          <input id="inpNodeName" type="text" />
+          <input id="inpNodeName" type="text" spellcheck="false" />
 
           <label for="inpNodeDesc">Description</label>
-          <textarea id="inpNodeDesc"></textarea>
+          <textarea id="inpNodeDesc" spellcheck="false"></textarea>
 
           <label for="inpNodeMods">Modifiers</label>
-          <textarea id="inpNodeMods"></textarea>
+          <textarea id="inpNodeMods" spellcheck="false"></textarea>
 
           <label for="inpNodeAvail">Always Available</label>
           <input id="inpNodeAvail" type="checkbox" />

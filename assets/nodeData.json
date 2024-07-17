@@ -3,152 +3,192 @@
     "type": "Small XP",
     "size": "Small",
     "name": "Small XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      "+2% XP gain"
+    ],
+    "modifiers": {
+      "xpgain": 2
+    },
     "alwaysAvail": false
   },
   {
     "type": "Med XP",
     "size": "Med",
     "name": "Med XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Small Secret XP",
     "size": "Small",
     "name": "Small Secret XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Unholy Growth",
     "size": "Large",
     "name": "Unholy Growth",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Small Challenge XP",
     "size": "Small",
     "name": "Small Challenge XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Med Challenge XP",
     "size": "Med",
     "name": "Med Challenge XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Central",
     "size": "Large",
     "name": "Central",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Small Respec",
     "size": "Small",
     "name": "Small Respec",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Med Respec",
     "size": "Med",
     "name": "Med Respec",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Large Respec",
     "size": "Large",
     "name": "Large Respec",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Quick Wit",
     "size": "Large",
     "name": "Quick Wit",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Small Boss XP",
     "size": "Small",
     "name": "Small Boss XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Med Boss XP",
     "size": "Med",
     "name": "Med Boss XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Large Boss XP",
     "size": "Large",
     "name": "Large Boss XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Small Monster XP",
     "size": "Small",
     "name": "Small Monster XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Med Monster XP",
     "size": "Med",
     "name": "Med Monster XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Large Monster XP",
     "size": "Large",
     "name": "Large Monster XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Med Secret XP",
     "size": "Med",
     "name": "Med Secret XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   },
   {
     "type": "Large Secret XP",
     "size": "Large",
     "name": "Large Secret XP",
-    "description": "",
-    "modifiers": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
     "alwaysAvail": false
   }
 ]

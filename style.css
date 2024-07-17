@@ -17,6 +17,16 @@ input[type="file"] {
   margin-bottom: 4px;
 }
 
+#fileContainer {
+  display: flex;
+  gap: 6px;
+}
+
+#fileContainer input,
+#fileContainer button {
+  height: 21px;
+}
+
 #mainContainer {
   display: flex;
   flex-direction: column;

@@ -10,4 +10,7 @@ contextBridge.exposeInMainWorld("myFS", {
   loadNodeData: () => {
     return ipcRenderer.invoke("loadNodeData");
   },
+  saveTree: (treeName, treeData) => {
+    return ipcRenderer.invoke("saveTree", treeName, treeData);
+  },
 });

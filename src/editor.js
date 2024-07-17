@@ -33,6 +33,7 @@ paletteBG.tint = 0x222222;
 paletteContainer.addChild(paletteBG);
 
 let paletteNodes = [];
+let nodeSprites = {};
 
 let selectorSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
 selectorSprite.width = 32;
@@ -131,8 +132,8 @@ async function main() {
       type: animName,
       size: nodeSize,
       name: animName,
-      description: "",
-      modifiers: "",
+      description: [""],
+      modifiers: {},
       alwaysAvail: false,
     });
 
@@ -160,8 +161,17 @@ function setInputElems(inputData) {
   inputElems.type.value = inputData.type;
   inputElems.size.value = inputData.size;
   inputElems.name.value = inputData.name;
-  inputElems.description.value = inputData.description;
-  inputElems.modifiers.value = inputData.modifiers;
+  inputElems.description.value = inputData.description?.join("\n") || "";
+  const modifiersStr = JSON.stringify(inputData.modifiers, null, 2);
+  if (inputData.modifiers) {
+    inputElems.modifiers.value = modifiersStr
+      .split("\n")
+      .filter((v) => v != "{" && v != "}" && v != "{}")
+      .map((v) => v.trim())
+      .join("\n");
+  } else {
+    inputElems.modifiers.value = "";
+  }
   inputElems.alwaysAvail.checked = inputData.alwaysAvail;
 }
 
@@ -173,9 +183,10 @@ function resetSelection() {
 
 function loadTreeData(data) {
   // Remove old sprites
-  for (let [nodeID, node] of Object.entries(treeData)) {
-    if (node.sprite) nodesContainer.removeChild(node.sprite);
+  for (let sprite of Object.values(nodeSprites)) {
+    nodesContainer.removeChild(sprite);
   }
+  nodeSprites = {};
 
   treeData = data;
   nodeCounter = 0;
@@ -183,7 +194,6 @@ function loadTreeData(data) {
   resetSelection();
   for (let [nodeID, node] of Object.entries(treeData)) {
     const nodeSprite = new PIXI.Sprite(tileSprites.textures[node.type]);
-    node.sprite = nodeSprite;
 
     const nodeX = node.pos[0] * 38;
     const nodeY = node.pos[1] * 38;
@@ -192,6 +202,7 @@ function loadTreeData(data) {
     nodeSprite.y = nodeY;
 
     nodesContainer.addChild(nodeSprite);
+    nodeSprites[nodeID] = nodeSprite;
 
     if (nodeID > nodeCounter) nodeCounter = nodeID;
   }
@@ -199,15 +210,18 @@ function loadTreeData(data) {
 
 // Read input file and set tree data
 function readSingleFile(e) {
-  var file = e.target.files[0];
+  let file = e.target.files[0];
   if (!file) {
     console.warn("Could not load the specified file.");
     return;
   }
-  var reader = new FileReader();
+  let reader = new FileReader();
   reader.onload = function (e) {
-    var contents = e.target.result;
+    let contents = e.target.result;
     loadTreeData(JSON.parse(contents));
+
+    document.getElementById("inpFilename").value =
+      file.name?.split(".")[0] || "";
   };
   reader.readAsText(file);
 }
@@ -227,6 +241,7 @@ document.getElementById("file-input").addEventListener(
 
 // Add node at position
 function addNodeAt(x, y) {
+  nodeCounter++;
   const tmpNode = {
     pos: [x, y],
     type: inputElems.type.value,
@@ -242,9 +257,8 @@ function addNodeAt(x, y) {
   nodeSprite.x = x * 38;
   nodeSprite.y = y * 38;
   nodesContainer.addChild(nodeSprite);
-  tmpNode.sprite = nodeSprite;
+  nodeSprites[nodeCounter] = nodeSprite;
 
-  nodeCounter++;
   treeData[nodeCounter] = tmpNode;
 }
 
@@ -260,21 +274,24 @@ function getNodeAt(x, y) {
 function removeNode(nodeID) {
   if (treeData.hasOwnProperty(nodeID)) {
     const node = treeData[nodeID];
-    if (node.sprite) nodesContainer.removeChild(node.sprite);
+    if (nodeSprites.hasOwnProperty(nodeID)) {
+      nodesContainer.removeChild(nodeSprites[nodeID]);
+      delete nodeSprites[nodeID];
+    }
     delete treeData[nodeID];
   }
 }
 
 // Mouse event funcs
 document.addEventListener("mousedown", (ev) => {
-  if (ev.button == 2 && !dragging) {
+  if ((ev.button == 1 || ev.button == 2) && !dragging) {
     dragging = true;
     dragStart.x = ev.pageX;
     dragStart.y = ev.pageY;
   }
 });
 document.addEventListener("mouseup", (ev) => {
-  if (ev.button == 2 && dragging) {
+  if ((ev.button == 1 || ev.button == 2) && dragging) {
     dragging = false;
     camera.x = nodesContainer.x;
     camera.y = nodesContainer.y;
@@ -333,6 +350,21 @@ function clickCanvas(ev) {
   }
 }
 
+// Save tree data
+async function saveTreeData() {
+  const filename = document
+    .getElementById("inpFilename")
+    .value?.trim()
+    .replace(/[^a-z0-9]/gi, "_");
+  if (!filename) {
+    console.warn("Error while saving tree: Invalid filename!");
+    return;
+  }
+
+  await window.myFS.saveTree(filename, JSON.stringify(treeData, null, 2));
+  console.log("Saved to trees/" + filename + ".json");
+}
+
 // Save palette node data
 async function savePaletteData() {
   await window.myFS.saveNodeData(JSON.stringify(paletteNodes, null, 2));
@@ -352,9 +384,26 @@ async function loadPaletteData() {
 for (let [elemName, elem] of Object.entries(inputElems)) {
   elem.onchange = (e) => {
     const nodeID = paletteNodes.indexOf(selectedNode);
-    if (elem.type == "checkbox")
+    if (elem.type == "checkbox") {
       paletteNodes[nodeID][elemName] = e.target.checked;
-    else paletteNodes[nodeID][elemName] = e.target.value;
+    } else if (elemName == "description") {
+      paletteNodes[nodeID][elemName] = e.target.value.split("\n");
+    } else if (elemName == "modifiers") {
+      // Check field has valid JSON data
+      try {
+        const tmpJSON = JSON.parse(
+          "{" + e.target.value.replace("\n", "") + "}"
+        );
+        paletteNodes[nodeID][elemName] = tmpJSON;
+        inputElems.modifiers.style.border = "none";
+      } catch (err) {
+        console.warn(err);
+        console.warn("Invalid JSON in modifiers field.");
+        inputElems.modifiers.style.border = "1px solid red";
+      }
+    } else {
+      paletteNodes[nodeID][elemName] = e.target.value;
+    }
     savePaletteData();
   };
 }

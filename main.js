@@ -52,3 +52,7 @@ ipcMain.handle("saveNodeData", (ev, nodeData) => {
 ipcMain.handle("loadNodeData", (ev) => {
   return fs.readFile("assets/nodeData.json", "utf-8");
 });
+
+ipcMain.handle("saveTree", (ev, treeName, treeData) => {
+  fs.writeFile("trees/" + treeName + ".json", treeData, "utf-8");
+});
