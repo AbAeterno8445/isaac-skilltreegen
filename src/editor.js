@@ -661,7 +661,14 @@ async function savePaletteData() {
 async function loadPaletteData() {
   try {
     const tmpNodeData = await window.myFS.loadNodeData();
-    paletteNodes = JSON.parse(tmpNodeData);
+    for (let tmpNode of JSON.parse(tmpNodeData)) {
+      for (let oldNode of paletteNodes) {
+        if (tmpNode.type == oldNode.type) {
+          Object.assign(oldNode, tmpNode);
+          break;
+        }
+      }
+    }
   } catch (err) {
     console.warn("Error loading palette data:", err);
   }
