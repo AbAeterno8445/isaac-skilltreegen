@@ -588,13 +588,26 @@ function clickCanvas(ev) {
   }
 }
 
+function isInputFocused() {
+  let inputFocus = false;
+  for (let inp of Object.values(inputElems)) {
+    if (
+      (inp.type == "text" || inp.type == "textarea") &&
+      document.activeElement == inp
+    ) {
+      inputFocus = true;
+    }
+  }
+  return inputFocus;
+}
+
 // Key event funcs
 document.addEventListener("keydown", (ev) => {
   if (ev.shiftKey) shiftHeld = true;
 });
 document.addEventListener("keyup", (ev) => {
   if (!ev.shiftKey) shiftHeld = false;
-  if (ev.key == "c" || ev.key == "C") {
+  if ((ev.key == "c" || ev.key == "C") && !isInputFocused()) {
     connecting = !connecting;
     if (connecting) {
       selectedSprite.alpha = 0;

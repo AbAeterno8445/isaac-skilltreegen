@@ -2,7 +2,7 @@
   {
     "type": "Small XP",
     "size": "Small",
-    "name": "Small XP",
+    "name": "XP gain",
     "description": [
       "+2% XP gain"
     ],
@@ -14,21 +14,26 @@
   {
     "type": "Med XP",
     "size": "Med",
-    "name": "Med XP",
+    "name": "XP gain",
     "description": [
-      ""
+      "+7% XP gain"
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgain": 7
+    },
     "alwaysAvail": false
   },
   {
     "type": "Small Secret XP",
     "size": "Small",
-    "name": "Small Secret XP",
+    "name": "Secret XP",
     "description": [
-      ""
+      "Gain 30 XP upon first entering a secret or",
+      "super secret room."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "secretXP": 30
+    },
     "alwaysAvail": false
   },
   {
@@ -36,69 +41,91 @@
     "size": "Large",
     "name": "Unholy Growth",
     "description": [
-      ""
+      "+15% XP gain",
+      "Starting stats are 5% lower for all characters."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgain": 15,
+      "unholyGrowth": true
+    },
     "alwaysAvail": false
   },
   {
     "type": "Small Challenge XP",
     "size": "Small",
-    "name": "Small Challenge XP",
+    "name": "Challenge XP",
     "description": [
-      ""
+      "Gain 30 XP upon completing a challenge room round."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "challengeXP": 30
+    },
     "alwaysAvail": false
   },
   {
     "type": "Med Challenge XP",
     "size": "Med",
-    "name": "Med Challenge XP",
+    "name": "Challenge XP",
     "description": [
-      ""
+      "Gain 70 XP upon completing a challenge room round.",
+      "+10% XP gain in challenge rooms."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "challengeXP": 70,
+      "challengeXPgain": 10
+    },
     "alwaysAvail": false
   },
   {
     "type": "Central",
     "size": "Large",
-    "name": "Central",
+    "name": "Leveling of Isaac",
     "description": [
-      ""
+      "+0.05 all stats"
     ],
-    "modifiers": {},
-    "alwaysAvail": false
+    "modifiers": {
+      "allstats": 0.05
+    },
+    "alwaysAvail": true
   },
   {
     "type": "Small Respec",
     "size": "Small",
-    "name": "Small Respec",
+    "name": "Respec Chance",
     "description": [
-      ""
+      "+5% chance to gain a respec point",
+      "when completing a floor."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "respecChance": 5
+    },
     "alwaysAvail": false
   },
   {
     "type": "Med Respec",
     "size": "Med",
-    "name": "Med Respec",
+    "name": "Respec Chance",
     "description": [
-      ""
+      "+15% chance to gain a respec point",
+      "when completing a floor."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "respecChance": 15
+    },
     "alwaysAvail": false
   },
   {
     "type": "Large Respec",
     "size": "Large",
-    "name": "Large Respec",
+    "name": "Relearning",
     "description": [
-      ""
+      "Can no longer gain respec points from completing floors.",
+      "Gain 3 respec points when winning a run, and",
+      "additionally gain 1 respec point per completed floor in that run."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "relearning": true
+    },
     "alwaysAvail": false
   },
   {
@@ -106,89 +133,118 @@
     "size": "Large",
     "name": "Quick Wit",
     "description": [
-      ""
+      "+15% XP earned for the first 8 seconds upon entering a room.",
+      "Afterwards, this bonus gradually lowers down to -20% over 10 seconds.",
+      "Does not apply in boss rooms."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "quickWit": [
+        15,
+        -20
+      ]
+    },
     "alwaysAvail": false
   },
   {
     "type": "Small Boss XP",
     "size": "Small",
-    "name": "Small Boss XP",
+    "name": "Boss XP",
     "description": [
-      ""
+      "+4% XP from slain bosses."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgainBoss": 4
+    },
     "alwaysAvail": false
   },
   {
     "type": "Med Boss XP",
     "size": "Med",
-    "name": "Med Boss XP",
+    "name": "Boss XP",
     "description": [
-      ""
+      "+10% XP from slain bosses."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgainBoss": 10
+    },
     "alwaysAvail": false
   },
   {
     "type": "Large Boss XP",
     "size": "Large",
-    "name": "Large Boss XP",
+    "name": "Beast Challenger",
     "description": [
-      ""
+      "+25% XP from slain bosses.",
+      "-15% XP from slain normal monsters."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgainBoss": 25,
+      "xpgainNormalMob": -15
+    },
     "alwaysAvail": false
   },
   {
     "type": "Small Monster XP",
     "size": "Small",
-    "name": "Small Monster XP",
+    "name": "Monster XP",
     "description": [
-      ""
+      "+4% XP from slain normal monsters."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgainNormalMob": 4
+    },
     "alwaysAvail": false
   },
   {
     "type": "Med Monster XP",
     "size": "Med",
-    "name": "Med Monster XP",
+    "name": "Monster XP",
     "description": [
-      ""
+      "+10% XP from slain normal monsters."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgainNormalMob": 10
+    },
     "alwaysAvail": false
   },
   {
     "type": "Large Monster XP",
     "size": "Large",
-    "name": "Large Monster XP",
+    "name": "Swarm Challenger",
     "description": [
-      ""
+      "+25% XP from slain normal monsters.",
+      "-15% XP from slain bosses."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "xpgainNormalMob": 25,
+      "xpgainBoss": -15
+    },
     "alwaysAvail": false
   },
   {
     "type": "Med Secret XP",
     "size": "Med",
-    "name": "Med Secret XP",
+    "name": "Secret XP",
     "description": [
-      ""
+      "Gain 100 XP upon first entering a secret or",
+      "super secret room."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "secretXP": 100
+    },
     "alwaysAvail": false
   },
   {
     "type": "Large Secret XP",
     "size": "Large",
-    "name": "Large Secret XP",
+    "name": "Expert Spelunker",
     "description": [
-      ""
+      "Gain no XP when first entering a secret room.",
+      "Gain 350 XP when first entering a super secret room."
     ],
-    "modifiers": {},
+    "modifiers": {
+      "expertSpelunker": 350
+    },
     "alwaysAvail": false
   }
 ]
