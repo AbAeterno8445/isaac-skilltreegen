@@ -40,6 +40,16 @@ input[type="file"] {
   resize: vertical;
 }
 
+#dataContainer input,
+#dataContainer textarea,
+#dataContainer select {
+  margin-bottom: 6px;
+}
+
+input[type="checkbox"] {
+  width: fit-content;
+}
+
 .flex1 {
   flex: 1;
 }

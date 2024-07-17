@@ -21,6 +21,7 @@ const inputElems = {
 };
 
 let treeData = {};
+let nodeCounter = 0;
 let stageSprites = [];
 
 let tileSprites = undefined;
@@ -39,9 +40,19 @@ selectorSprite.height = 32;
 selectorSprite.tint = 0x888888;
 paletteContainer.addChild(selectorSprite);
 
+let centerSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
+centerSprite.width = 8;
+centerSprite.height = 8;
+centerSprite.anchor.set(0.5);
+centerSprite.tint = 0xaaaaaa;
+
 let selectedNode = undefined;
+let selectedSprite = new PIXI.Sprite();
+selectedSprite.alpha = 0;
 
 let nodesContainer = new PIXI.Container();
+nodesContainer.addChild(centerSprite);
+nodesContainer.addChild(selectedSprite);
 
 let camera = { x: 400, y: 300 };
 let dragging = false;
@@ -140,6 +151,8 @@ async function main() {
 
   app.stage.addChild(nodesContainer);
   app.stage.addChild(paletteContainer);
+
+  app.canvas.onclick = clickCanvas;
 }
 document.addEventListener("DOMContentLoaded", main);
 
@@ -155,21 +168,22 @@ function setInputElems(inputData) {
 function resetSelection() {
   selectedNode = paletteNodes[0];
   setInputElems(selectedNode);
+  selectedSprite.texture = tileSprites.textures[selectedNode.type];
 }
 
 function loadTreeData(data) {
-  treeData = data;
-
-  if (stageSprites.length > 0) {
-    for (let sprite of stageSprites) {
-      app.stage.removeChild(sprite);
-    }
+  // Remove old sprites
+  for (let [nodeID, node] of Object.entries(treeData)) {
+    if (node.sprite) nodesContainer.removeChild(node.sprite);
   }
-  stageSprites = [];
+
+  treeData = data;
+  nodeCounter = 0;
 
   resetSelection();
   for (let [nodeID, node] of Object.entries(treeData)) {
     const nodeSprite = new PIXI.Sprite(tileSprites.textures[node.type]);
+    node.sprite = nodeSprite;
 
     const nodeX = node.pos[0] * 38;
     const nodeY = node.pos[1] * 38;
@@ -177,8 +191,9 @@ function loadTreeData(data) {
     nodeSprite.x = nodeX;
     nodeSprite.y = nodeY;
 
-    stageSprites.push(nodeSprite);
     nodesContainer.addChild(nodeSprite);
+
+    if (nodeID > nodeCounter) nodeCounter = nodeID;
   }
 }
 
@@ -210,29 +225,48 @@ document.getElementById("file-input").addEventListener(
   false
 );
 
+// Add node at position
+function addNodeAt(x, y) {
+  const tmpNode = {
+    pos: [x, y],
+    type: inputElems.type.value,
+    size: inputElems.size.value,
+    name: inputElems.name.value,
+    description: inputElems.description.value,
+    modifiers: inputElems.modifiers.value,
+    alwaysAvailable: inputElems.alwaysAvail.checked,
+    adjacent: [],
+    requires: [],
+  };
+  const nodeSprite = new PIXI.Sprite(tileSprites.textures[tmpNode.type]);
+  nodeSprite.x = x * 38;
+  nodeSprite.y = y * 38;
+  nodesContainer.addChild(nodeSprite);
+  tmpNode.sprite = nodeSprite;
+
+  nodeCounter++;
+  treeData[nodeCounter] = tmpNode;
+}
+
+// Get node at position
+function getNodeAt(x, y) {
+  for (let [nodeID, node] of Object.entries(treeData)) {
+    if (node.pos[0] == x && node.pos[1] == y) return { nodeID, node };
+  }
+  return undefined;
+}
+
+// Remove given node from tree data
+function removeNode(nodeID) {
+  if (treeData.hasOwnProperty(nodeID)) {
+    const node = treeData[nodeID];
+    if (node.sprite) nodesContainer.removeChild(node.sprite);
+    delete treeData[nodeID];
+  }
+}
+
 // Mouse event funcs
 document.addEventListener("mousedown", (ev) => {
-  if (ev.button == 0) {
-    const canvasRect = canvasDivElem.getBoundingClientRect();
-
-    // Clicked palette
-    if (
-      ev.pageX >= canvasRect.x &&
-      ev.pageX <= canvasRect.x + paletteBG.width
-    ) {
-      const tileX = Math.floor((ev.pageX - canvasRect.x) / 32);
-      const tileY = Math.floor((ev.pageY - canvasRect.y) / 32);
-      const clickedID = tileX + tileY * 5;
-      if (clickedID < paletteNodes.length) {
-        selectedNode = paletteNodes[clickedID];
-        setInputElems(selectedNode);
-
-        selectorSprite.x = tileX * 32;
-        selectorSprite.y = tileY * 32;
-      }
-    }
-  }
-
   if (ev.button == 2 && !dragging) {
     dragging = true;
     dragStart.x = ev.pageX;
@@ -253,8 +287,51 @@ document.addEventListener("mousemove", (ev) => {
 
     nodesContainer.x = camera.x - xOff;
     nodesContainer.y = camera.y - yOff;
+  } else {
+    // Draw selected node on mouse
+    const canvasRect = canvasDivElem.getBoundingClientRect();
+    selectedSprite.x =
+      Math.floor((ev.pageX - camera.x - canvasRect.x + 19) / 38) * 38;
+    selectedSprite.y =
+      Math.floor((ev.pageY - camera.y - canvasRect.y + 19) / 38) * 38;
+    selectedSprite.alpha = 0.4;
   }
 });
+
+// Canvas click handler
+function clickCanvas(ev) {
+  const canvasRect = canvasDivElem.getBoundingClientRect();
+
+  if (ev.pageX >= canvasRect.x && ev.pageX <= canvasRect.x + paletteBG.width) {
+    // Clicked palette
+    const tileX = Math.floor((ev.pageX - canvasRect.x) / 32);
+    const tileY = Math.floor((ev.pageY - canvasRect.y) / 32);
+    const clickedID = tileX + tileY * 5;
+    if (clickedID < paletteNodes.length) {
+      selectedNode = paletteNodes[clickedID];
+      setInputElems(selectedNode);
+
+      selectorSprite.x = tileX * 32;
+      selectorSprite.y = tileY * 32;
+
+      selectedSprite.texture = tileSprites.textures[selectedNode.type];
+    }
+  } else {
+    // Clicked canvas
+    const tileX = Math.floor(
+      (ev.pageX - canvasRect.x - nodesContainer.x + 19) / 38
+    );
+    const tileY = Math.floor(
+      (ev.pageY - canvasRect.y - nodesContainer.y + 19) / 38
+    );
+    const tmpNode = getNodeAt(tileX, tileY);
+    if (tmpNode != undefined) {
+      removeNode(tmpNode.nodeID);
+    } else {
+      addNodeAt(tileX, tileY);
+    }
+  }
+}
 
 // Save palette node data
 async function savePaletteData() {
