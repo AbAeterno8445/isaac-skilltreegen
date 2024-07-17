@@ -694,3 +694,8 @@ for (let [elemName, elem] of Object.entries(inputElems)) {
     savePaletteData();
   };
 }
+
+function copyTreeToClipboard() {
+  navigator.clipboard.writeText(JSON.stringify(treeData));
+  console.log("Copied tree data to clipboard.");
+}
