@@ -1,7 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
 body {
   background: #777;
 }
 
 input[type="file"] {
   margin-bottom: 4px;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#subContainer {
+  display: flex;
+  flex: 1;
+}
+
+#dataContainer {
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+
+#dataContainer textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.flex1 {
+  flex: 1;
 }

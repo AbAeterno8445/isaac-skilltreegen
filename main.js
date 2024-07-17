@@ -44,3 +44,11 @@ app.on("window-all-closed", () => {
 ipcMain.handle("readXML", (ev) => {
   return fs.readFile("assets/tree_nodes.anm2", "utf-8");
 });
+
+ipcMain.handle("saveNodeData", (ev, nodeData) => {
+  fs.writeFile("assets/nodeData.json", nodeData, "utf-8");
+});
+
+ipcMain.handle("loadNodeData", (ev) => {
+  return fs.readFile("assets/nodeData.json", "utf-8");
+});
