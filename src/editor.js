@@ -630,7 +630,7 @@ async function saveTreeData() {
     return;
   }
 
-  await window.myFS.saveTree(filename, JSON.stringify(treeData, null, 2));
+  await window.myFS.saveTree(filename, JSON.stringify(treeData));
   console.log("Saved to trees/" + filename + ".json");
 }
 
