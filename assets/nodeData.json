@@ -41,12 +41,12 @@
     "size": "Large",
     "name": "Unholy Growth",
     "description": [
-      "+15% XP gain",
+      "+20% XP gain",
       "Starting stats are 5% lower for all characters."
     ],
     "modifiers": {
-      "xpgain": 15,
-      "unholyGrowth": true
+      "xpgain": 20,
+      "allstatsPerc": -5
     },
     "alwaysAvail": false
   },
@@ -65,14 +65,12 @@
   {
     "type": "Med Challenge XP",
     "size": "Med",
-    "name": "Challenge XP",
+    "name": "Boss Challenge XP",
     "description": [
-      "Gain 70 XP upon completing a challenge room round.",
-      "+10% XP gain in challenge rooms."
+      "Apply challenge room XP bonuses to boss challenge rooms."
     ],
     "modifiers": {
-      "challengeXP": 70,
-      "challengeXPgain": 10
+      "bossChallengeXP": true
     },
     "alwaysAvail": false
   },
@@ -93,11 +91,11 @@
     "size": "Small",
     "name": "Respec Chance",
     "description": [
-      "+5% chance to gain a respec point",
+      "+10% chance to gain a respec point",
       "when completing a floor."
     ],
     "modifiers": {
-      "respecChance": 5
+      "respecChance": 10
     },
     "alwaysAvail": false
   },
@@ -106,11 +104,11 @@
     "size": "Med",
     "name": "Respec Chance",
     "description": [
-      "+15% chance to gain a respec point",
+      "+30% chance to gain a respec point",
       "when completing a floor."
     ],
     "modifiers": {
-      "respecChance": 15
+      "respecChance": 30
     },
     "alwaysAvail": false
   },
@@ -120,8 +118,8 @@
     "name": "Relearning",
     "description": [
       "Can no longer gain respec points from completing floors.",
-      "Gain 3 respec points when winning a run, and",
-      "additionally gain 1 respec point per completed floor in that run."
+      "Gain 10 respec points when winning a run, and",
+      "additionally gain 2 respec points per completed floor in that run."
     ],
     "modifiers": {
       "relearning": true
@@ -518,10 +516,10 @@
     "size": "Med",
     "name": "Good Deeds",
     "description": [
-      "Helping a beggar grants +0.03 luck"
+      "Helping any type of beggar grants +0.02 luck"
     ],
     "modifiers": {
-      "beggarLuck": 0.03
+      "beggarLuck": 0.02
     },
     "alwaysAvail": false
   },
@@ -568,19 +566,27 @@
   {
     "type": "Hell Favour",
     "size": "Large",
-    "name": "Hell Favour",
+    "name": "Hell's Favour",
     "description": [
-      ""
+      "+1 to a random stat when entering a devil room.",
+      "-1 to a random stat when entering an angel room.",
+      "Entering an angel room will trigger a curse on the next floor."
     ],
-    "modifiers": {}
+    "modifiers": {
+      "hellFavour": true
+    }
   },
   {
     "type": "Heaven Favour",
     "size": "Large",
-    "name": "Heaven Favour",
+    "name": "Heaven's Favour",
     "description": [
-      ""
+      "+1 to a random stat when entering an angel room.",
+      "-1 to a random stat when entering a devil room.",
+      "Entering a devil room will trigger a curse on the next floor."
     ],
-    "modifiers": {}
+    "modifiers": {
+      "heavenFavour": true
+    }
   }
 ]

@@ -333,6 +333,14 @@ function loadTreeData(data) {
   nodeCounter = 0;
 
   resetSelection();
+  // Parse nodes if compressed
+  const tmpKeys = Object.keys(treeData);
+  if (tmpKeys.length && typeof treeData[tmpKeys[0]] == "string") {
+    for (let nodeID of Object.keys(treeData)) {
+      treeData[nodeID] = JSON.parse(treeData[nodeID]);
+    }
+  }
+
   for (let [nodeID, node] of Object.entries(treeData)) {
     const nodeSprite = new PIXI.Sprite(tileSprites.textures[node.type]);
 
