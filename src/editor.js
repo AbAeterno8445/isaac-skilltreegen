@@ -236,6 +236,8 @@ function resetSelection() {
   selectedNode = paletteNodes[0];
   setInputElems(selectedNode);
   selectedSprite.texture = tileSprites.textures[selectedNode.type];
+  selectorSprite.x = 0;
+  selectorSprite.y = 0;
 }
 
 function updateNodeLinks() {
@@ -648,7 +650,7 @@ async function saveTreeData() {
     return;
   }
 
-  await window.myFS.saveTree(filename, JSON.stringify(treeData));
+  await window.myFS.saveTree(filename, JSON.stringify(treeData, null, 2));
   console.log("Saved to trees/" + filename + ".json");
 }
 
@@ -703,6 +705,6 @@ for (let [elemName, elem] of Object.entries(inputElems)) {
 }
 
 function copyTreeToClipboard() {
-  navigator.clipboard.writeText(JSON.stringify(treeData));
+  navigator.clipboard.writeText(JSON.stringify(treeData, null, 2));
   console.log("Copied tree data to clipboard.");
 }
