@@ -190,7 +190,6 @@ async function main() {
       name: animName,
       description: [""],
       modifiers: {},
-      alwaysAvail: false,
     });
 
     i++;
@@ -394,10 +393,10 @@ function addNodeAt(x, y) {
       modifiers: JSON.parse(
         "{" + inputElems.modifiers.value.replace("\n", "") + "}"
       ),
-      alwaysAvailable: inputElems.alwaysAvail.checked,
       adjacent: [],
       requires: [],
     };
+    if (inputElems.alwaysAvail.checked) tmpNode.alwaysAvailable = true;
     nodeCounter++;
 
     const nodeSprite = new PIXI.Sprite(tileSprites.textures[tmpNode.type]);
