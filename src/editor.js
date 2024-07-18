@@ -649,6 +649,22 @@ function getCondensedTreeData() {
   return treeData;
 }
 
+function sanitizeNodeData() {
+  for (let [_, node] of Object.entries(treeData)) {
+    // Make sure adjacent & required nodes exist
+    for (let i = node.adjacent.length - 1; i >= 0; i--) {
+      if (!treeData.hasOwnProperty(node.adjacent[i])) {
+        node.adjacent.splice(i, 1);
+      }
+    }
+    for (let i = node.requires.length - 1; i >= 0; i--) {
+      if (!treeData.hasOwnProperty(node.requires[i])) {
+        node.requires.splice(i, 1);
+      }
+    }
+  }
+}
+
 // Save tree data
 async function saveTreeData() {
   const filename = document
@@ -660,6 +676,7 @@ async function saveTreeData() {
     return;
   }
 
+  sanitizeNodeData();
   const tmpTreeJSON = getCondensedTreeData();
   await window.myFS.saveTree(filename, JSON.stringify(tmpTreeJSON, null, 2));
   console.log("Saved to trees/" + filename + ".json");
@@ -716,6 +733,7 @@ for (let [elemName, elem] of Object.entries(inputElems)) {
 }
 
 function copyTreeToClipboard() {
+  sanitizeNodeData();
   navigator.clipboard.writeText(
     JSON.stringify(getCondensedTreeData(), null, 2)
   );
