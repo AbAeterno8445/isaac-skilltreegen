@@ -638,6 +638,17 @@ document.addEventListener("keyup", (ev) => {
   }
 });
 
+function getCondensedTreeData() {
+  if (document.getElementById("condenseCheck").checked) {
+    const tmpTreeJSON = {};
+    for (let [nodeID, node] of Object.entries(treeData)) {
+      tmpTreeJSON[nodeID] = JSON.stringify(node);
+    }
+    return tmpTreeJSON;
+  }
+  return treeData;
+}
+
 // Save tree data
 async function saveTreeData() {
   const filename = document
@@ -649,7 +660,8 @@ async function saveTreeData() {
     return;
   }
 
-  await window.myFS.saveTree(filename, JSON.stringify(treeData, null, 2));
+  const tmpTreeJSON = getCondensedTreeData();
+  await window.myFS.saveTree(filename, JSON.stringify(tmpTreeJSON, null, 2));
   console.log("Saved to trees/" + filename + ".json");
 }
 
@@ -704,6 +716,8 @@ for (let [elemName, elem] of Object.entries(inputElems)) {
 }
 
 function copyTreeToClipboard() {
-  navigator.clipboard.writeText(JSON.stringify(treeData, null, 2));
+  navigator.clipboard.writeText(
+    JSON.stringify(getCondensedTreeData(), null, 2)
+  );
   console.log("Copied tree data to clipboard.");
 }

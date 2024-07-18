@@ -9,7 +9,7 @@
     "modifiers": {
       "xpgain": 2
     },
-    "alwaysAvail": false
+    "alwaysAvail": true
   },
   {
     "type": "Med XP",
@@ -246,5 +246,341 @@
       "expertSpelunker": 350
     },
     "alwaysAvail": false
+  },
+  {
+    "type": "Small Luck",
+    "size": "Small",
+    "name": "Luck",
+    "description": [
+      "+0.01 luck"
+    ],
+    "modifiers": {
+      "luck": 0.01
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Range",
+    "size": "Small",
+    "name": "Range",
+    "description": [
+      "+0.05 range"
+    ],
+    "modifiers": {
+      "range": 0.05
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Shot Speed",
+    "size": "Small",
+    "name": "Shot Speed",
+    "description": [
+      "+0.02 shot speed"
+    ],
+    "modifiers": {
+      "shotSpeed": 0.02
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Devil Chance",
+    "size": "Small",
+    "name": "Devil/Angel Rooms",
+    "description": [
+      "+0.25% chance for the devil/angel room to show up"
+    ],
+    "modifiers": {
+      "devilChance": 0.25
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Speed",
+    "size": "Small",
+    "name": "Speed",
+    "description": [
+      "+0.02 speed"
+    ],
+    "modifiers": {
+      "speed": 0.02
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Damage",
+    "size": "Small",
+    "name": "Damage",
+    "description": [
+      "+0.02 damage"
+    ],
+    "modifiers": {
+      "damage": 0.02
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Luck",
+    "size": "Med",
+    "name": "Luck",
+    "description": [
+      "+0.05 luck"
+    ],
+    "modifiers": {
+      "luck": 0.05
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Range",
+    "size": "Med",
+    "name": "Range",
+    "description": [
+      "+0.2 range"
+    ],
+    "modifiers": {
+      "range": 0.2
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Shot Speed",
+    "size": "Med",
+    "name": "Shot Speed",
+    "description": [
+      "+0.1 shot speed"
+    ],
+    "modifiers": {
+      "shotSpeed": 0.1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Devil Chance",
+    "size": "Med",
+    "name": "Devil/Angel Rooms",
+    "description": [
+      "+1% chance for the devil/angel room to show up"
+    ],
+    "modifiers": {
+      "devilChance": 1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Speed",
+    "size": "Med",
+    "name": "Speed",
+    "description": [
+      "+0.08 speed"
+    ],
+    "modifiers": {
+      "speed": 0.08
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Damage",
+    "size": "Med",
+    "name": "Damage",
+    "description": [
+      "+0.1 damage"
+    ],
+    "modifiers": {
+      "damage": 0.1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Tears",
+    "size": "Small",
+    "name": "Tears",
+    "description": [
+      "+0.03 tears"
+    ],
+    "modifiers": {
+      "tears": 0.03
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Tears",
+    "size": "Med",
+    "name": "Tears",
+    "description": [
+      "+0.1 tears"
+    ],
+    "modifiers": {
+      "tears": 0.1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Map Chance",
+    "size": "Small",
+    "name": "Mapping Chance",
+    "description": [
+      "+1% chance for the map to be revealed upon entering a floor",
+      "Works from the second floor onwards"
+    ],
+    "modifiers": {
+      "mapChance": 1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Map Chance",
+    "size": "Med",
+    "name": "Mapping Chance",
+    "description": [
+      "+4% chance for the map to be revealed upon entering a floor",
+      "Works from the second floor onwards"
+    ],
+    "modifiers": {
+      "mapChance": 4
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Coin Dupe Chance",
+    "size": "Small",
+    "name": "Coin Dupe Chance",
+    "description": [
+      "+0.25% chance for coin pickups to grant an additional coin"
+    ],
+    "modifiers": {
+      "coinDupe": 0.25
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Coin Dupe Chance",
+    "size": "Med",
+    "name": "Coin Dupe Chance",
+    "description": [
+      "+1% chance for coin pickups to grant an additional coin"
+    ],
+    "modifiers": {
+      "coinDupe": 1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Key Dupe Chance",
+    "size": "Small",
+    "name": "Key Dupe Chance",
+    "description": [
+      "+0.25% chance for key pickups to grant an additional key"
+    ],
+    "modifiers": {
+      "keyDupe": 0.25
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Key Dupe Chance",
+    "size": "Med",
+    "name": "Key Dupe Chance",
+    "description": [
+      "+1% chance for key pickups to grant an additional key"
+    ],
+    "modifiers": {
+      "keyDupe": 1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Bomb Dupe Chance",
+    "size": "Small",
+    "name": "Bomb Dupe Chance",
+    "description": [
+      "+0.25% chance for bomb pickups to grant an additional bomb"
+    ],
+    "modifiers": {
+      "bombDupe": 0.25
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Bomb Dupe Chance",
+    "size": "Med",
+    "name": "Bomb Dupe Chance",
+    "description": [
+      "+1% chance for bomb pickups to grant an additional bomb"
+    ],
+    "modifiers": {
+      "bombDupe": 1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Beggar Luck",
+    "size": "Med",
+    "name": "Good Deeds",
+    "description": [
+      "Helping a beggar grants +0.03 luck"
+    ],
+    "modifiers": {
+      "beggarLuck": 0.03
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Med Grab Bag",
+    "size": "Med",
+    "name": "Grab Bags",
+    "description": [
+      "+0.1% chance to turn regular coins/keys/bombs",
+      "into a grab-bag"
+    ],
+    "modifiers": {
+      "grabBag": 0.1
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Cosmic Realignment",
+    "size": "Large",
+    "name": "Cosmic Realignment",
+    "description": [
+      "Allocate to choose an unlocked character different to the currently selected one.",
+      "Once selected, you may earn that character's completion marks by",
+      "playing the currently selected character.",
+      "Beware, however, the cosmic curse each character comes with..."
+    ],
+    "modifiers": {
+      "cosmicRealignment": true
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Small Luck Down",
+    "size": "Small",
+    "name": "Luck Down",
+    "description": [
+      "-0.03 luck"
+    ],
+    "modifiers": {
+      "luck": -0.03
+    },
+    "alwaysAvail": false
+  },
+  {
+    "type": "Hell Favour",
+    "size": "Large",
+    "name": "Hell Favour",
+    "description": [
+      ""
+    ],
+    "modifiers": {}
+  },
+  {
+    "type": "Heaven Favour",
+    "size": "Large",
+    "name": "Heaven Favour",
+    "description": [
+      ""
+    ],
+    "modifiers": {}
   }
 ]

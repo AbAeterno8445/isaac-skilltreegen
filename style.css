@@ -19,6 +19,7 @@ input[type="file"] {
 
 #fileContainer {
   display: flex;
+  align-items: center;
   gap: 6px;
 }
 
