@@ -528,11 +528,10 @@
     "size": "Med",
     "name": "Grab Bags",
     "description": [
-      "+0.1% chance to turn regular coins/keys/bombs",
-      "into a grab-bag"
+      "+0.25% chance to spawn a grab-bag when collecting a pickup"
     ],
     "modifiers": {
-      "grabBag": 0.1
+      "grabBag": 0.25
     },
     "alwaysAvail": false
   },
@@ -541,10 +540,11 @@
     "size": "Large",
     "name": "Cosmic Realignment",
     "description": [
-      "Allocate to choose an unlocked character different to the currently selected one.",
-      "Once selected, you may earn that character's completion marks by",
-      "playing the currently selected character.",
-      "Beware, however, the cosmic curse each character comes with..."
+      "Allocate to choose a character. Once chosen, you may unlock",
+      "items as if playing as that character while using a different one.",
+      "If a locked tainted character is picked, you may unlock them the usual way while",
+      "using a different character.",
+      "Beware the cosmic curse each character brings..."
     ],
     "modifiers": {
       "cosmicRealignment": true
