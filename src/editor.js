@@ -39,6 +39,7 @@ const inputElems = {
   description: document.getElementById("inpNodeDesc"),
   modifiers: document.getElementById("inpNodeMods"),
   alwaysAvail: document.getElementById("inpNodeAvail"),
+  note: document.getElementById("inpNodeNote"),
 };
 
 let treeData = {};
@@ -190,6 +191,7 @@ async function main() {
       name: animName,
       description: [""],
       modifiers: {},
+      note: "",
     });
 
     i++;
@@ -229,6 +231,7 @@ function setInputElems(inputData) {
     inputElems.modifiers.value = "";
   }
   inputElems.alwaysAvail.checked = inputData.alwaysAvail;
+  inputElems.note.value = inputData.note;
 }
 
 function resetSelection() {
@@ -620,6 +623,12 @@ function isInputFocused() {
     ) {
       inputFocus = true;
     }
+  }
+  if (
+    !inputFocus &&
+    document.getElementById("inpFilename") == document.activeElement
+  ) {
+    inputFocus = true;
   }
   return inputFocus;
 }
