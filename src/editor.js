@@ -756,3 +756,9 @@ function copyTreeToClipboard() {
   );
   console.log("Copied tree data to clipboard.");
 }
+
+// Update "Total Nodes" counter regularly
+setInterval(() => {
+  document.getElementById("totalNodesCounter").innerHTML =
+    Object.values(treeData).length;
+}, 500);

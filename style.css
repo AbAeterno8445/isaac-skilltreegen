@@ -28,6 +28,11 @@ input[type="file"] {
   height: 21px;
 }
 
+#fileContainer p {
+  margin: 0;
+  margin-left: 24px;
+}
+
 #mainContainer {
   display: flex;
   flex-direction: column;
