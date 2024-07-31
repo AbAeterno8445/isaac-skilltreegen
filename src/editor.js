@@ -499,16 +499,24 @@ document.addEventListener("mousemove", (ev) => {
   }
 });
 document.addEventListener("wheel", (ev) => {
-  // Scroll palette
-  if (ev.deltaY < 0) {
-    paletteScroll = Math.max(0, paletteScroll - 1);
-  } else if (ev.deltaY > 0) {
-    paletteScroll = Math.min(
-      Math.floor(paletteNodes.length / paletteCols),
-      paletteScroll + 1
-    );
+  const canvasRect = canvasDivElem.getBoundingClientRect();
+  if (
+    ev.pageX > canvasRect.x &&
+    ev.pageX < canvasRect.x + canvasRect.width &&
+    ev.pageY > canvasRect.y &&
+    ev.pageY < canvasRect.y + canvasRect.height
+  ) {
+    // Scroll palette
+    if (ev.deltaY < 0) {
+      paletteScroll = Math.max(0, paletteScroll - 1);
+    } else if (ev.deltaY > 0) {
+      paletteScroll = Math.min(
+        Math.floor(paletteNodes.length / paletteCols),
+        paletteScroll + 1
+      );
+    }
+    paletteNodesContainer.y = -paletteScroll * 32;
   }
-  paletteNodesContainer.y = -paletteScroll * 32;
 });
 
 function removeFromArr(arr, item) {
