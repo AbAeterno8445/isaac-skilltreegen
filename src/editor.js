@@ -3,7 +3,7 @@ const spriteAtlas = {
   meta: {
     image: "assets/tree_nodes.png",
     format: "RGBA8888",
-    size: { w: 320, h: 320 },
+    size: { w: 320, h: 640 },
     scale: 1,
   },
 };
@@ -52,12 +52,16 @@ let ctrlHeld = false;
 let tileSprites = undefined;
 let linkSprites = undefined;
 let paletteContainer = new PIXI.Container();
+let paletteNodesContainer = new PIXI.Container();
 let paletteBG = new PIXI.Sprite(PIXI.Texture.WHITE);
-paletteBG.width = 162;
-paletteBG.height = 800;
+paletteBG.width = 194;
+paletteBG.height = 900;
 paletteBG.tint = 0x222222;
 paletteContainer.addChild(paletteBG);
+paletteContainer.addChild(paletteNodesContainer);
 
+let paletteCols = 6;
+let paletteScroll = 0;
 let paletteNodes = [];
 let nodeSprites = {};
 
@@ -66,7 +70,7 @@ let selectorSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
 selectorSprite.width = 32;
 selectorSprite.height = 32;
 selectorSprite.tint = 0x888888;
-paletteContainer.addChild(selectorSprite);
+paletteNodesContainer.addChild(selectorSprite);
 
 // Visual sprite displayed at position (0, 0)
 let centerSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
@@ -177,9 +181,9 @@ async function main() {
 
     // Add node to palette
     const paletteNodeSprite = new PIXI.Sprite(tileSprites.textures[animName]);
-    paletteNodeSprite.x = 16 + (i % 5) * 32;
-    paletteNodeSprite.y = 16 + Math.floor(i / 5) * 32;
-    paletteContainer.addChild(paletteNodeSprite);
+    paletteNodeSprite.x = 16 + (i % paletteCols) * 32;
+    paletteNodeSprite.y = 16 + Math.floor(i / paletteCols) * 32;
+    paletteNodesContainer.addChild(paletteNodeSprite);
 
     let nodeSize = "Large";
     if (animName.split(" ").includes("Med")) nodeSize = "Med";
@@ -494,6 +498,18 @@ document.addEventListener("mousemove", (ev) => {
     }
   }
 });
+document.addEventListener("wheel", (ev) => {
+  // Scroll palette
+  if (ev.deltaY < 0) {
+    paletteScroll = Math.max(0, paletteScroll - 1);
+  } else if (ev.deltaY > 0) {
+    paletteScroll = Math.min(
+      Math.floor(paletteNodes.length / paletteCols),
+      paletteScroll + 1
+    );
+  }
+  paletteNodesContainer.y = -paletteScroll * 32;
+});
 
 function removeFromArr(arr, item) {
   for (let i = arr.length - 1; i >= 0; i--) {
@@ -509,13 +525,13 @@ function clickCanvas(ev) {
     // Clicked palette
     const tileX = Math.floor((ev.pageX - canvasRect.x) / 32);
     const tileY = Math.floor((ev.pageY - canvasRect.y) / 32);
-    const clickedID = tileX + tileY * 5;
+    const clickedID = tileX + tileY * paletteCols + paletteScroll * paletteCols;
     if (clickedID < paletteNodes.length) {
       selectedNode = paletteNodes[clickedID];
       setInputElems(selectedNode);
 
       selectorSprite.x = tileX * 32;
-      selectorSprite.y = tileY * 32;
+      selectorSprite.y = tileY * 32 + paletteScroll * 32;
 
       selectedSprite.texture = tileSprites.textures[selectedNode.type];
     }

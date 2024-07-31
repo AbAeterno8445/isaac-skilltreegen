@@ -9,7 +9,8 @@
     "modifiers": {
       "xpgain": 2
     },
-    "alwaysAvail": true
+    "note": "",
+    "alwaysAvail": false
   },
   {
     "type": "Med XP",
@@ -21,6 +22,7 @@
     "modifiers": {
       "xpgain": 7
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -34,6 +36,7 @@
     "modifiers": {
       "secretXP": 30
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -48,6 +51,7 @@
       "xpgain": 20,
       "allstatsPerc": -5
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -60,6 +64,7 @@
     "modifiers": {
       "challengeXP": 30
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -72,19 +77,23 @@
     "modifiers": {
       "bossChallengeXP": true
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
     "type": "Central",
     "size": "Large",
-    "name": "Leveling of Isaac",
+    "name": "Isaac's Blessing",
     "description": [
-      "+0.05 all stats"
+      "Start a run with +5% all stats.",
+      "Restarting the run removes this effect.",
+      "Defeating Mom's Heart re-enables this for the next run."
     ],
     "modifiers": {
-      "allstats": 0.05
+      "isaacBlessing": 5
     },
-    "alwaysAvail": true
+    "note": "Last used in Isaac's Tree",
+    "alwaysAvail": false
   },
   {
     "type": "Small Respec",
@@ -97,6 +106,7 @@
     "modifiers": {
       "respecChance": 10
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -110,6 +120,7 @@
     "modifiers": {
       "respecChance": 30
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -124,6 +135,7 @@
     "modifiers": {
       "relearning": true
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -141,6 +153,7 @@
         -20
       ]
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -153,6 +166,7 @@
     "modifiers": {
       "xpgainBoss": 4
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -165,6 +179,7 @@
     "modifiers": {
       "xpgainBoss": 10
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -179,6 +194,7 @@
       "xpgainBoss": 25,
       "xpgainNormalMob": -15
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -191,6 +207,7 @@
     "modifiers": {
       "xpgainNormalMob": 4
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -203,6 +220,7 @@
     "modifiers": {
       "xpgainNormalMob": 10
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -217,6 +235,7 @@
       "xpgainNormalMob": 25,
       "xpgainBoss": -15
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -230,6 +249,7 @@
     "modifiers": {
       "secretXP": 100
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -243,6 +263,7 @@
     "modifiers": {
       "expertSpelunker": 350
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -255,6 +276,7 @@
     "modifiers": {
       "luck": 0.01
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -262,11 +284,12 @@
     "size": "Small",
     "name": "Range",
     "description": [
-      "+0.05 range"
+      "+0.02 range"
     ],
     "modifiers": {
-      "range": 0.05
+      "range": 0.02
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -274,11 +297,12 @@
     "size": "Small",
     "name": "Shot Speed",
     "description": [
-      "+0.02 shot speed"
+      "+0.01 shot speed"
     ],
     "modifiers": {
-      "shotSpeed": 0.02
+      "shotSpeed": 0.01
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -291,6 +315,7 @@
     "modifiers": {
       "devilChance": 0.25
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -298,11 +323,12 @@
     "size": "Small",
     "name": "Speed",
     "description": [
-      "+0.02 speed"
+      "+0.01 speed"
     ],
     "modifiers": {
-      "speed": 0.02
+      "speed": 0.01
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -310,11 +336,12 @@
     "size": "Small",
     "name": "Damage",
     "description": [
-      "+0.02 damage"
+      "+0.01 damage"
     ],
     "modifiers": {
-      "damage": 0.02
+      "damage": 0.01
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -322,11 +349,12 @@
     "size": "Med",
     "name": "Luck",
     "description": [
-      "+0.05 luck"
+      "+0.1 luck"
     ],
     "modifiers": {
-      "luck": 0.05
+      "luck": 0.1
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -334,11 +362,12 @@
     "size": "Med",
     "name": "Range",
     "description": [
-      "+0.2 range"
+      "+0.1 range"
     ],
     "modifiers": {
-      "range": 0.2
+      "range": 0.1
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -346,11 +375,12 @@
     "size": "Med",
     "name": "Shot Speed",
     "description": [
-      "+0.1 shot speed"
+      "+0.05 shot speed"
     ],
     "modifiers": {
-      "shotSpeed": 0.1
+      "shotSpeed": 0.05
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -363,6 +393,7 @@
     "modifiers": {
       "devilChance": 1
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -370,11 +401,12 @@
     "size": "Med",
     "name": "Speed",
     "description": [
-      "+0.08 speed"
+      "+0.04 speed"
     ],
     "modifiers": {
-      "speed": 0.08
+      "speed": 0.04
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -382,11 +414,12 @@
     "size": "Med",
     "name": "Damage",
     "description": [
-      "+0.1 damage"
+      "+0.05 damage"
     ],
     "modifiers": {
-      "damage": 0.1
+      "damage": 0.05
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -394,11 +427,12 @@
     "size": "Small",
     "name": "Tears",
     "description": [
-      "+0.03 tears"
+      "+0.01 tears"
     ],
     "modifiers": {
-      "tears": 0.03
+      "tears": 0.01
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -406,11 +440,12 @@
     "size": "Med",
     "name": "Tears",
     "description": [
-      "+0.1 tears"
+      "+0.05 tears"
     ],
     "modifiers": {
-      "tears": 0.1
+      "tears": 0.05
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -424,6 +459,7 @@
     "modifiers": {
       "mapChance": 1
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -437,6 +473,7 @@
     "modifiers": {
       "mapChance": 4
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -444,11 +481,12 @@
     "size": "Small",
     "name": "Coin Dupe Chance",
     "description": [
-      "+0.25% chance for coin pickups to grant an additional coin"
+      "+0.5% chance for coin pickups to grant an additional coin"
     ],
     "modifiers": {
-      "coinDupe": 0.25
+      "coinDupe": 0.5
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -461,6 +499,7 @@
     "modifiers": {
       "coinDupe": 1
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -473,6 +512,7 @@
     "modifiers": {
       "keyDupe": 0.25
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -485,6 +525,7 @@
     "modifiers": {
       "keyDupe": 1
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -497,6 +538,7 @@
     "modifiers": {
       "bombDupe": 0.25
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -509,6 +551,7 @@
     "modifiers": {
       "bombDupe": 1
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -521,6 +564,7 @@
     "modifiers": {
       "beggarLuck": 0.02
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -533,6 +577,7 @@
     "modifiers": {
       "grabBag": 0.25
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -549,6 +594,7 @@
     "modifiers": {
       "cosmicRealignment": true
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -561,6 +607,7 @@
     "modifiers": {
       "luck": -0.03
     },
+    "note": "",
     "alwaysAvail": false
   },
   {
@@ -574,7 +621,8 @@
     ],
     "modifiers": {
       "hellFavour": true
-    }
+    },
+    "note": ""
   },
   {
     "type": "Heaven Favour",
@@ -587,6 +635,1184 @@
     ],
     "modifiers": {
       "heavenFavour": true
-    }
+    },
+    "note": ""
+  },
+  {
+    "type": "[Isaac Tree] Magic Die",
+    "size": "Large",
+    "name": "Magic Die",
+    "description": [
+      "Using the D6 grants a permanent stat boost. Boosted stats depend on the room you used the D6 in:",
+      "- Angel room: +7% speed and tears",
+      "- Devil room: +6% damage and range",
+      "- Treasure room and shop: +7% shot speed and luck",
+      "- Boss room: if you have a boost, augment it by +3%, otherwise +3% all stats",
+      "- Anywhere else: +2% all stats"
+    ],
+    "modifiers": {
+      "magicDie": true
+    },
+    "note": "From Isaac's Tree"
+  },
+  {
+    "type": "[Isaac Tree] Intermittent Conceptions",
+    "size": "Large",
+    "name": "Intermittent Conceptions",
+    "description": [
+      "Begin the game with Birthright.",
+      "When first obtaining an item, remove birthright.",
+      "When next obtaining an item, receive birthright again.",
+      "Effect cycles."
+    ],
+    "modifiers": {
+      "intermittentConceptions": true
+    },
+    "note": "From Isaac's Tree"
+  },
+  {
+    "type": "[Isaac Tree] Small1",
+    "size": "Small",
+    "name": "All Stats - Birthright",
+    "description": [
+      "+0.01 all stats while holding Birthright"
+    ],
+    "modifiers": {
+      "allstatsBirthright": 0.01
+    },
+    "note": "From Isaac's Tree"
+  },
+  {
+    "type": "[Isaac Tree] Small2",
+    "size": "Small",
+    "name": "All Stats - One Heart",
+    "description": [
+      "+0.01 all stats while you have only 1 red heart."
+    ],
+    "modifiers": {
+      "allstatsOneRed": 0.01
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": "[Isaac Tree] Small3",
+    "size": "Small",
+    "name": "D6 Pickups",
+    "description": [
+      "2% chance when using D6 to spawn a random pickup (coin, bomb, key or heart)."
+    ],
+    "modifiers": {
+      "d6Pickup": 2
+    },
+    "note": "From Isaac's Tree"
+  },
+  {
+    "type": "[Isaac Tree] Small4",
+    "size": "Small",
+    "name": "D6 Charge",
+    "description": [
+      "2% chance when using D6 to keep half of its charge."
+    ],
+    "modifiers": {
+      "d6HalfCharge": 2
+    },
+    "note": "From Isaac's Tree"
+  },
+  {
+    "type": "[Isaac Tree] Med1",
+    "size": "Med",
+    "name": "D6 Pickups",
+    "description": [
+      "8% chance when using D6 to spawn a random pickup (coin, bomb, key or heart)."
+    ],
+    "modifiers": {
+      "d6Pickup": 8
+    },
+    "note": "From Isaac's Tree"
+  },
+  {
+    "type": "[Isaac Tree] Med2",
+    "size": "Med",
+    "name": "D6 Charge",
+    "description": [
+      "8% chance when using D6 to keep half of its charge."
+    ],
+    "modifiers": {
+      "d6HalfCharge": 8
+    },
+    "note": "From Isaac's Tree"
+  },
+  {
+    "type": "[Isaac Tree] Med3",
+    "size": "Med",
+    "name": "All Stats - Full Health",
+    "description": [
+      "+0.04 all stats while you have at least 1 red heart container and",
+      "are at full health."
+    ],
+    "modifiers": {
+      "allstatsFullRed": 0.04
+    },
+    "note": ""
+  },
+  {
+    "type": "[Magdalene Tree] Magdalene's Blessing",
+    "size": "Large",
+    "name": "Magdalene's Blessing",
+    "description": [
+      "+0.1 speed",
+      "-0.1 damage",
+      "-0.02 speed and +0.1 damage for every red heart container after the 4th one."
+    ],
+    "modifiers": {
+      "speed": 0.1,
+      "damage": -0.1,
+      "magdaleneBlessing": true
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Crystal Heart",
+    "size": "Large",
+    "name": "Crystal Heart",
+    "description": [
+      "Yum heart heals an additional 1/2 heart.",
+      "4% chance for Yum Heart to turn a red heart into a bone heart."
+    ],
+    "modifiers": {
+      "crystalHeart": true
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Blood Donor",
+    "size": "Large",
+    "name": "Blood Donor",
+    "description": [
+      "Blood donation machines grant 1 charge to your active item.",
+      "If using Yum Heart, 50% chance to gain 2 charges instead."
+    ],
+    "modifiers": {
+      "bloodDonor": true
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Small1",
+    "size": "Small",
+    "name": "Yum Heart Healing",
+    "description": [
+      "0.5% chance for Yum Heart to heal an additional 1/2 heart."
+    ],
+    "modifiers": {
+      "yumHeartHealHalf": 0.5
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Small2",
+    "size": "Small",
+    "name": "Blood Donation Machine Spawn",
+    "description": [
+      "1% chance to spawn a Blood Donation Machine at the start of a floor.",
+      "Doesn't apply to first floor."
+    ],
+    "modifiers": {
+      "bloodMachineSpawn": 1
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Med1",
+    "size": "Med",
+    "name": "Yum Heart Healing",
+    "description": [
+      "3% chance for Yum Heart to heal an additional 1/2 heart."
+    ],
+    "modifiers": {
+      "yumHeartHealHalf": 3
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Med2",
+    "size": "Med",
+    "name": "Blood Donation Machine Spawn",
+    "description": [
+      "5% chance to spawn a Blood Donation Machine at the start of a floor.",
+      "Doesn't apply to first floor."
+    ],
+    "modifiers": {
+      "bloodMachineSpawn": 5
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Small3",
+    "size": "Small",
+    "name": "Blood Donation Luck",
+    "description": [
+      "+0.01 luck when using a Blood Donation Machine."
+    ],
+    "modifiers": {
+      "bloodDonationLuck": 0.01
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Med3",
+    "size": "Med",
+    "name": "Blood Donation Luck",
+    "description": [
+      "+0.05 luck when using a Blood Donation Machine."
+    ],
+    "modifiers": {
+      "bloodDonationLuck": 0.05
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Small4",
+    "size": "Small",
+    "name": "Blood Donation Nickel",
+    "description": [
+      "0.4% chance to spawn an additional Nickel when using a Blood Donation Machine."
+    ],
+    "modifiers": {
+      "bloodDonationNickel": 0.4
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Med4",
+    "size": "Med",
+    "name": "Blood Donation Nickel",
+    "description": [
+      "2% chance to spawn an additional Nickel when using a Blood Donation Machine."
+    ],
+    "modifiers": {
+      "bloodDonationNickel": 2
+    },
+    "note": "From Magdalene's tree"
+  },
+  {
+    "type": "[Magdalene Tree] Small5",
+    "size": "Small",
+    "name": "Room Clear Heal",
+    "description": [
+      "0.1% chance to heal 1/2 red heart when clearing a room.",
+      "Double the chance and healing on boss rooms."
+    ],
+    "modifiers": {
+      "healOnClear": 0.1
+    },
+    "note": "From Magdalene's tree",
+    "alwaysAvail": false
+  },
+  {
+    "type": "[Cain Tree] Impromptu Gambler",
+    "size": "Large",
+    "name": "Impromptu Gambler",
+    "description": [
+      "Spawn a crane game in treasure rooms. These can grant any unlocked item, but cost 8 coins to use.",
+      "Interacting with the crane game removes the room's regular item.",
+      "Grabbing the regular item removes the crane game."
+    ],
+    "modifiers": {
+      "impromptuGambler": true
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Thievery",
+    "size": "Large",
+    "name": "Thievery",
+    "description": [
+      "+30% chance to steal items from the shop instead of purchasing.",
+      "If you steal an item, Greed will have a chance to show up",
+      "after the floor's boss is defeated.",
+      "Each stolen item increases Greed's chance to show up based on its price (price * 3)%."
+    ],
+    "modifiers": {
+      "stealChance": 30,
+      "thievery": true
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Fickle Fortune",
+    "size": "Large",
+    "name": "Fickle Fortune",
+    "description": [
+      "+7% luck while holding a trinket.",
+      "Minimum luck is 1 while holding a trinket.",
+      "7% chance when hit for your trinket to be dropped.",
+      "7% chance for dropped trinkets to vanish."
+    ],
+    "modifiers": {
+      "fickleFortune": true
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Small1",
+    "size": "Small",
+    "name": "Stealing Chance",
+    "description": [
+      "+2% chance to steal items from the shop instead of purchasing."
+    ],
+    "modifiers": {
+      "stealChance": 2
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Small2",
+    "size": "Small",
+    "name": "Random Trinket Spawn",
+    "description": [
+      "1% chance to spawn a random trinket at the beginning of a floor.",
+      "Doesn't apply in first floor."
+    ],
+    "modifiers": {
+      "trinketSpawn": 1
+    },
+    "note": "From Cain's tree",
+    "alwaysAvail": false
+  },
+  {
+    "type": "[Cain Tree] Med1",
+    "size": "Med",
+    "name": "Random Trinket Spawn",
+    "description": [
+      "5% chance to spawn a random trinket at the beginning of a floor.",
+      "Doesn't apply in first floor."
+    ],
+    "modifiers": {
+      "trinketSpawn": 5
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Small3",
+    "size": "Small",
+    "name": "Free Machine Use",
+    "description": [
+      "1% chance for machines that use coins to cost nothing on use."
+    ],
+    "modifiers": {
+      "freeMachinesChance": 1
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Med2",
+    "size": "Med",
+    "name": "Free Machine Use",
+    "description": [
+      "4% chance for machines that use coins to cost nothing on use."
+    ],
+    "modifiers": {
+      "freeMachinesChance": 4
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Small4",
+    "size": "Small",
+    "name": "Arcade Reveal",
+    "description": [
+      "8% chance to reveal the arcade room's location if it's present on a floor."
+    ],
+    "modifiers": {
+      "arcadeReveal": 8
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Med3",
+    "size": "Med",
+    "name": "Arcade Reveal",
+    "description": [
+      "20% chance to reveal the arcade room's location if it's present on a floor."
+    ],
+    "modifiers": {
+      "arcadeReveal": 20
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Small5",
+    "size": "Small",
+    "name": "Shop Reveal",
+    "description": [
+      "8% chance to reveal the shop room's location if it's present on a floor."
+    ],
+    "modifiers": {
+      "shopReveal": 8
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Med4",
+    "size": "Med",
+    "name": "Shop Reveal",
+    "description": [
+      "20% chance to reveal the shop room's location if it's present on a floor."
+    ],
+    "modifiers": {
+      "shopReveal": 20
+    },
+    "note": "From Cain's tree"
+  },
+  {
+    "type": "[Cain Tree] Small6",
+    "size": "Small",
+    "name": "Room Clear Nickel",
+    "description": [
+      "0.2% chance to spawn an additional nickel when clearing a room.",
+      "Double the chance on boss rooms."
+    ],
+    "modifiers": {
+      "nickelOnClear": 0.2
+    },
+    "note": "From Cain's tree",
+    "alwaysAvail": false
+  },
+  {
+    "type": "[Judas Tree] Dark Heart",
+    "size": "Large",
+    "name": "Dark Heart",
+    "description": [
+      "Start with an additional black heart.",
+      "-6% damage and speed while you have no black hearts.",
+      "Book of belial removes this reduction for the current room."
+    ],
+    "modifiers": {
+      "darkHeart": true
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Inner Demon",
+    "size": "Large",
+    "name": "Inner Demon",
+    "description": [
+      "Start with Judas' Shadow.",
+      "Dark Judas starts with 1 black heart instead.",
+      "-15% damage as Dark Judas."
+    ],
+    "modifiers": {
+      "innerDemon": true
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Sacrifice Darkness",
+    "size": "Large",
+    "name": "Sacrifice Darkness",
+    "description": [
+      "When collecting a black heart, trigger it and receive a soul heart instead.",
+      "+1% all stats per sacrificed black heart, up to 6%. Resets every floor.",
+      "35% chance to convert dropped soul hearts to black hearts."
+    ],
+    "modifiers": {
+      "sacrificeDarkness": true
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Small1",
+    "size": "Small",
+    "name": "Dark Judas Speed",
+    "description": [
+      "+0.5% speed as Dark Judas"
+    ],
+    "modifiers": {
+      "darkJudasSpeed": 0.5
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Small2",
+    "size": "Small",
+    "name": "Dark Judas Shot Speed and Range",
+    "description": [
+      "+0.5% shot speed and range as Dark Judas"
+    ],
+    "modifiers": {
+      "darkJudasShotspeedRange": 0.5
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Small3",
+    "size": "Small",
+    "name": "Book of Belial Charge",
+    "description": [
+      "0.1% chance for the Book of Belial to gain a charge when hitting a boss.",
+      "Generates a maximum of 12 charges per room."
+    ],
+    "modifiers": {
+      "belialBossHitCharge": 0.1
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Med1",
+    "size": "Med",
+    "name": "Book of Belial Charge",
+    "description": [
+      "1% chance for the Book of Belial to gain a charge when hitting a boss.",
+      "Generates a maximum of 12 charges per room."
+    ],
+    "modifiers": {
+      "belialBossHitCharge": 1
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Small4",
+    "size": "Small",
+    "name": "Lost Black Hearts Luck",
+    "description": [
+      "+0.01 luck whenever you lose black hearts"
+    ],
+    "modifiers": {
+      "lostBlackHeartsLuck": 0.01
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[Judas Tree] Med2",
+    "size": "Med",
+    "name": "Lost Black Hearts Luck",
+    "description": [
+      "+0.1 luck whenever you lose black hearts"
+    ],
+    "modifiers": {
+      "lostBlackHeartsLuck": 0.1
+    },
+    "note": "From Judas' tree"
+  },
+  {
+    "type": "[???'s Tree] Blue Gambit",
+    "size": "Large",
+    "name": "Blue Gambit",
+    "description": [
+      "The first card you find is guaranteed to be V - The Hierophant.",
+      "The first pill you find is guaranteed to be Balls of Steel.",
+      "20% chance to take 1/2 heart damage when using a card or pill that isn't either of the above."
+    ],
+    "modifiers": {
+      "blueGambit": true
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Brown Blessing",
+    "size": "Large",
+    "name": "Brown Blessing",
+    "description": [
+      "Start with Petrified Poop.",
+      "Using The Poop has a 7% chance to spawn a poop item. Doesn't apply in the first floor."
+    ],
+    "modifiers": {
+      "brownBlessing": true
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Slipping Essence",
+    "size": "Large",
+    "name": "Slipping Essence",
+    "description": [
+      "Losing a soul heart has a 40% chance to spawn a full soul heart.",
+      "When this happens, halve this chance and receive -0.1 luck."
+    ],
+    "modifiers": {
+      "slippingEssence": true
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Small1",
+    "size": "Small",
+    "name": "Soul Heart on Pill/Card",
+    "description": [
+      "0.3% chance to receive half a soul heart when using a pill or card."
+    ],
+    "modifiers": {
+      "soulOnCardPill": 0.3
+    },
+    "note": "From Blue Baby's tree",
+    "alwaysAvail": false
+  },
+  {
+    "type": "[???'s Tree] Med1",
+    "size": "Med",
+    "name": "Soul Heart on Pill/Card",
+    "description": [
+      "1% chance to receive half a soul heart when using a pill or card."
+    ],
+    "modifiers": {
+      "soulOnCardPill": 1
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Small2",
+    "size": "Small",
+    "name": "Poop Item Luck",
+    "description": [
+      "+0.03 luck per held poop item"
+    ],
+    "modifiers": {
+      "poopItemLuck": 0.03
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Med2",
+    "size": "Med",
+    "name": "Poop Item Luck",
+    "description": [
+      "+0.1 luck per held poop item"
+    ],
+    "modifiers": {
+      "poopItemLuck": 0.1
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Small3",
+    "size": "Small",
+    "name": "Poop Trinket Luck",
+    "description": [
+      "+0.03 luck while holding a poop trinket"
+    ],
+    "modifiers": {
+      "poopTrinketLuck": 0.03
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Med3",
+    "size": "Med",
+    "name": "Poop Trinket Luck",
+    "description": [
+      "+0.1 luck while holding a poop trinket"
+    ],
+    "modifiers": {
+      "poopTrinketLuck": 0.1
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Small4",
+    "size": "Small",
+    "name": "The Poop All Stats",
+    "description": [
+      "+0.01 all stats after using The Poop (once per room).",
+      "Resets every room."
+    ],
+    "modifiers": {
+      "thePoopAllStats": 0.01
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Med4",
+    "size": "Med",
+    "name": "The Poop All Stats",
+    "description": [
+      "+2% all stats after using The Poop (once per room).",
+      "Resets every room."
+    ],
+    "modifiers": {
+      "thePoopAllStatsPerc": 2
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[???'s Tree] Small5",
+    "size": "Small",
+    "name": "Soul Heart Tears And Range",
+    "description": [
+      "+0.25% tears and range whenever you gain soul hearts, up to 10%.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "soulHeartTearsRange": 0.25
+    },
+    "note": "From Blue Baby's tree"
+  },
+  {
+    "type": "[Eve's Tree] Heartless",
+    "size": "Large",
+    "name": "Heartless",
+    "description": [
+      "Every room you clear grants +0.5% all stats, up to 10%.",
+      "Picking up any heart halves your current bonus."
+    ],
+    "modifiers": {
+      "heartless": true
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Dark Protection",
+    "size": "Large",
+    "name": "Dark Protection",
+    "description": [
+      "When first reaching 1 heart or less, gain a black heart.",
+      "Resets when defeating Mom's Heart."
+    ],
+    "modifiers": {
+      "darkProtection": true
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Carrion Avian",
+    "size": "Large",
+    "name": "Carrion Avian",
+    "description": [
+      "+0.15 damage when dead bird kills an enemy, up to +3. Resets every floor.",
+      "If dead bird kills a boss, gain a permanent +0.6 damage instead."
+    ],
+    "modifiers": {
+      "carrionAvian": true
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small1",
+    "size": "Small",
+    "name": "Dead Bird Shield",
+    "description": [
+      "2% chance for the hit that wakes dead bird to be nullified."
+    ],
+    "modifiers": {
+      "deadBirdNullify": 2
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Med1",
+    "size": "Med",
+    "name": "Dead Bird Shield",
+    "description": [
+      "10% chance for the hit that wakes dead bird to be nullified."
+    ],
+    "modifiers": {
+      "deadBirdNullify": 10
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small2",
+    "size": "Small",
+    "name": "Active Dead Bird Damage",
+    "description": [
+      "+0.02 damage while dead bird is active"
+    ],
+    "modifiers": {
+      "activeDeadBirdDamage": 0.02
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small3",
+    "size": "Small",
+    "name": "Active Dead Bird Speed",
+    "description": [
+      "+0.02 speed while dead bird is active"
+    ],
+    "modifiers": {
+      "activeDeadBirdSpeed": 0.02
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small4",
+    "size": "Small",
+    "name": "Active Dead Bird Tears",
+    "description": [
+      "+0.02 tears while dead bird is active"
+    ],
+    "modifiers": {
+      "activeDeadBirdTears": 0.02
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small5",
+    "size": "Small",
+    "name": "Active Dead Bird Range",
+    "description": [
+      "+0.02 range while dead bird is active"
+    ],
+    "modifiers": {
+      "activeDeadBirdRange": 0.02
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small6",
+    "size": "Small",
+    "name": "Active Dead Bird Shot Speed",
+    "description": [
+      "+0.02 shot speed while dead bird is active"
+    ],
+    "modifiers": {
+      "activeDeadBirdShotspeed": 0.02
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small7",
+    "size": "Small",
+    "name": "Dead Bird Damage",
+    "description": [
+      "Dead bird deals an additional 1% of your damage per tick."
+    ],
+    "modifiers": {
+      "deadBirdInheritDamage": 1
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Eve's Tree] Small8",
+    "size": "Small",
+    "name": "Luck On Room Clear Below Full",
+    "description": [
+      "+0.01 luck when clearing a room below full red hearts."
+    ],
+    "modifiers": {
+      "luckOnClearBelowFull": 0.01
+    },
+    "note": "From Eve's tree",
+    "alwaysAvail": false
+  },
+  {
+    "type": "[Eve's Tree] Med2",
+    "size": "Med",
+    "name": "Luck On Room Clear Below Full",
+    "description": [
+      "+0.05 luck when clearing a room below full red hearts."
+    ],
+    "modifiers": {
+      "luckOnClearBelowFull": 0.05
+    },
+    "note": "From Eve's tree"
+  },
+  {
+    "type": "[Samson's Tree] Hasted",
+    "size": "Large",
+    "name": "Hasted",
+    "description": [
+      "+10% tears and shot speed",
+      "Taking damage reduces this bonus by 1.5%, up to 5 times.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "hasted": true
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Rage Buildup",
+    "size": "Large",
+    "name": "Rage Buildup",
+    "description": [
+      "+0.02 damage when hitting an enemy, up to +3.",
+      "Getting hit resets the bonus."
+    ],
+    "modifiers": {
+      "rageBuildup": true
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Hearty",
+    "size": "Large",
+    "name": "Hearty",
+    "description": [
+      "Start with an additional red heart.",
+      "-3% damage per remaining red heart."
+    ],
+    "modifiers": {
+      "hearty": true
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Small1",
+    "size": "Small",
+    "name": "Temporary Damage",
+    "description": [
+      "+0.5% damage for 2.5 seconds after killing an enemy, or after hitting a boss 8 times.",
+      "Doesn't stack."
+    ],
+    "modifiers": {
+      "samsonTempDamage": 0.5
+    },
+    "note": "From Samson's tree",
+    "alwaysAvail": false
+  },
+  {
+    "type": "[Samson's Tree] Small2",
+    "size": "Small",
+    "name": "Temporary Speed",
+    "description": [
+      "+0.5% speed for 2.5 seconds after killing an enemy, or after hitting a boss 8 times.",
+      "Doesn't stack."
+    ],
+    "modifiers": {
+      "samsonTempSpeed": 0.5
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Small3",
+    "size": "Small",
+    "name": "Speed When Hit",
+    "description": [
+      "+0.5% speed when hit, up to 15%. Resets every room."
+    ],
+    "modifiers": {
+      "speedWhenHit": 0.5
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Small4",
+    "size": "Small",
+    "name": "Boss Culling",
+    "description": [
+      "1% chance on hit to deal 10x damage to bosses below 10% HP."
+    ],
+    "modifiers": {
+      "bossCulling": 1
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Small5",
+    "size": "Small",
+    "name": "Boss Quick Kill Luck",
+    "description": [
+      "+0.05 luck if you clear the boss room within 1 minute of entering it."
+    ],
+    "modifiers": {
+      "bossQuickKillLuck": 0.05
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Small6",
+    "size": "Small",
+    "name": "Boss Flawless Luck",
+    "description": [
+      "+0.05 luck if you clear the boss room without getting hit more than 3 times."
+    ],
+    "modifiers": {
+      "bossFlawlessLuck": 0.05
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Med1",
+    "size": "Med",
+    "name": "Boss Culling",
+    "description": [
+      "5% chance on hit to deal 10x damage to bosses below 10% HP."
+    ],
+    "modifiers": {
+      "bossCulling": 5
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Med2",
+    "size": "Med",
+    "name": "Boss Quick Kill Luck",
+    "description": [
+      "+0.25 luck if you clear the boss room within 1 minute of entering it."
+    ],
+    "modifiers": {
+      "bossQuickKillLuck": 0.25
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Med3",
+    "size": "Med",
+    "name": "Boss Flawless Luck",
+    "description": [
+      "+0.25 luck if you clear the boss room without getting hit more than 3 times."
+    ],
+    "modifiers": {
+      "bossFlawlessLuck": 0.25
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Med4",
+    "size": "Med",
+    "name": "Temporary Damage",
+    "description": [
+      "+3% damage for 2.5 seconds after killing an enemy, or after hitting a boss 8 times.",
+      "Doesn't stack."
+    ],
+    "modifiers": {
+      "samsonTempDamage": 3
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Samson's Tree] Med5",
+    "size": "Med",
+    "name": "Temporary Speed",
+    "description": [
+      "+3% speed for 2.5 seconds after killing an enemy, or after hitting a boss 8 times.",
+      "Doesn't stack."
+    ],
+    "modifiers": {
+      "samsonTempSpeed": 3
+    },
+    "note": "From Samson's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Bloodcharge",
+    "size": "Large",
+    "name": "[Azazel's Tree] Bloodcharge",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Demonic Souvenirs",
+    "size": "Large",
+    "name": "[Azazel's Tree] Demonic Souvenirs",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Demon Helpers",
+    "size": "Large",
+    "name": "[Azazel's Tree] Demon Helpers",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Small1",
+    "size": "Large",
+    "name": "[Azazel's Tree] Small1",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Small2",
+    "size": "Large",
+    "name": "[Azazel's Tree] Small2",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Small3",
+    "size": "Large",
+    "name": "[Azazel's Tree] Small3",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Small4",
+    "size": "Large",
+    "name": "[Azazel's Tree] Small4",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Small5",
+    "size": "Large",
+    "name": "[Azazel's Tree] Small5",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Small6",
+    "size": "Large",
+    "name": "[Azazel's Tree] Small6",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Med1",
+    "size": "Large",
+    "name": "[Azazel's Tree] Med1",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Med2",
+    "size": "Large",
+    "name": "[Azazel's Tree] Med2",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Med3",
+    "size": "Large",
+    "name": "[Azazel's Tree] Med3",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
+  },
+  {
+    "type": "[Azazel's Tree] Med4",
+    "size": "Large",
+    "name": "[Azazel's Tree] Med4",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "From Azazel's tree"
   }
 ]
