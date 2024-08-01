@@ -458,6 +458,30 @@ function removeNode(nodeID) {
   }
 }
 
+// Scroll palette
+function scrollPalette(ev, delta, mouseWithin = true) {
+  const canvasRect = canvasDivElem.getBoundingClientRect();
+  if (
+    ((mouseWithin &&
+      ev.pageX > canvasRect.x &&
+      ev.pageX < canvasRect.x + canvasRect.width &&
+      ev.pageY > canvasRect.y &&
+      ev.pageY < canvasRect.y + canvasRect.height) ||
+      !mouseWithin) &&
+    !isInputFocused()
+  ) {
+    if (delta < 0) {
+      paletteScroll = Math.max(0, paletteScroll - 1);
+    } else if (delta > 0) {
+      paletteScroll = Math.min(
+        Math.floor(paletteNodes.length / paletteCols),
+        paletteScroll + 1
+      );
+    }
+    paletteNodesContainer.y = -paletteScroll * 32;
+  }
+}
+
 // Mouse event funcs
 document.addEventListener("mousedown", (ev) => {
   if ((ev.button == 1 || ev.button == 2) && !dragging) {
@@ -499,24 +523,7 @@ document.addEventListener("mousemove", (ev) => {
   }
 });
 document.addEventListener("wheel", (ev) => {
-  const canvasRect = canvasDivElem.getBoundingClientRect();
-  if (
-    ev.pageX > canvasRect.x &&
-    ev.pageX < canvasRect.x + canvasRect.width &&
-    ev.pageY > canvasRect.y &&
-    ev.pageY < canvasRect.y + canvasRect.height
-  ) {
-    // Scroll palette
-    if (ev.deltaY < 0) {
-      paletteScroll = Math.max(0, paletteScroll - 1);
-    } else if (ev.deltaY > 0) {
-      paletteScroll = Math.min(
-        Math.floor(paletteNodes.length / paletteCols),
-        paletteScroll + 1
-      );
-    }
-    paletteNodesContainer.y = -paletteScroll * 32;
-  }
+  scrollPalette(ev, ev.deltaY);
 });
 
 function removeFromArr(arr, item) {
@@ -661,6 +668,12 @@ function isInputFocused() {
 document.addEventListener("keydown", (ev) => {
   if (ev.shiftKey) shiftHeld = true;
   if (ev.ctrlKey) ctrlHeld = true;
+
+  if (ev.key == "ArrowDown") {
+    scrollPalette(ev, 1, false);
+  } else if (ev.key == "ArrowUp") {
+    scrollPalette(ev, -1, false);
+  }
 });
 document.addEventListener("keyup", (ev) => {
   if (!ev.shiftKey) shiftHeld = false;
