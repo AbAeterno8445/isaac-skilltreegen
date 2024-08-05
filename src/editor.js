@@ -3,7 +3,7 @@ const spriteAtlas = {
   meta: {
     image: "assets/tree_nodes.png",
     format: "RGBA8888",
-    size: { w: 320, h: 640 },
+    size: { w: 320, h: 960 },
     scale: 1,
   },
 };
@@ -131,33 +131,41 @@ async function main() {
     const animName = anim.getAttribute("Name");
     if (animName.includes("Allocated")) continue;
 
-    const frameElem =
-      anim.getElementsByTagName("LayerAnimation")[0].firstElementChild;
+    if (animName == "Default") {
+      const frames = anim
+        .getElementsByTagName("LayerAnimation")[0]
+        .getElementsByTagName("Frame");
 
-    spriteAtlas.frames[animName] = {
-      frame: {
-        x: frameElem.getAttribute("XCrop"),
-        y: frameElem.getAttribute("YCrop"),
-        w: frameElem.getAttribute("Width"),
-        h: frameElem.getAttribute("Height"),
-      },
-      sourceSize: {
-        w: 32,
-        h: 32,
-      },
-      spriteSourceSize: {
-        x: -frameElem.getAttribute("Width") / 2,
-        y: -frameElem.getAttribute("Height") / 2,
-        w: 32,
-        h: 32,
-      },
-    };
+      let frameNum = 0;
+      for (let frameElem of frames) {
+        spriteAtlas.frames[frameNum] = {
+          frame: {
+            x: frameElem.getAttribute("XCrop"),
+            y: frameElem.getAttribute("YCrop"),
+            w: frameElem.getAttribute("Width"),
+            h: frameElem.getAttribute("Height"),
+          },
+          sourceSize: {
+            w: 32,
+            h: 32,
+          },
+          spriteSourceSize: {
+            x: -frameElem.getAttribute("Width") / 2,
+            y: -frameElem.getAttribute("Height") / 2,
+            w: 32,
+            h: 32,
+          },
+        };
 
-    // Add option to 'Type' input
-    const tmpOptionElem = document.createElement("option");
-    tmpOptionElem.value = animName;
-    tmpOptionElem.innerHTML = animName;
-    inputElems.type.appendChild(tmpOptionElem);
+        // Add option to 'Type' input
+        const tmpOptionElem = document.createElement("option");
+        tmpOptionElem.value = frameNum;
+        tmpOptionElem.innerHTML = frameNum;
+        inputElems.type.appendChild(tmpOptionElem);
+
+        frameNum++;
+      }
+    }
   }
 
   tileSprites = new PIXI.Spritesheet(
@@ -174,31 +182,38 @@ async function main() {
   await linkSprites.parse();
 
   // Populate palette once spritesheet is generated
-  let i = 0;
   for (let anim of anims) {
     const animName = anim.getAttribute("Name");
     if (animName.includes("Allocated")) continue;
 
-    // Add node to palette
-    const paletteNodeSprite = new PIXI.Sprite(tileSprites.textures[animName]);
-    paletteNodeSprite.x = 16 + (i % paletteCols) * 32;
-    paletteNodeSprite.y = 16 + Math.floor(i / paletteCols) * 32;
-    paletteNodesContainer.addChild(paletteNodeSprite);
+    if (animName == "Default") {
+      const frames = anim
+        .getElementsByTagName("LayerAnimation")[0]
+        .getElementsByTagName("Frame");
 
-    let nodeSize = "Large";
-    if (animName.split(" ").includes("Med")) nodeSize = "Med";
-    else if (animName.split(" ").includes("Small")) nodeSize = "Small";
+      let i = 0;
+      for (let frameElem of frames) {
+        // Add node to palette
+        const paletteNodeSprite = new PIXI.Sprite(tileSprites.textures[i]);
+        paletteNodeSprite.x = 16 + (i % paletteCols) * 32;
+        paletteNodeSprite.y = 16 + Math.floor(i / paletteCols) * 32;
+        paletteNodesContainer.addChild(paletteNodeSprite);
 
-    paletteNodes.push({
-      type: animName,
-      size: nodeSize,
-      name: animName,
-      description: [""],
-      modifiers: {},
-      note: "",
-    });
+        let nodeSize = "Large";
+        if (frameElem.getAttribute("Width") == "28") nodeSize = "Small";
 
-    i++;
+        paletteNodes.push({
+          type: i,
+          size: nodeSize,
+          name: "",
+          description: [""],
+          modifiers: {},
+          note: "",
+        });
+
+        i++;
+      }
+    }
   }
   await loadPaletteData();
   resetSelection();
@@ -401,7 +416,7 @@ function addNodeAt(x, y) {
   try {
     const tmpNode = {
       pos: [x, y],
-      type: inputElems.type.value,
+      type: parseInt(inputElems.type.value),
       size: inputElems.size.value,
       name: inputElems.name.value,
       description: inputElems.description.value?.split("\n") || [""],
@@ -470,12 +485,14 @@ function scrollPalette(ev, delta, mouseWithin = true) {
       !mouseWithin) &&
     !isInputFocused()
   ) {
+    let scrollSpeed = 1;
+    if (shiftHeld) scrollSpeed = 3;
     if (delta < 0) {
-      paletteScroll = Math.max(0, paletteScroll - 1);
+      paletteScroll = Math.max(0, paletteScroll - scrollSpeed);
     } else if (delta > 0) {
       paletteScroll = Math.min(
         Math.floor(paletteNodes.length / paletteCols),
-        paletteScroll + 1
+        paletteScroll + scrollSpeed
       );
     }
     paletteNodesContainer.y = -paletteScroll * 32;
