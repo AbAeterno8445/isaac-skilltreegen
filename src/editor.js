@@ -424,7 +424,6 @@ function addNodeAt(x, y) {
         "{" + inputElems.modifiers.value.replace("\n", "") + "}"
       ),
       adjacent: [],
-      requires: [],
     };
     if (inputElems.alwaysAvail.checked) tmpNode.alwaysAvailable = true;
     nodeCounter++;
@@ -618,12 +617,8 @@ function clickCanvas(ev) {
             const tmpIndex = connectedNodes.indexOf(existingConn);
             if (tmpIndex != -1) connectedNodes.splice(tmpIndex, 1);
 
-            if (connectFirst.node.requires)
-              removeFromArr(connectFirst.node.requires, tmpNode.nodeID);
             if (connectFirst.node.adjacent)
               removeFromArr(connectFirst.node.adjacent, tmpNode.nodeID);
-            if (tmpNode.node.requires)
-              removeFromArr(tmpNode.node.requires, connectFirst.nodeID);
             if (tmpNode.node.adjacent)
               removeFromArr(tmpNode.node.adjacent, connectFirst.nodeID);
           } else {
@@ -640,8 +635,6 @@ function clickCanvas(ev) {
                 connectFirst.node.adjacent.push(parseInt(tmpNode.nodeID));
               if (tmpNode.node.adjacent.indexOf(connectFirst.nodeID) == -1)
                 tmpNode.node.adjacent.push(parseInt(connectFirst.nodeID));
-              if (tmpNode.node.requires.indexOf(connectFirst.nodeID) == -1)
-                tmpNode.node.requires.push(parseInt(connectFirst.nodeID));
 
               updateNodeLinks();
             } else {
@@ -722,15 +715,10 @@ function getCondensedTreeData() {
 
 function sanitizeNodeData() {
   for (let [_, node] of Object.entries(treeData)) {
-    // Make sure adjacent & required nodes exist
+    // Make sure adjacent nodes exist
     for (let i = node.adjacent.length - 1; i >= 0; i--) {
       if (!treeData.hasOwnProperty(node.adjacent[i])) {
         node.adjacent.splice(i, 1);
-      }
-    }
-    for (let i = node.requires.length - 1; i >= 0; i--) {
-      if (!treeData.hasOwnProperty(node.requires[i])) {
-        node.requires.splice(i, 1);
       }
     }
   }
