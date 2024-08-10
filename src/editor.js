@@ -583,6 +583,21 @@ function clickCanvas(ev) {
         if (ctrlHeld) {
           // Ctrl + click: print node data (for debugging)
           console.log(tmpNode.nodeID, tmpNode.node);
+        } else if (inputElems.name.value == tmpNode.node.name) {
+          // Replace node data if placing one with the same name
+          tmpNode.node.size = inputElems.size.value;
+          tmpNode.node.description = inputElems.description.value?.split(
+            "\n"
+          ) || [""];
+          tmpNode.node.modifiers = JSON.parse(
+            "{" + inputElems.modifiers.value.replace("\n", "") + "}"
+          );
+          if (inputElems.alwaysAvail.checked) {
+            tmpNode.node.alwaysAvailable = true;
+          } else if (tmpNode.node.alwaysAvailable) {
+            delete tmpNode.node.alwaysAvailable;
+          }
+          console.log("Replaced placed node data at", tileX, tileY);
         } else {
           removeNode(tmpNode.nodeID);
         }
