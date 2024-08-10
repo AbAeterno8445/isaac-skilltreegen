@@ -89,17 +89,15 @@
   {
     "type": 6,
     "size": "Large",
-    "name": "Isaac's Blessing",
+    "name": "Leveling Of Isaac",
     "description": [
-      "Start a run with +5% all stats.",
-      "Restarting the run removes this effect.",
-      "Defeating Mom's Heart re-enables this for the next run."
+      "+0.02 all stats"
     ],
     "modifiers": {
-      "isaacBlessing": 5
+      "allstats": 0.02
     },
-    "note": "Last used in Isaac's Tree",
-    "alwaysAvail": false,
+    "note": "",
+    "alwaysAvail": true,
     "oldType": "Central"
   },
   {
@@ -628,10 +626,8 @@
     "size": "Large",
     "name": "Cosmic Realignment",
     "description": [
-      "Allocate to choose a character. Once chosen, you may unlock",
-      "items as if playing as that character while using a different one.",
-      "If a locked tainted character is picked, you may unlock them the usual way while",
-      "using a different character.",
+      "Allocate to choose a character. Once chosen, you may receive unlocks as if playing",
+      "as that character while using a different one.",
       "Beware the cosmic curse each character brings..."
     ],
     "modifiers": {
@@ -1277,10 +1273,10 @@
     "size": "Med",
     "name": "Lost Black Hearts Luck",
     "description": [
-      "+0.1 luck whenever you lose black hearts"
+      "+0.04 luck whenever you lose black hearts"
     ],
     "modifiers": {
-      "lostBlackHeartsLuck": 0.1
+      "lostBlackHeartsLuck": 0.04
     },
     "note": "From Judas' tree",
     "oldType": "[Judas Tree] Med2"
@@ -3901,6 +3897,7 @@
     "name": "Dark Songstress",
     "description": [
       "Non-charmed enemies receive 8% less damage.",
+      "Killing a charmed enemy has an 8% chance to grant 1 charge to Siren's Song.",
       "Using Siren's Song removes this effect and grants +8% damage and speed for the current room."
     ],
     "modifiers": {
