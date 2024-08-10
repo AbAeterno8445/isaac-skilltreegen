@@ -360,6 +360,9 @@ function loadTreeData(data) {
   if (tmpKeys.length && typeof treeData[tmpKeys[0]] == "string") {
     for (let nodeID of Object.keys(treeData)) {
       treeData[nodeID] = JSON.parse(treeData[nodeID]);
+
+      // Remove old data
+      if (treeData[nodeID].requires) delete treeData[nodeID].requires;
     }
   }
 
