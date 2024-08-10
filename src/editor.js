@@ -69,7 +69,7 @@ let nodeSprites = {};
 let selectorSprite = new PIXI.Sprite(PIXI.Texture.WHITE);
 selectorSprite.width = 32;
 selectorSprite.height = 32;
-selectorSprite.tint = 0x888888;
+selectorSprite.tint = 0xadd8e6;
 paletteNodesContainer.addChild(selectorSprite);
 
 // Visual sprite displayed at position (0, 0)
