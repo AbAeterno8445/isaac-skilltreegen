@@ -1,9 +1,9 @@
+const spriteAtlases = [];
 const spriteAtlas = {
   frames: {},
   meta: {
     image: "assets/tree_nodes.png",
     format: "RGBA8888",
-    size: { w: 320, h: 960 },
     scale: 1,
   },
 };
@@ -39,6 +39,7 @@ const inputElems = {
   description: document.getElementById("inpNodeDesc"),
   modifiers: document.getElementById("inpNodeMods"),
   alwaysAvail: document.getElementById("inpNodeAvail"),
+  customID: document.getElementById("inpCustomID"),
   note: document.getElementById("inpNodeNote"),
 };
 
@@ -49,8 +50,13 @@ let stageSprites = [];
 let shiftHeld = false;
 let ctrlHeld = false;
 
-let tileSprites = undefined;
-let linkSprites = undefined;
+let tileSpritesheets = [];
+let tileTextures = {};
+
+// Custom images get a starting frame of (5000 * index of new image), this object holds {[startFrame] = custom image filename}
+let customImages = {};
+
+let linkSprites = [];
 let paletteContainer = new PIXI.Container();
 let paletteNodesContainer = new PIXI.Container();
 let paletteBG = new PIXI.Sprite(PIXI.Texture.WHITE);
@@ -119,99 +125,154 @@ nodesContainer.y = camera.y;
 
 async function main() {
   // Load assets
-  await PIXI.Assets.load(["assets/tree_nodes.png", "assets/node_links.png"]);
+  await PIXI.Assets.load(["assets/node_links.png"]);
 
   const parser = new DOMParser();
-  const XMLdata = await window.myFS.readXML();
-  const XMLdoc = parser.parseFromString(XMLdata, "text/xml");
+  const ANM2data = await window.myFS.readANM2();
 
-  // Convert ANM2 data to sprite frame data for drawing
-  const anims = XMLdoc.getElementsByTagName("Animation");
-  for (let anim of anims) {
-    const animName = anim.getAttribute("Name");
-    if (animName.includes("Allocated")) continue;
+  let allAnims = {};
+  let customSheets = 0;
+  for (let fileData of ANM2data) {
+    const XMLdoc = parser.parseFromString(fileData, "text/xml");
 
-    if (animName == "Default") {
-      const frames = anim
-        .getElementsByTagName("LayerAnimation")[0]
-        .getElementsByTagName("Frame");
+    // Grab sprite and generate atlas
+    const spritesheets = XMLdoc.getElementsByTagName("Spritesheet");
+    for (let spritesheet of spritesheets) {
+      const filePath = spritesheet.getAttribute("Path")?.split("/").pop();
+      if (!filePath) {
+        continue;
+      }
 
-      let frameNum = 0;
-      for (let frameElem of frames) {
-        spriteAtlas.frames[frameNum] = {
-          frame: {
-            x: frameElem.getAttribute("XCrop"),
-            y: frameElem.getAttribute("YCrop"),
-            w: frameElem.getAttribute("Width"),
-            h: frameElem.getAttribute("Height"),
-          },
-          sourceSize: {
-            w: 32,
-            h: 32,
-          },
-          spriteSourceSize: {
-            x: -frameElem.getAttribute("Width") / 2,
-            y: -frameElem.getAttribute("Height") / 2,
-            w: 32,
-            h: 32,
-          },
-        };
+      const isMainImage = filePath == "tree_nodes.png";
+      if (!isMainImage) customSheets++;
+      const imagePath =
+        "assets/" + (isMainImage ? filePath : "custom/" + filePath);
 
-        // Add option to 'Type' input
-        const tmpOptionElem = document.createElement("option");
-        tmpOptionElem.value = frameNum;
-        tmpOptionElem.innerHTML = frameNum;
-        inputElems.type.appendChild(tmpOptionElem);
+      await PIXI.Assets.load([imagePath]);
+      console.log("Loaded ", imagePath);
+      spriteAtlases[filePath] = {
+        frames: {},
+        meta: {
+          image: imagePath,
+          format: "RGBA8888",
+          scale: 1,
+        },
+      };
 
-        frameNum++;
+      // Convert ANM2 data to sprite frame data for drawing
+      const anims = XMLdoc.getElementsByTagName("Animation");
+      for (let anim of anims) {
+        const animName = anim.getAttribute("Name");
+        if (animName.includes("Allocated")) continue;
+        if (animName.includes("Available")) continue;
+
+        if (animName == "Default") {
+          const frames = anim
+            .getElementsByTagName("LayerAnimation")[0]
+            .getElementsByTagName("Frame");
+
+          let frameNum = 0;
+          if (!isMainImage) {
+            frameNum = 5000 + (customSheets - 1) * 1000;
+            customImages[frameNum] = filePath;
+          }
+          allAnims[frameNum] = anim;
+          for (let frameElem of frames) {
+            spriteAtlases[filePath].frames[frameNum] = {
+              frame: {
+                x: frameElem.getAttribute("XCrop"),
+                y: frameElem.getAttribute("YCrop"),
+                w: frameElem.getAttribute("Width"),
+                h: frameElem.getAttribute("Height"),
+              },
+              sourceSize: {
+                w: 32,
+                h: 32,
+              },
+              spriteSourceSize: {
+                x: -frameElem.getAttribute("XPivot"),
+                y: -frameElem.getAttribute("YPivot"),
+                w: 32,
+                h: 32,
+              },
+            };
+
+            // Add option to 'Type' input
+            const tmpOptionElem = document.createElement("option");
+            tmpOptionElem.value = frameNum;
+            tmpOptionElem.innerHTML = frameNum;
+            inputElems.type.appendChild(tmpOptionElem);
+
+            frameNum++;
+          }
+        }
       }
     }
   }
 
-  tileSprites = new PIXI.Spritesheet(
-    PIXI.Texture.from(spriteAtlas.meta.image),
-    spriteAtlas
-  );
+  for (let spriteAtlas of Object.values(spriteAtlases)) {
+    const tmpSpritesheet = new PIXI.Spritesheet(
+      PIXI.Texture.from(spriteAtlas.meta.image),
+      spriteAtlas
+    );
+    await tmpSpritesheet.parse();
+    tileSpritesheets.push(tmpSpritesheet);
+    if (tmpSpritesheet) {
+      for (let [k, v] of Object.entries(tmpSpritesheet.textures)) {
+        tileTextures[k] = v;
+      }
+    }
+  }
 
   linkSprites = new PIXI.Spritesheet(
     PIXI.Texture.from(linksAtlas.meta.image),
     linksAtlas
   );
-
-  await tileSprites.parse();
   await linkSprites.parse();
 
   // Populate palette once spritesheet is generated
-  for (let anim of anims) {
+  let paletteIdx = 0;
+  for (let [startFrame, anim] of Object.entries(allAnims)) {
     const animName = anim.getAttribute("Name");
     if (animName.includes("Allocated")) continue;
+    if (animName.includes("Available")) continue;
 
     if (animName == "Default") {
       const frames = anim
         .getElementsByTagName("LayerAnimation")[0]
         .getElementsByTagName("Frame");
 
-      let i = 0;
+      let frameCounter = 0;
       for (let frameElem of frames) {
+        const startFrameNum = parseInt(startFrame);
+        const nodeIdx = startFrameNum + frameCounter;
         // Add node to palette
-        const paletteNodeSprite = new PIXI.Sprite(tileSprites.textures[i]);
-        paletteNodeSprite.x = 16 + (i % paletteCols) * 32;
-        paletteNodeSprite.y = 16 + Math.floor(i / paletteCols) * 32;
+        const paletteNodeSprite = new PIXI.Sprite(tileTextures[nodeIdx]);
+        paletteNodeSprite.x = 16 + (paletteIdx % paletteCols) * 32;
+        paletteNodeSprite.y = 16 + Math.floor(paletteIdx / paletteCols) * 32;
         paletteNodesContainer.addChild(paletteNodeSprite);
 
         let nodeSize = "Large";
         if (frameElem.getAttribute("Width") == "28") nodeSize = "Small";
 
-        paletteNodes.push({
-          type: i,
+        const newNode = {
+          type: frameCounter,
           size: nodeSize,
           name: "",
           description: [""],
           modifiers: {},
           note: "",
-        });
+        };
+        if (startFrameNum > 0) {
+          newNode.startFrame = startFrameNum;
+          if (startFrame >= 5000) {
+            newNode.custom = customImages[startFrame];
+          }
+        }
+        paletteNodes.push(newNode);
 
-        i++;
+        paletteIdx++;
+        frameCounter++;
       }
     }
   }
@@ -250,13 +311,17 @@ function setInputElems(inputData) {
     inputElems.modifiers.value = "";
   }
   inputElems.alwaysAvail.checked = inputData.alwaysAvail;
+  if (inputData.customID) inputElems.customID.value = inputData.customID;
+  else inputElems.customID.value = "";
   inputElems.note.value = inputData.note;
 }
 
 function resetSelection() {
   selectedNode = paletteNodes[0];
   setInputElems(selectedNode);
-  selectedSprite.texture = tileSprites.textures[selectedNode.type];
+  let nodeTexID = parseInt(selectedNode.type);
+  if (selectedNode.startFrame) nodeTexID += parseInt(selectedNode.startFrame);
+  selectedSprite.texture = tileTextures[nodeTexID];
   selectorSprite.x = 0;
   selectorSprite.y = 0;
 }
@@ -367,7 +432,7 @@ function loadTreeData(data) {
   }
 
   for (let [nodeID, node] of Object.entries(treeData)) {
-    const nodeSprite = new PIXI.Sprite(tileSprites.textures[node.type]);
+    const nodeSprite = new PIXI.Sprite(tileTextures[node.type]);
 
     const nodeX = node.pos[0] * 38;
     const nodeY = node.pos[1] * 38;
@@ -417,9 +482,11 @@ document.getElementById("file-input").addEventListener(
 // Add node at position
 function addNodeAt(x, y) {
   try {
+    let nodeTexID = parseInt(inputElems.type.value);
+    if (selectedNode.startFrame) nodeTexID += parseInt(selectedNode.startFrame);
     const tmpNode = {
       pos: [x, y],
-      type: parseInt(inputElems.type.value),
+      type: nodeTexID,
       size: inputElems.size.value,
       name: inputElems.name.value,
       description: inputElems.description.value?.split("\n") || [""],
@@ -429,9 +496,10 @@ function addNodeAt(x, y) {
       adjacent: [],
     };
     if (inputElems.alwaysAvail.checked) tmpNode.alwaysAvailable = true;
+    if (inputElems.customID.value) tmpNode.customID = inputElems.customID.value;
     nodeCounter++;
 
-    const nodeSprite = new PIXI.Sprite(tileSprites.textures[tmpNode.type]);
+    const nodeSprite = new PIXI.Sprite(tileTextures[tmpNode.type]);
     nodeSprite.x = x * 38;
     nodeSprite.y = y * 38;
     nodesContainer.addChild(nodeSprite);
@@ -567,7 +635,10 @@ function clickCanvas(ev) {
       selectorSprite.x = tileX * 32;
       selectorSprite.y = tileY * 32 + paletteScroll * 32;
 
-      selectedSprite.texture = tileSprites.textures[selectedNode.type];
+      let nodeTexID = parseInt(selectedNode.type);
+      if (selectedNode.startFrame)
+        nodeTexID += parseInt(selectedNode.startFrame);
+      selectedSprite.texture = tileTextures[nodeTexID];
     }
   } else {
     // Clicked canvas
@@ -597,6 +668,8 @@ function clickCanvas(ev) {
           } else if (tmpNode.node.alwaysAvailable) {
             delete tmpNode.node.alwaysAvailable;
           }
+          if (inputElems.customID.value)
+            tmpNode.node.customID = inputElems.customID.value;
           console.log("Replaced placed node data at", tileX, tileY);
         } else {
           removeNode(tmpNode.nodeID);
@@ -761,7 +834,21 @@ async function saveTreeData() {
 
 // Save palette node data
 async function savePaletteData() {
-  await window.myFS.saveNodeData(JSON.stringify(paletteNodes, null, 2));
+  await window.myFS.saveNodeData(
+    JSON.stringify(
+      paletteNodes.filter((node) => !node.custom),
+      null,
+      2
+    )
+  );
+  // Save custom
+  const customImgNodes = {};
+  for (let customImgPath of Object.values(customImages)) {
+    customImgNodes[customImgPath] = paletteNodes.filter(
+      (node) => node.custom == customImgPath
+    );
+  }
+  await window.myFS.saveCustomNodeData(JSON.stringify(customImgNodes, null, 2));
 }
 
 // Load palette node data
@@ -773,6 +860,25 @@ async function loadPaletteData() {
         if (tmpNode.type == oldNode.type) {
           Object.assign(oldNode, tmpNode);
           break;
+        }
+      }
+    }
+    const customNodeData = await window.myFS.loadCustomNodeData();
+    if (customNodeData) {
+      for (let [imgPath, customNodeList] of Object.entries(
+        JSON.parse(customNodeData)
+      )) {
+        for (let tmpNode of customNodeList) {
+          for (let oldNode of paletteNodes) {
+            if (
+              tmpNode.type == oldNode.type &&
+              oldNode.custom &&
+              oldNode.custom == imgPath
+            ) {
+              Object.assign(oldNode, tmpNode);
+              break;
+            }
+          }
         }
       }
     }

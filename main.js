@@ -42,16 +42,45 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
-ipcMain.handle("readXML", (ev) => {
-  return fs.readFile("assets/tree_nodes.anm2", "utf-8");
+const getANM2Files = async () => {
+  const procFiles = [];
+  const totalFiles = ["assets/tree_nodes.anm2"];
+
+  // Add custom anm2 files
+  const customFiles = await fs.readdir("assets/custom");
+  for (let i = 0; i < customFiles.length; i++) {
+    const fileName = path.join("assets", "custom", customFiles[i]);
+    if (fileName.endsWith(".anm2")) {
+      totalFiles.push(fileName);
+    }
+  }
+
+  // Get and return file data
+  for (let i = 0; i < totalFiles.length; i++) {
+    const fileData = await fs.readFile(totalFiles[i], "utf-8");
+    procFiles.push(fileData);
+  }
+  return procFiles;
+};
+
+ipcMain.handle("readANM2", (ev) => {
+  return getANM2Files();
 });
 
 ipcMain.handle("saveNodeData", (ev, nodeData) => {
   fs.writeFile("assets/nodeData.json", nodeData, "utf-8");
 });
 
+ipcMain.handle("saveCustomNodeData", (ev, nodeData) => {
+  fs.writeFile("assets/customNodeData.json", nodeData, "utf-8");
+});
+
 ipcMain.handle("loadNodeData", (ev) => {
   return fs.readFile("assets/nodeData.json", "utf-8");
+});
+
+ipcMain.handle("loadCustomNodeData", (ev) => {
+  return fs.readFile("assets/customNodeData.json", "utf-8");
 });
 
 ipcMain.handle("saveTree", (ev, treeName, treeData) => {
