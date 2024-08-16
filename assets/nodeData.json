@@ -4,10 +4,10 @@
     "size": "Small",
     "name": "XP gain",
     "description": [
-      "+2% XP gain"
+      "+1% XP gain"
     ],
     "modifiers": {
-      "xpgain": 2
+      "xpgain": 1
     },
     "note": "",
     "alwaysAvail": false,
@@ -18,10 +18,10 @@
     "size": "Med",
     "name": "XP gain",
     "description": [
-      "+7% XP gain"
+      "+4% XP gain"
     ],
     "modifiers": {
-      "xpgain": 7
+      "xpgain": 4
     },
     "note": "",
     "alwaysAvail": false,
@@ -63,10 +63,10 @@
     "size": "Small",
     "name": "Challenge XP",
     "description": [
-      "Gain 30 XP upon completing a challenge room round."
+      "Gain 10 XP upon completing a challenge room round."
     ],
     "modifiers": {
-      "challengeXP": 30
+      "challengeXP": 10
     },
     "note": "",
     "alwaysAvail": false,
@@ -91,7 +91,9 @@
     "size": "Large",
     "name": "Leveling Of Isaac",
     "description": [
-      "+0.02 all stats"
+      "+0.02 all stats.",
+      "While hovering this node, hold the Respec Node button for 7 seconds",
+      "to reset ALL tree mod data from this save."
     ],
     "modifiers": {
       "allstats": 0.02
@@ -170,10 +172,10 @@
     "size": "Small",
     "name": "Boss XP",
     "description": [
-      "+4% XP from slain bosses."
+      "+1% XP from slain bosses."
     ],
     "modifiers": {
-      "xpgainBoss": 4
+      "xpgainBoss": 1
     },
     "note": "",
     "alwaysAvail": false,
@@ -184,10 +186,10 @@
     "size": "Med",
     "name": "Boss XP",
     "description": [
-      "+10% XP from slain bosses."
+      "+5% XP from slain bosses."
     ],
     "modifiers": {
-      "xpgainBoss": 10
+      "xpgainBoss": 5
     },
     "note": "",
     "alwaysAvail": false,
@@ -198,11 +200,11 @@
     "size": "Large",
     "name": "Beast Challenger",
     "description": [
-      "+25% XP from slain bosses.",
+      "+15% XP from slain bosses.",
       "-15% XP from slain normal monsters."
     ],
     "modifiers": {
-      "xpgainBoss": 25,
+      "xpgainBoss": 15,
       "xpgainNormalMob": -15
     },
     "note": "",
@@ -214,10 +216,10 @@
     "size": "Small",
     "name": "Monster XP",
     "description": [
-      "+4% XP from slain normal monsters."
+      "+1% XP from slain normal monsters."
     ],
     "modifiers": {
-      "xpgainNormalMob": 4
+      "xpgainNormalMob": 1
     },
     "note": "",
     "alwaysAvail": false,
@@ -228,10 +230,10 @@
     "size": "Med",
     "name": "Monster XP",
     "description": [
-      "+10% XP from slain normal monsters."
+      "+4% XP from slain normal monsters."
     ],
     "modifiers": {
-      "xpgainNormalMob": 10
+      "xpgainNormalMob": 4
     },
     "note": "",
     "alwaysAvail": false,
@@ -242,11 +244,11 @@
     "size": "Large",
     "name": "Swarm Challenger",
     "description": [
-      "+25% XP from slain normal monsters.",
+      "+15% XP from slain normal monsters.",
       "-15% XP from slain bosses."
     ],
     "modifiers": {
-      "xpgainNormalMob": 25,
+      "xpgainNormalMob": 15,
       "xpgainBoss": -15
     },
     "note": "",
@@ -288,10 +290,10 @@
     "size": "Small",
     "name": "Luck",
     "description": [
-      "+0.01 luck"
+      "+0.05 luck"
     ],
     "modifiers": {
-      "luck": 0.01
+      "luck": 0.05
     },
     "note": "",
     "alwaysAvail": false,
@@ -372,10 +374,10 @@
     "size": "Med",
     "name": "Luck",
     "description": [
-      "+0.1 luck"
+      "+0.15 luck"
     ],
     "modifiers": {
-      "luck": 0.1
+      "luck": 0.15
     },
     "note": "",
     "alwaysAvail": false,
@@ -705,9 +707,9 @@
     "name": "Intermittent Conceptions",
     "description": [
       "Begin the game with Birthright.",
-      "When first obtaining an item, remove birthright.",
-      "When next obtaining an item, receive birthright again.",
-      "Effect cycles."
+      "When first entering a room containing item pedestals, remove birthright.",
+      "After picking up 2 passive items, receive birthright again.",
+      "Effect repeats."
     ],
     "modifiers": {
       "intermittentConceptions": true
@@ -2532,10 +2534,10 @@
     "size": "Med",
     "name": "Killing Hit Negation",
     "description": [
-      "4% chance to negate an incoming hit if it would've killed you."
+      "2% chance to negate an incoming hit if it would've killed you."
     ],
     "modifiers": {
-      "killingHitNegation": 4
+      "killingHitNegation": 2
     },
     "note": "From The Lost's tree",
     "oldType": "[The Lost's Tree] Med1"
@@ -4092,5 +4094,480 @@
       "charmExplosions": 2
     },
     "note": "From Siren's tree"
+  },
+  {
+    "type": 299,
+    "size": "Small",
+    "name": "Lucky Pennies",
+    "description": [
+      "0.15% chance to replace penny drops with a lucky penny."
+    ],
+    "modifiers": {
+      "luckyPennyChance": 0.15
+    },
+    "note": ""
+  },
+  {
+    "type": 300,
+    "size": "Small",
+    "name": "Card Floor Luck",
+    "description": [
+      "1% increased luck for the current floor when you use a card."
+    ],
+    "modifiers": {
+      "cardFloorLuck": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 301,
+    "size": "Small",
+    "name": "Pill Floor Luck",
+    "description": [
+      "1% increased luck for the current floor when you consume a pill"
+    ],
+    "modifiers": {
+      "pillFloorLuck": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 302,
+    "size": "Small",
+    "name": "Secret Room Floor Luck",
+    "description": [
+      "+0.1 luck for the current floor when first entering a secret or super secret room."
+    ],
+    "modifiers": {
+      "secretRoomFloorLuck": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 303,
+    "size": "Small",
+    "name": "Fire XP",
+    "description": [
+      "Gain +2 xp when putting out fires."
+    ],
+    "modifiers": {
+      "fireXP": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 304,
+    "size": "Small",
+    "name": "Poop XP",
+    "description": [
+      "Gain +2 xp when destroying poop."
+    ],
+    "modifiers": {
+      "poopXP": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 305,
+    "size": "Small",
+    "name": "Planetarium Chance",
+    "description": [
+      "0.15% increased chance of finding a planetarium."
+    ],
+    "modifiers": {
+      "planetariumChance": 0.15
+    },
+    "note": ""
+  },
+  {
+    "type": 306,
+    "size": "Med",
+    "name": "Planetarium Chance",
+    "description": [
+      "1% increased chance of finding a planetarium."
+    ],
+    "modifiers": {
+      "planetariumChance": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 307,
+    "size": "Med",
+    "name": "Planetarium Blessing",
+    "description": [
+      "+3% all stats when entering a planetarium for the first time in the run."
+    ],
+    "modifiers": {
+      "planetariumAllstats": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 308,
+    "size": "Small",
+    "name": "Secret Room Random Stat",
+    "description": [
+      "+0.01 to a random stat when first entering a secret room.",
+      "Each node with this effect will roll a random stat independently."
+    ],
+    "modifiers": {
+      "secretRoomRandomStat": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 309,
+    "size": "Small",
+    "name": "Tinted Rock XP",
+    "description": [
+      "Gain +8 xp when destroying tinted rocks."
+    ],
+    "modifiers": {
+      "tintedRockXP": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 310,
+    "size": "Small",
+    "name": "Tinted Rock All Stats",
+    "description": [
+      "+0.01 all stats when blowing up a tinted rock."
+    ],
+    "modifiers": {
+      "tintedRockAllstats": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 311,
+    "size": "Med",
+    "name": "First Item Damage",
+    "description": [
+      "+0.03 damage when first obtaining a passive item."
+    ],
+    "modifiers": {
+      "firstItemDamage": 0.03
+    },
+    "note": ""
+  },
+  {
+    "type": 312,
+    "size": "Med",
+    "name": "First Item Tears",
+    "description": [
+      "+0.03 tears when first obtaining a passive item."
+    ],
+    "modifiers": {
+      "firstItemTears": 0.03
+    },
+    "note": ""
+  },
+  {
+    "type": 313,
+    "size": "Med",
+    "name": "First Item Range",
+    "description": [
+      "+0.03 range when first obtaining a passive item."
+    ],
+    "modifiers": {
+      "firstItemRange": 0.03
+    },
+    "note": ""
+  },
+  {
+    "type": 314,
+    "size": "Med",
+    "name": "First Item Speed",
+    "description": [
+      "+0.01 speed when first obtaining a passive item."
+    ],
+    "modifiers": {
+      "firstItemSpeed": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 315,
+    "size": "Med",
+    "name": "First Item Shot Speed",
+    "description": [
+      "+0.03 shot speed when first obtaining a passive item."
+    ],
+    "modifiers": {
+      "firstItemShotspeed": 0.03
+    },
+    "note": ""
+  },
+  {
+    "type": 316,
+    "size": "Med",
+    "name": "First Item Luck",
+    "description": [
+      "+0.07 luck when first obtaining a passive item."
+    ],
+    "modifiers": {
+      "firstItemLuck": 0.07
+    },
+    "note": ""
+  },
+  {
+    "type": 317,
+    "size": "Small",
+    "name": "Less Shot Speed",
+    "description": [
+      "-0.02 shot speed"
+    ],
+    "modifiers": {
+      "shotSpeed": -0.02
+    },
+    "note": ""
+  },
+  {
+    "type": 318,
+    "size": "Med",
+    "name": "Less Shot Speed",
+    "description": [
+      "-0.08 shot speed"
+    ],
+    "modifiers": {
+      "shotSpeed": -0.08
+    },
+    "note": ""
+  },
+  {
+    "type": 319,
+    "size": "Large",
+    "name": "Star Tree",
+    "description": [
+      "Begin your communion with the stars.",
+      "Once allocated, Starcursed Jewels can now drop after clearing certain encounters."
+    ],
+    "modifiers": {
+      "enableSCJewels": true
+    },
+    "note": "",
+    "alwaysAvail": true
+  },
+  {
+    "type": 320,
+    "size": "Large",
+    "name": "Azure Socket 4",
+    "description": [
+      "Once allocated, you may socket Azure Starcursed Jewels here."
+    ],
+    "modifiers": {
+      "azureStarSockets": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 321,
+    "size": "Large",
+    "name": "Crimson Socket 4",
+    "description": [
+      "Once allocated, you may socket Crimson Starcursed Jewels here."
+    ],
+    "modifiers": {
+      "crimsonStarSockets": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 322,
+    "size": "Large",
+    "name": "Viridian Socket 4",
+    "description": [
+      "Once allocated, you may socket Viridian Starcursed Jewels here."
+    ],
+    "modifiers": {
+      "viridianStarSockets": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 323,
+    "size": "Small",
+    "name": "Azure Starmight",
+    "description": [
+      "+0.5 starmight per socketed Azure Starcursed Jewel."
+    ],
+    "modifiers": {
+      "azureStarmight": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 324,
+    "size": "Small",
+    "name": "Crimson Starmight",
+    "description": [
+      "+0.5 starmight per socketed Crimson Starcursed Jewel."
+    ],
+    "modifiers": {
+      "crimsonStarmight": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 325,
+    "size": "Small",
+    "name": "Viridian Starmight",
+    "description": [
+      "+0.5 starmight per socketed Viridian Starcursed Jewel."
+    ],
+    "modifiers": {
+      "viridianStarmight": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 326,
+    "size": "Small",
+    "name": "Ancient Starmight",
+    "description": [
+      "+1 starmight per socketed Ancient Starcursed Jewel."
+    ],
+    "modifiers": {
+      "ancientStarmight": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 327,
+    "size": "Large",
+    "name": "Ancient Socket 2",
+    "description": [
+      "Once allocated, you may socket Ancient Starcursed Jewels here."
+    ],
+    "modifiers": {
+      "ancientStarSockets": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 328,
+    "size": "Large",
+    "name": "Azure Inventory",
+    "description": [
+      "Allocate to unlock the Azure Starcursed Jewel inventory.",
+      "Once allocated, press allocate again to open inventory.",
+      "Azure Starcursed Jewels can roll modifiers that affect monsters' might."
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 329,
+    "size": "Large",
+    "name": "Crimson Inventory",
+    "description": [
+      "Allocate to unlock the Crimson Starcursed Jewel inventory.",
+      "Once allocated, press allocate again to open inventory.",
+      "Crimson Starcursed Jewels roll modifiers that affect monsters' vitality and defense."
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 330,
+    "size": "Large",
+    "name": "Viridian Inventory",
+    "description": [
+      "Allocate to unlock the Viridian Starcursed Jewel inventory.",
+      "Once allocated, press allocate again to open inventory.",
+      "Viridian Starcursed Jewels roll modifiers that affect the run itself."
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 331,
+    "size": "Large",
+    "name": "Ancient Inventory",
+    "description": [
+      "Allocate to unlock the Ancient Starcursed Jewel inventory.",
+      "Once allocated, press allocate again to open inventory.",
+      "Ancient Starcursed Jewels can feature unique challenge-like modifiers."
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 332,
+    "size": "Small",
+    "name": "Boss Challenge Room Unlock",
+    "description": [
+      "When entering a floor, +7% chance to unlock its boss challenge room regardless of hearts,",
+      "if it's present."
+    ],
+    "modifiers": {
+      "bossChallengeUnlock": 7
+    },
+    "note": ""
+  },
+  {
+    "type": 333,
+    "size": "Med",
+    "name": "Boss Challenge Room Unlock",
+    "description": [
+      "When entering a floor, +20% chance to unlock its boss challenge room regardless of hearts,",
+      "if it's present."
+    ],
+    "modifiers": {
+      "bossChallengeUnlock": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 334,
+    "size": "Small",
+    "name": "Trinket Smelting On Floor",
+    "description": [
+      "When entering a new floor, +2% chance to smelt your currently held trinket."
+    ],
+    "modifiers": {
+      "floorSmeltTrinket": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 335,
+    "size": "Med",
+    "name": "Trinket Smelting On Floor",
+    "description": [
+      "When entering a new floor, +5% chance to smelt your currently held trinket."
+    ],
+    "modifiers": {
+      "floorSmeltTrinket": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 336,
+    "size": "Small",
+    "name": "Shop Saving",
+    "description": [
+      "When first entering a shop, +4% chance to reduce a random item's price",
+      "by 2-4 coins."
+    ],
+    "modifiers": {
+      "shopSaving": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 337,
+    "size": "Med",
+    "name": "Shop Saving",
+    "description": [
+      "When first entering a shop, +10% chance to reduce a random item's price",
+      "by 2-4 coins."
+    ],
+    "modifiers": {
+      "shopSaving": 10
+    },
+    "note": ""
   }
 ]
