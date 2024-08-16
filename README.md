@@ -25,7 +25,7 @@ Click on a node in the palette to select it, make sure its data is correct and t
 
 Bear in mind, placed nodes have their data set to a snapshot of what's specified on the left panel's inputs. This means for example, if you place a few "XP gain" nodes set to give 2% xp gain, then change the inputs to have the node grant 5% instead, this will not affect the nodes you've already placed, and will only affect newly placed nodes.
 
-Click on a placed node in the tree view to remove it. Ctrl-click a placed node to get a log of its data on the dev console.
+Click on a placed node in the tree view to remove it. Ctrl-click a placed node to get a log of its data on the dev console. Shift-click to replace nodes that have the same name without changing their ID.
 
 Mousewheel or up/down arrow keys allow scrolling through the palette.
 
