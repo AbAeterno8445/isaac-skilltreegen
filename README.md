@@ -52,3 +52,11 @@ The 'Condense data' check condenses save data by turning node objects into one-l
 'Copy Tree JSON' copies the tree data to your clipboard, allowing you to paste it somewhere else. This takes the 'Condense data' check into account.
 
 At the top left is the file loader, you can load tree JSON files here.
+
+## Adding Custom Nodes
+
+To add custom nodes, first you need an ANM2 file containing the nodes. The ANM2 must have a "Default" animation, where each frame represents 1 node tile, and a single layer. You can use the tree_nodes.anm2 file as an example.
+
+Once you have the ANM2 file, you can drop it (along with necessary image files) into the **assets/custom/** directory, and the app should load them at the end of the palette.
+
+This custom directory comes with three image files, **node_small.png**, **node_med.png** and **node_large.png**, that you ideally use as bases for new nodes, as the 'allocated' gold borders follow these shapes and sizes.
