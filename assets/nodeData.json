@@ -600,7 +600,7 @@
     "size": "Med",
     "name": "Good Deeds",
     "description": [
-      "Helping any type of beggar grants +0.02 luck"
+      "Helping any type of beggar grants +0.02 luck, up to +1 per floor."
     ],
     "modifiers": {
       "beggarLuck": 0.02
@@ -1533,10 +1533,10 @@
     "size": "Small",
     "name": "Active Dead Bird Speed",
     "description": [
-      "+0.02 speed while dead bird is active"
+      "+0.01 speed while dead bird is active"
     ],
     "modifiers": {
-      "activeDeadBirdSpeed": 0.02
+      "activeDeadBirdSpeed": 0.01
     },
     "note": "From Eve's tree",
     "oldType": "[Eve's Tree] Small3"
@@ -4342,13 +4342,14 @@
     "name": "Star Tree",
     "description": [
       "Begin your communion with the stars.",
-      "Once allocated, Starcursed Jewels can now drop after clearing certain encounters."
+      "Once allocated, press allocate again to view the Star Tree.",
+      "Enables Starcursed Jewel drops after clearing certain encounters."
     ],
     "modifiers": {
       "enableSCJewels": true
     },
     "note": "",
-    "alwaysAvail": true
+    "alwaysAvail": false
   },
   {
     "type": 320,

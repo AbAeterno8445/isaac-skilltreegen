@@ -67,6 +67,11 @@ ipcMain.handle("readANM2", (ev) => {
   return getANM2Files();
 });
 
+ipcMain.handle("getWorkingDir", (ev) => {
+  if (app.isPackaged) return path.join(__dirname, "..", "..");
+  return __dirname;
+});
+
 ipcMain.handle("saveNodeData", (ev, nodeData) => {
   fs.writeFile("assets/nodeData.json", nodeData, "utf-8");
 });

@@ -4,6 +4,9 @@ contextBridge.exposeInMainWorld("myFS", {
   readANM2: () => {
     return ipcRenderer.invoke("readANM2");
   },
+  getWorkingDir: () => {
+    return ipcRenderer.invoke("getWorkingDir");
+  },
   saveNodeData: (nodeData) => {
     return ipcRenderer.invoke("saveNodeData", nodeData);
   },

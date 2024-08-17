@@ -145,8 +145,11 @@ async function main() {
 
       const isMainImage = filePath == "tree_nodes.png";
       if (!isMainImage) customSheets++;
+      const workingDir = await window.myFS.getWorkingDir();
       const imagePath =
-        "assets/" + (isMainImage ? filePath : "custom/" + filePath);
+        workingDir +
+        "/assets/" +
+        (isMainImage ? filePath : "custom/" + filePath);
 
       await PIXI.Assets.load([imagePath]);
       console.log("Loaded ", imagePath);
