@@ -1,3 +1,4 @@
 node_modules/
 trees/*
 out/
+customNodeData.json
