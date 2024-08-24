@@ -657,8 +657,9 @@ function clickCanvas(ev) {
         if (ctrlHeld) {
           // Ctrl + click: print node data (for debugging)
           console.log(tmpNode.nodeID, tmpNode.node);
-        } else if (shiftHeld && inputElems.name.value == tmpNode.node.name) {
-          // Shift + click: replace node data if placing one with the same name
+        } else if (shiftHeld && inputElems.type.value == tmpNode.node.type) {
+          // Shift + click: replace node data
+          tmpNode.node.name = inputElems.name.value;
           tmpNode.node.size = inputElems.size.value;
           tmpNode.node.description = inputElems.description.value?.split(
             "\n"
