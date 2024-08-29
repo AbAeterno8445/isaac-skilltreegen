@@ -574,6 +574,10 @@ function scrollPalette(ev, delta, mouseWithin = true) {
 
 // Mouse event funcs
 document.addEventListener("mousedown", (ev) => {
+  if (ev.shiftKey) shiftHeld = true;
+  else shiftHeld = false;
+  if (ev.ctrlKey) ctrlHeld = true;
+  else ctrlHeld = false;
   if ((ev.button == 1 || ev.button == 2) && !dragging) {
     dragging = true;
     dragStart.x = ev.pageX;
