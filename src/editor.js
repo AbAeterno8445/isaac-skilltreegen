@@ -40,6 +40,7 @@ const inputElems = {
   modifiers: document.getElementById("inpNodeMods"),
   alwaysAvail: document.getElementById("inpNodeAvail"),
   customID: document.getElementById("inpCustomID"),
+  reqs: document.getElementById("inpNodeReqs"),
   note: document.getElementById("inpNodeNote"),
 };
 
@@ -303,6 +304,8 @@ function setInputElems(inputData) {
   inputElems.size.value = inputData.size;
   inputElems.name.value = inputData.name;
   inputElems.description.value = inputData.description?.join("\n") || "";
+
+  // Modifiers JSON textarea
   const modifiersStr = JSON.stringify(inputData.modifiers, null, 2);
   if (inputData.modifiers) {
     inputElems.modifiers.value = modifiersStr
@@ -313,9 +316,23 @@ function setInputElems(inputData) {
   } else {
     inputElems.modifiers.value = "";
   }
+
   inputElems.alwaysAvail.checked = inputData.alwaysAvail;
   if (inputData.customID) inputElems.customID.value = inputData.customID;
   else inputElems.customID.value = "";
+
+  // Requirements JSON textarea
+  const reqsStr = JSON.stringify(inputData.reqs, null, 2);
+  if (inputData.reqs) {
+    inputElems.reqs.value = reqsStr
+      .split("\n")
+      .filter((v) => v != "{" && v != "}" && v != "{}")
+      .map((v) => v.trim())
+      .join("\n");
+  } else {
+    inputElems.reqs.value = "";
+  }
+
   inputElems.note.value = inputData.note;
 }
 
@@ -497,9 +514,11 @@ function addNodeAt(x, y) {
         "{" + inputElems.modifiers.value.replace("\n", "") + "}"
       ),
       adjacent: [],
+      reqs: JSON.parse("{" + inputElems.reqs.value.replace("\n", "") + "}"),
     };
     if (inputElems.alwaysAvail.checked) tmpNode.alwaysAvailable = true;
     if (inputElems.customID.value) tmpNode.customID = inputElems.customID.value;
+    if (Object.keys(tmpNode.reqs).length == 0) delete tmpNode.reqs;
     nodeCounter++;
 
     const nodeSprite = new PIXI.Sprite(tileTextures[tmpNode.type]);
@@ -678,6 +697,9 @@ function clickCanvas(ev) {
           }
           if (inputElems.customID.value)
             tmpNode.node.customID = inputElems.customID.value;
+          tmpNode.node.reqs = JSON.parse(
+            "{" + inputElems.reqs.value.replace("\n", "") + "}"
+          );
           console.log("Replaced placed node data at", tileX, tileY);
         } else {
           removeNode(tmpNode.nodeID);
@@ -903,18 +925,18 @@ for (let [elemName, elem] of Object.entries(inputElems)) {
       paletteNodes[nodeID][elemName] = e.target.checked;
     } else if (elemName == "description") {
       paletteNodes[nodeID][elemName] = e.target.value.split("\n");
-    } else if (elemName == "modifiers") {
+    } else if (elemName == "modifiers" || elemName == "reqs") {
       // Check field has valid JSON data
       try {
         const tmpJSON = JSON.parse(
           "{" + e.target.value.replace("\n", "") + "}"
         );
         paletteNodes[nodeID][elemName] = tmpJSON;
-        inputElems.modifiers.style.border = "none";
+        inputElems[elemName].style.border = "none";
       } catch (err) {
         console.warn(err);
-        console.warn("Invalid JSON in modifiers field.");
-        inputElems.modifiers.style.border = "1px solid red";
+        console.warn("Invalid JSON in " + elemName + " field.");
+        inputElems[elemName].style.border = "1px solid red";
       }
     } else {
       paletteNodes[nodeID][elemName] = e.target.value;

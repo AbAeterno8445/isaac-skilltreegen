@@ -11,7 +11,8 @@
     },
     "note": "",
     "alwaysAvail": false,
-    "oldType": "Small XP"
+    "oldType": "Small XP",
+    "reqs": {}
   },
   {
     "type": 1,
@@ -290,10 +291,10 @@
     "size": "Small",
     "name": "Luck",
     "description": [
-      "+0.05 luck"
+      "+0.03 luck"
     ],
     "modifiers": {
-      "luck": 0.05
+      "luck": 0.03
     },
     "note": "",
     "alwaysAvail": false,
@@ -374,10 +375,10 @@
     "size": "Med",
     "name": "Luck",
     "description": [
-      "+0.15 luck"
+      "+0.08 luck"
     ],
     "modifiers": {
-      "luck": 0.15
+      "luck": 0.08
     },
     "note": "",
     "alwaysAvail": false,
@@ -486,11 +487,11 @@
     "size": "Small",
     "name": "Mapping Chance",
     "description": [
-      "+1% chance for the map to be revealed upon entering a floor",
+      "+0.5% chance for the map to be revealed upon entering a floor",
       "Works from the second floor onwards"
     ],
     "modifiers": {
-      "mapChance": 1
+      "mapChance": 0.5
     },
     "note": "",
     "alwaysAvail": false,
@@ -501,11 +502,11 @@
     "size": "Med",
     "name": "Mapping Chance",
     "description": [
-      "+4% chance for the map to be revealed upon entering a floor",
+      "+2% chance for the map to be revealed upon entering a floor",
       "Works from the second floor onwards"
     ],
     "modifiers": {
-      "mapChance": 4
+      "mapChance": 2
     },
     "note": "",
     "alwaysAvail": false,
@@ -516,10 +517,10 @@
     "size": "Small",
     "name": "Coin Dupe Chance",
     "description": [
-      "+0.5% chance for coin pickups to grant an additional coin"
+      "+0.3% chance for coin pickups to grant an additional coin"
     ],
     "modifiers": {
-      "coinDupe": 0.5
+      "coinDupe": 0.3
     },
     "note": "",
     "alwaysAvail": false,
@@ -644,10 +645,10 @@
     "size": "Small",
     "name": "Luck Down",
     "description": [
-      "-0.03 luck"
+      "-0.06 luck"
     ],
     "modifiers": {
-      "luck": -0.03
+      "luck": -0.06
     },
     "note": "",
     "alwaysAvail": false,
@@ -688,12 +689,14 @@
     "size": "Large",
     "name": "Magic Die",
     "description": [
-      "Using the D6 grants a permanent stat boost. Boosted stats depend on the room you used the D6 in:",
+      "Using the D6 grants a permanent stat buff. The buff's stats depend on the room you used the D6 in:",
       "- Angel room: +7% speed and tears",
       "- Devil room: +6% damage and range",
       "- Treasure room and shop: +7% shot speed and luck",
       "- Boss room: if you have a boost, augment it by +3%, otherwise +3% all stats",
-      "- Anywhere else: +2% all stats"
+      "- Anywhere else: +2% all stats",
+      "You can only have one of these stat buffs at a time. Using the D6 in a different room switches the",
+      "stats gained."
     ],
     "modifiers": {
       "magicDie": true
@@ -799,12 +802,12 @@
   {
     "type": 55,
     "size": "Med",
-    "name": "Brother Items All Stats",
+    "name": "Familiar Items All Stats",
     "description": [
-      "+0.2% all stats per item obtained by the opposing brother, up to 15%."
+      "+0.5% all stats per familiar item obtained."
     ],
     "modifiers": {
-      "jacobItemAllstats": 0.2
+      "familiarItemAllstats": 0.5
     },
     "note": "",
     "oldType": "[Isaac Tree] Med3"
@@ -832,7 +835,7 @@
     "name": "Crystal Heart",
     "description": [
       "Yum heart heals an additional 1/2 heart.",
-      "4% chance for Yum Heart to turn a red heart into a bone heart."
+      "7% chance for Yum Heart to turn a red heart into a bone heart."
     ],
     "modifiers": {
       "crystalHeart": true
@@ -886,10 +889,10 @@
     "size": "Med",
     "name": "Yum Heart Healing",
     "description": [
-      "3% chance for Yum Heart to heal an additional 1/2 heart."
+      "2% chance for Yum Heart to heal an additional 1/2 heart."
     ],
     "modifiers": {
-      "yumHeartHealHalf": 3
+      "yumHeartHealHalf": 2
     },
     "note": "From Magdalene's tree",
     "oldType": "[Magdalene Tree] Med1"
@@ -913,7 +916,8 @@
     "size": "Small",
     "name": "Blood Donation Luck",
     "description": [
-      "+0.01 luck when using a Blood Donation Machine."
+      "+0.01 luck when using a Blood Donation Machine.",
+      "Halve this bonus when entering the next floor."
     ],
     "modifiers": {
       "bloodDonationLuck": 0.01
@@ -926,10 +930,11 @@
     "size": "Med",
     "name": "Blood Donation Luck",
     "description": [
-      "+0.05 luck when using a Blood Donation Machine."
+      "+0.07 luck when using a Blood Donation Machine.",
+      "Halve this bonus when entering the next floor."
     ],
     "modifiers": {
-      "bloodDonationLuck": 0.05
+      "bloodDonationLuck": 0.07
     },
     "note": "From Magdalene's tree",
     "oldType": "[Magdalene Tree] Med3"
@@ -980,9 +985,10 @@
     "size": "Large",
     "name": "Impromptu Gambler",
     "description": [
-      "Spawn a crane game in treasure rooms. These can grant any unlocked item, but cost 8 coins to use.",
+      "Spawn a crane game in treasure rooms. These can draw items from the Treasure, Shop, Devil",
+      "and Angel pools, but take an additional 2 coins on use, if possible",
       "Interacting with the crane game removes the room's regular item.",
-      "Grabbing the regular item removes the crane game."
+      "Grabbing the room's regular item removes the crane game."
     ],
     "modifiers": {
       "impromptuGambler": true
@@ -1039,30 +1045,28 @@
   {
     "type": 72,
     "size": "Small",
-    "name": "Random Trinket Spawn",
+    "name": "Random Trinket On Clear",
     "description": [
-      "1% chance to spawn a random trinket at the beginning of a floor.",
-      "Doesn't apply in first floor."
+      "0.5% chance to drop a random trinket on room clear while you're not holding one."
     ],
     "modifiers": {
-      "trinketSpawn": 1
+      "trinketOnClear": 0.5
     },
-    "note": "From Cain's tree",
+    "note": "From T. Isaac's tree",
     "alwaysAvail": false,
     "oldType": "[Cain Tree] Small2"
   },
   {
     "type": 73,
     "size": "Med",
-    "name": "Random Trinket Spawn",
+    "name": "Random Trinket On Clear",
     "description": [
-      "5% chance to spawn a random trinket at the beginning of a floor.",
-      "Doesn't apply in first floor."
+      "2% chance to drop a random trinket on room clear while you're not holding one."
     ],
     "modifiers": {
-      "trinketSpawn": 5
+      "trinketOnClear": 2
     },
-    "note": "From Cain's tree",
+    "note": "From T. Isaac's tree",
     "oldType": "[Cain Tree] Med1"
   },
   {
@@ -1180,7 +1184,7 @@
     "description": [
       "Start with Judas' Shadow.",
       "Dark Judas starts with 1 black heart instead.",
-      "-15% damage as Dark Judas."
+      "-35% damage as Dark Judas."
     ],
     "modifiers": {
       "innerDemon": true
@@ -1262,7 +1266,8 @@
     "size": "Small",
     "name": "Lost Black Hearts Luck",
     "description": [
-      "+0.01 luck whenever you lose black hearts"
+      "+0.01 luck whenever you lose black hearts.",
+      "Resets every floor."
     ],
     "modifiers": {
       "lostBlackHeartsLuck": 0.01
@@ -1275,10 +1280,11 @@
     "size": "Med",
     "name": "Lost Black Hearts Luck",
     "description": [
-      "+0.04 luck whenever you lose black hearts"
+      "+0.05 luck whenever you lose black hearts.",
+      "Resets every floor."
     ],
     "modifiers": {
-      "lostBlackHeartsLuck": 0.04
+      "lostBlackHeartsLuck": 0.05
     },
     "note": "From Judas' tree",
     "oldType": "[Judas Tree] Med2"
@@ -1290,7 +1296,8 @@
     "description": [
       "The first card you find is guaranteed to be V - The Hierophant.",
       "The first pill you find is guaranteed to be Balls of Steel.",
-      "20% chance to take 1/2 heart damage when using a card or pill that isn't either of the above."
+      "20% chance to take 1/2 heart damage when using a card or pill that isn't either of the above.",
+      "Reverse cards do not trigger this damage effect."
     ],
     "modifiers": {
       "blueGambit": true
@@ -1318,7 +1325,7 @@
     "name": "Slipping Essence",
     "description": [
       "Losing a soul heart has a 40% chance to spawn a full soul heart.",
-      "When this happens, halve this chance and receive -0.1 luck."
+      "When this happens, halve this chance and receive -0.6 luck."
     ],
     "modifiers": {
       "slippingEssence": true
@@ -1358,10 +1365,10 @@
     "size": "Small",
     "name": "Poop Item Luck",
     "description": [
-      "+0.03 luck per held poop item"
+      "+0.02 luck per held poop item"
     ],
     "modifiers": {
-      "poopItemLuck": 0.03
+      "poopItemLuck": 0.02
     },
     "note": "From Blue Baby's tree",
     "oldType": "[???'s Tree] Small2"
@@ -1371,10 +1378,10 @@
     "size": "Med",
     "name": "Poop Item Luck",
     "description": [
-      "+0.1 luck per held poop item"
+      "+0.07 luck per held poop item"
     ],
     "modifiers": {
-      "poopItemLuck": 0.1
+      "poopItemLuck": 0.07
     },
     "note": "From Blue Baby's tree",
     "oldType": "[???'s Tree] Med2"
@@ -1481,7 +1488,8 @@
     "name": "Carrion Avian",
     "description": [
       "+0.15 damage when dead bird kills an enemy, up to +3. Resets every floor.",
-      "If dead bird kills a boss, gain a permanent +0.6 damage instead."
+      "If dead bird kills a boss, gain a permanent +0.6 damage instead (up to +1.2",
+      "per room)."
     ],
     "modifiers": {
       "carrionAvian": true
@@ -1598,7 +1606,8 @@
     "size": "Small",
     "name": "Luck On Room Clear Below Full",
     "description": [
-      "+0.01 luck when clearing a room below full red hearts."
+      "+0.01 luck when clearing a room below full red hearts.",
+      "Resets every floor."
     ],
     "modifiers": {
       "luckOnClearBelowFull": 0.01
@@ -1612,7 +1621,8 @@
     "size": "Med",
     "name": "Luck On Room Clear Below Full",
     "description": [
-      "+0.05 luck when clearing a room below full red hearts."
+      "+0.05 luck when clearing a room below full red hearts.",
+      "Resets every floor."
     ],
     "modifiers": {
       "luckOnClearBelowFull": 0.05
@@ -1723,10 +1733,10 @@
     "size": "Small",
     "name": "Boss Quick Kill Luck",
     "description": [
-      "+0.05 luck if you clear the boss room within 1 minute of entering it."
+      "+0.01 luck if you clear the boss room within 30 seconds of entering it, up to a total +3."
     ],
     "modifiers": {
-      "bossQuickKillLuck": 0.05
+      "bossQuickKillLuck": 0.01
     },
     "note": "From Samson's tree",
     "oldType": "[Samson's Tree] Small5"
@@ -1736,10 +1746,10 @@
     "size": "Small",
     "name": "Boss Flawless Luck",
     "description": [
-      "+0.05 luck if you clear the boss room without getting hit more than 3 times."
+      "+0.01 luck if you clear the boss room without getting hit, up to a total +3."
     ],
     "modifiers": {
-      "bossFlawlessLuck": 0.05
+      "bossFlawlessLuck": 0.01
     },
     "note": "From Samson's tree",
     "oldType": "[Samson's Tree] Small6"
@@ -1762,10 +1772,10 @@
     "size": "Med",
     "name": "Boss Quick Kill Luck",
     "description": [
-      "+0.25 luck if you clear the boss room within 1 minute of entering it."
+      "+0.05 luck if you clear the boss room within 30 seconds of entering it, up to a total +3."
     ],
     "modifiers": {
-      "bossQuickKillLuck": 0.25
+      "bossQuickKillLuck": 0.05
     },
     "note": "From Samson's tree",
     "oldType": "[Samson's Tree] Med2"
@@ -1775,10 +1785,10 @@
     "size": "Med",
     "name": "Boss Flawless Luck",
     "description": [
-      "+0.25 luck if you clear the boss room without getting hit more than 3 times."
+      "+0.05 luck if you clear the boss room without getting hit, up to a total +3."
     ],
     "modifiers": {
-      "bossFlawlessLuck": 0.25
+      "bossFlawlessLuck": 0.05
     },
     "note": "From Samson's tree",
     "oldType": "[Samson's Tree] Med3"
@@ -1816,12 +1826,12 @@
     "size": "Large",
     "name": "Bloodcharge",
     "description": [
-      "+6 range",
-      "-30% tears"
+      "+5 range",
+      "-35% tears"
     ],
     "modifiers": {
-      "range": 6,
-      "tearsPerc": -30
+      "range": 5,
+      "tearsPerc": -35
     },
     "note": "From Azazel's tree",
     "oldType": "[Azazel's Tree] Bloodcharge"
@@ -1890,10 +1900,10 @@
     "size": "Small",
     "name": "Evil Trinket Luck",
     "description": [
-      "+0.05 luck while holding an evil trinket."
+      "+0.03 luck while holding an evil trinket."
     ],
     "modifiers": {
-      "evilTrinketLuck": 0.05
+      "evilTrinketLuck": 0.03
     },
     "note": "From Azazel's tree",
     "oldType": "[Azazel's Tree] Small3"
@@ -2010,7 +2020,9 @@
     "name": "King's Curse",
     "description": [
       "Start with Damocles activated.",
-      "-5% all stats while not Lazarus Risen."
+      "When entering a new floor, remove Damocles if you have it, or re-add it if you don't.",
+      "-10% all stats while not Lazarus Risen.",
+      "-1 luck while not Lazarus Risen."
     ],
     "modifiers": {
       "kingCurse": true
@@ -2315,14 +2327,14 @@
   {
     "type": 166,
     "size": "Small",
-    "name": "Additional Coin/Key/Bomb",
+    "name": "Pickup On Clear",
     "description": [
-      "10% chance to start with an additional coin, key or bomb."
+      "1% chance to spawn an additional coin/key/bomb/half heart when completing a room."
     ],
     "modifiers": {
-      "startCoinKeyBomb": 10
+      "randPickupOnClear": 1
     },
-    "note": "From Eden's tree",
+    "note": "From T. Cain's tree",
     "oldType": "[Eden's Tree] Small4"
   },
   {
@@ -2342,14 +2354,14 @@
   {
     "type": 168,
     "size": "Med",
-    "name": "Additional Coin/Key/Bomb",
+    "name": "Pickup On Clear",
     "description": [
-      "60% chance to start with an additional coin, key or bomb."
+      "4% chance to spawn an additional coin/key/bomb/half heart when completing a room."
     ],
     "modifiers": {
-      "startCoinKeyBomb": 60
+      "randPickupOnClear": 4
     },
-    "note": "From Eden's tree",
+    "note": "From T. Cain's tree",
     "oldType": "[Eden's Tree] Med1"
   },
   {
@@ -2425,7 +2437,8 @@
     "description": [
       "+2% damage and +0.15 luck for each heart you would've gained from items you pick up,",
       "up to a total 40% damage, +3 luck.",
-      "If you obtain birthright, gain +8% tears."
+      "If you obtain birthright, gain +8% tears.",
+      "Does not work on active items that grant hearts."
     ],
     "modifiers": {
       "spectralAdvantage": true
@@ -2454,8 +2467,8 @@
     "name": "Heartseeker Phantasm",
     "description": [
       "Dropped red and eternal hearts are converted to soul hearts.",
-      "Collecting a soul or black heart grants +0.2 luck.",
-      "+1% all stats for every 3 hearts collected."
+      "Collecting a soul or black heart pickup grants +0.1 luck, up to a total +3.",
+      "+1% all stats for every 3 heart pickups collected, up to a total +20%."
     ],
     "modifiers": {
       "heartseekerPhantasm": true
@@ -2640,10 +2653,12 @@
     "name": "Heavy Friends",
     "description": [
       "Start with BFFS!",
-      "-25% speed"
+      "-35% speed",
+      "-45% damage"
     ],
     "modifiers": {
-      "speedPerc": -25,
+      "speedPerc": -35,
+      "damagePerc": -45,
       "heavyFriends": true
     },
     "note": "From Lilith's tree",
@@ -2655,7 +2670,8 @@
     "name": "Daemon Army",
     "description": [
       "Start with an additional Incubus.",
-      "Mom drops an additional Incubus on defeat.",
+      "Mom drops an additional Incubus on defeat if you took no damage throughout the run until",
+      "this point.",
       "Baby familiar items other than Incubus no longer show up."
     ],
     "modifiers": {
@@ -2761,10 +2777,10 @@
     "size": "Med",
     "name": "Active Familiars Luck",
     "description": [
-      "+0.05 luck per currently active familiar."
+      "+0.04 luck per currently active familiar."
     ],
     "modifiers": {
-      "activeFamiliarsLuck": 0.05
+      "activeFamiliarsLuck": 0.04
     },
     "note": "From Lilith's tree",
     "oldType": "[Lilith's Tree] Med2"
@@ -2826,7 +2842,7 @@
     "size": "Large",
     "name": "Keeper's Blessing",
     "description": [
-      "Healing from a coin grants you an additional 2 coins, up to 4 times per room.",
+      "Healing from a coin grants you an additional coin, up to 4 times per room.",
       "20% chance for Wooden Nickel to spawn an additional penny when used."
     ],
     "modifiers": {
@@ -2885,7 +2901,8 @@
     "size": "Small",
     "name": "Item Purchase Luck",
     "description": [
-      "+0.01 luck when you purchase an item."
+      "+0.01 luck when you purchase an item.",
+      "When entering a floor, halve your current bonus."
     ],
     "modifiers": {
       "itemPurchaseLuck": 0.01
@@ -2980,7 +2997,8 @@
     "size": "Med",
     "name": "Item Purchase Luck",
     "description": [
-      "+0.04 luck when you purchase an item."
+      "+0.05 luck when you purchase an item.",
+      "When entering a floor, halve your current bonus."
     ],
     "modifiers": {
       "itemPurchaseLuck": 0.04
@@ -3091,8 +3109,7 @@
     "description": [
       "Spawn a random locust trinket in the second floor you enter.",
       "Spawn a random locust trinket after defeating Mom.",
-      "2% chance to replace any non-locust trinket drop with a random locust trinket. Defeating a boss",
-      "increases this chance by 1%, up to 10%.",
+      "2% chance for champion monsters to drop a random locust trinket on death, once per floor.",
       "Using void consumes all locust trinkets dropped in the room, applying their",
       "effects to you passively."
     ],
@@ -3144,7 +3161,7 @@
   {
     "type": 227,
     "size": "Small",
-    "name": "First Floor Eraser",
+    "name": "Second Floor Eraser",
     "description": [
       "1% chance for the second floor's treasure room to additionally contain an Eraser",
       "item pedestal."
@@ -3213,7 +3230,7 @@
     "size": "Small",
     "name": "Locust of Pestilence Boon",
     "description": [
-      "+0.5% luck per Locust of Pestilence held/consumed, up to 15%."
+      "+0.5% luck per Locust of Pestilence held/consumed, up to 12%."
     ],
     "modifiers": {
       "pestilenceLocustLuck": 0.5
@@ -3276,7 +3293,7 @@
   {
     "type": 237,
     "size": "Med",
-    "name": "First Floor Eraser",
+    "name": "Second Floor Eraser",
     "description": [
       "5% chance for the second floor's treasure room to additionally contain an Eraser",
       "item pedestal."
@@ -3331,7 +3348,7 @@
     "size": "Med",
     "name": "Locust of Pestilence Boon",
     "description": [
-      "+2% luck per Locust of Pestilence held/consumed, up to 15%."
+      "+2% luck per Locust of Pestilence held/consumed, up to 12%."
     ],
     "modifiers": {
       "pestilenceLocustLuck": 2
@@ -3632,7 +3649,7 @@
     "size": "Small",
     "name": "Wisp Destroyed Luck",
     "description": [
-      "+0.01 luck when a wisp is destroyed, up to +4."
+      "+0.01 luck when a wisp is destroyed, up to +2."
     ],
     "modifiers": {
       "wispDestroyedLuck": 0.01
@@ -3692,10 +3709,10 @@
     "size": "Med",
     "name": "Wisp Destroyed Luck",
     "description": [
-      "+0.05 luck when a wisp is destroyed, up to +4."
+      "+0.04 luck when a wisp is destroyed, up to +2."
     ],
     "modifiers": {
-      "wispDestroyedLuck": 0.05
+      "wispDestroyedLuck": 0.04
     },
     "note": "From Bethany's tree"
   },
@@ -3745,7 +3762,7 @@
       "Esau starts with Gnawed Leaf.",
       "Esau doesn't shoot while transformed.",
       "Enemies target Jacob instead while Esau is transformed.",
-      "Jacob gains +7% all stats while close to transformed Esau."
+      "Jacob gains +12% all stats while close to transformed Esau."
     ],
     "modifiers": {
       "statuePilgrimage": true
@@ -3784,7 +3801,7 @@
     "size": "Small",
     "name": "Heart Luck",
     "description": [
-      "+0.01 luck per 1/2 heart of any type with the brother that has the lower remaining hearts.",
+      "+0.01 luck per full heart of any type with the brother that has the lower remaining hearts.",
       "Bonus is given to both brothers."
     ],
     "modifiers": {
@@ -3848,7 +3865,7 @@
     "size": "Med",
     "name": "Heart Luck",
     "description": [
-      "+0.04 luck per 1/2 heart of any type with the brother that has the lower remaining hearts.",
+      "+0.04 luck per full heart of any type with the brother that has the lower remaining hearts.",
       "Bonus is given to both brothers."
     ],
     "modifiers": {
@@ -4100,10 +4117,10 @@
     "size": "Small",
     "name": "Lucky Pennies",
     "description": [
-      "0.15% chance to replace penny drops with a lucky penny."
+      "0.04% chance to replace penny drops with a lucky penny."
     ],
     "modifiers": {
-      "luckyPennyChance": 0.15
+      "luckyPennyChance": 0.04
     },
     "note": ""
   },
@@ -4112,10 +4129,11 @@
     "size": "Small",
     "name": "Card Floor Luck",
     "description": [
-      "1% increased luck for the current floor when you use a card."
+      "0.5% increased luck for the current floor when you use a card, up to a total 15%,",
+      "including luck granted by the pill modifiers."
     ],
     "modifiers": {
-      "cardFloorLuck": 1
+      "cardFloorLuck": 0.5
     },
     "note": ""
   },
@@ -4124,10 +4142,12 @@
     "size": "Small",
     "name": "Pill Floor Luck",
     "description": [
-      "1% increased luck for the current floor when you consume a pill"
+      "0.5% increased luck for the current floor when you consume a pill, up to a total 15%,",
+      "including luck granted by the card modifiers.",
+      "\"Vurp!\" triggers this effect once per floor."
     ],
     "modifiers": {
-      "pillFloorLuck": 1
+      "pillFloorLuck": 0.5
     },
     "note": ""
   },
@@ -4136,10 +4156,10 @@
     "size": "Small",
     "name": "Secret Room Floor Luck",
     "description": [
-      "+0.1 luck for the current floor when first entering a secret or super secret room."
+      "+0.08 luck for the current floor when first entering a secret or super secret room."
     ],
     "modifiers": {
-      "secretRoomFloorLuck": 0.1
+      "secretRoomFloorLuck": 0.08
     },
     "note": ""
   },
@@ -4257,10 +4277,10 @@
     "size": "Med",
     "name": "First Item Tears",
     "description": [
-      "+0.03 tears when first obtaining a passive item."
+      "+0.015 tears when first obtaining a passive item."
     ],
     "modifiers": {
-      "firstItemTears": 0.03
+      "firstItemTears": 0.015
     },
     "note": ""
   },
@@ -4305,10 +4325,10 @@
     "size": "Med",
     "name": "First Item Luck",
     "description": [
-      "+0.07 luck when first obtaining a passive item."
+      "+0.025 luck when first obtaining a passive item."
     ],
     "modifiers": {
-      "firstItemLuck": 0.07
+      "firstItemLuck": 0.025
     },
     "note": ""
   },
@@ -4500,11 +4520,11 @@
     "size": "Small",
     "name": "Boss Challenge Room Unlock",
     "description": [
-      "When entering a floor, +7% chance to unlock its boss challenge room regardless of hearts,",
+      "When entering a floor, +3.5% chance to unlock its boss challenge room regardless of hearts,",
       "if it's present."
     ],
     "modifiers": {
-      "bossChallengeUnlock": 7
+      "bossChallengeUnlock": 3.5
     },
     "note": ""
   },
@@ -4513,11 +4533,11 @@
     "size": "Med",
     "name": "Boss Challenge Room Unlock",
     "description": [
-      "When entering a floor, +20% chance to unlock its boss challenge room regardless of hearts,",
+      "When entering a floor, +10% chance to unlock its boss challenge room regardless of hearts,",
       "if it's present."
     ],
     "modifiers": {
-      "bossChallengeUnlock": 20
+      "bossChallengeUnlock": 10
     },
     "note": ""
   },
@@ -4526,10 +4546,11 @@
     "size": "Small",
     "name": "Trinket Smelting On Floor",
     "description": [
-      "When entering a new floor, +2% chance to smelt your currently held trinket."
+      "When entering a new floor, +1% chance to smelt your currently held trinket.",
+      "If you have more than 1 trinket, smelts only the topmost one."
     ],
     "modifiers": {
-      "floorSmeltTrinket": 2
+      "floorSmeltTrinket": 1
     },
     "note": ""
   },
@@ -4538,10 +4559,11 @@
     "size": "Med",
     "name": "Trinket Smelting On Floor",
     "description": [
-      "When entering a new floor, +5% chance to smelt your currently held trinket."
+      "When entering a new floor, +2.5% chance to smelt your currently held trinket.",
+      "If you have more than 1 trinket, smelts only the topmost one."
     ],
     "modifiers": {
-      "floorSmeltTrinket": 5
+      "floorSmeltTrinket": 2.5
     },
     "note": ""
   },
@@ -4550,11 +4572,11 @@
     "size": "Small",
     "name": "Shop Saving",
     "description": [
-      "When first entering a shop, +4% chance to reduce a random item's price",
-      "by 2-4 coins."
+      "When first entering a shop, +2% chance to reduce a random item's price",
+      "by 2-3 coins."
     ],
     "modifiers": {
-      "shopSaving": 4
+      "shopSaving": 2
     },
     "note": ""
   },
@@ -4563,12 +4585,6907 @@
     "size": "Med",
     "name": "Shop Saving",
     "description": [
-      "When first entering a shop, +10% chance to reduce a random item's price",
+      "When first entering a shop, +6% chance to reduce a random item's price",
       "by 2-4 coins."
     ],
     "modifiers": {
-      "shopSaving": 10
+      "shopSaving": 6
     },
     "note": ""
+  },
+  {
+    "type": 338,
+    "size": "Small",
+    "name": "Curse All Stats",
+    "description": [
+      "+0.2% all stats while a level curse is present."
+    ],
+    "modifiers": {
+      "curseAllstats": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 339,
+    "size": "Med",
+    "name": "Curse All Stats",
+    "description": [
+      "+0.8% all stats while a level curse is present."
+    ],
+    "modifiers": {
+      "curseAllstats": 0.8
+    },
+    "note": ""
+  },
+  {
+    "type": 340,
+    "size": "Small",
+    "name": "Curse Room Spikes Removal",
+    "description": [
+      "When entering a floor containing curse rooms, 3% chance to change all spiked doors",
+      "to regular ones."
+    ],
+    "modifiers": {
+      "curseRoomSpikesOut": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 341,
+    "size": "Med",
+    "name": "Curse Room Spikes Removal",
+    "description": [
+      "When entering a floor containing curse rooms, 8% chance to change all spiked doors",
+      "to regular ones."
+    ],
+    "modifiers": {
+      "curseRoomSpikesOut": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 342,
+    "size": "Small",
+    "name": "Golden Key Chance",
+    "description": [
+      "0.04% chance for dropped keys to be replaced with a golden key, once per floor."
+    ],
+    "modifiers": {
+      "goldenKeyConvert": 0.04
+    },
+    "note": ""
+  },
+  {
+    "type": 343,
+    "size": "Small",
+    "name": "Sacrifice Room Red Hearts",
+    "description": [
+      "5% chance for a red heart to drop when using a sacrifice room, up to 4 times."
+    ],
+    "modifiers": {
+      "sacrificeRoomHearts": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 344,
+    "size": "Med",
+    "name": "Sacrifice Room Red Hearts",
+    "description": [
+      "12% chance for a red heart to drop when using a sacrifice room, up to 4 times."
+    ],
+    "modifiers": {
+      "sacrificeRoomHearts": 12
+    },
+    "note": ""
+  },
+  {
+    "type": 345,
+    "size": "Small",
+    "name": "Natural Curse Cleanse",
+    "description": [
+      "When entering a floor, 2% chance to receive no natural curses.",
+      "Does not prevent curses caused by other special effects."
+    ],
+    "modifiers": {
+      "naturalCurseCleanse": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 346,
+    "size": "Med",
+    "name": "Natural Curse Cleanse",
+    "description": [
+      "When entering a floor, 8% chance to receive no natural curses.",
+      "Does not prevent curses caused by other special effects."
+    ],
+    "modifiers": {
+      "naturalCurseCleanse": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 347,
+    "size": "Small",
+    "name": "Golden Trinkets",
+    "description": [
+      "When first grabbing a trinket, 0.02% chance to turn it into its golden version.",
+      "Requires having golden trinkets unlocked."
+    ],
+    "modifiers": {
+      "goldenTrinkets": 0.02
+    },
+    "note": ""
+  },
+  {
+    "type": 348,
+    "size": "Med",
+    "name": "Golden Trinkets",
+    "description": [
+      "When first grabbing a trinket, 0.12% chance to turn it into its golden version.",
+      "Requires having golden trinkets unlocked."
+    ],
+    "modifiers": {
+      "goldenTrinkets": 0.12
+    },
+    "note": ""
+  },
+  {
+    "type": 349,
+    "size": "Small",
+    "name": "Champion Monsters",
+    "description": [
+      "0.4% additional chance for monsters to become champions."
+    ],
+    "modifiers": {
+      "championChance": 0.4
+    },
+    "note": ""
+  },
+  {
+    "type": 350,
+    "size": "Med",
+    "name": "Champion Monsters",
+    "description": [
+      "2% additional chance for monsters to become champions."
+    ],
+    "modifiers": {
+      "championChance": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 351,
+    "size": "Small",
+    "name": "Active Item Reroll",
+    "description": [
+      "When first entering a room, 0.6% chance to reroll active item pedestals into",
+      "random passive items if you are holding an active item.",
+      "This effect can reroll up to 2 items per floor."
+    ],
+    "modifiers": {
+      "activeItemReroll": 0.6
+    },
+    "note": ""
+  },
+  {
+    "type": 352,
+    "size": "Med",
+    "name": "Active Item Reroll",
+    "description": [
+      "When first entering a room, 3% chance to reroll active item pedestals into",
+      "random passive items if you are holding an active item.",
+      "This effect can reroll up to 2 items per floor."
+    ],
+    "modifiers": {
+      "activeItemReroll": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 353,
+    "size": "Large",
+    "name": "Spider Mod!",
+    "description": [
+      "Begin the game with Spider Mod.",
+      "Spider Mod's spider familiar no longer appears.",
+      "Spider Mod can no longer show up naturally."
+    ],
+    "modifiers": {
+      "spiderMod": true
+    },
+    "note": ""
+  },
+  {
+    "type": 354,
+    "size": "Large",
+    "name": "Eldritch Mapping",
+    "description": [
+      "Whenever Curse of the Lost is or becomes present, remove it.",
+      "When this happens, receive -4% all stats for the current floor, up to -12%.",
+      "When removing Curse of the Lost, +10% chance to receive a curse on the next floor.",
+      "This effect can trigger up to 3 times per floor."
+    ],
+    "modifiers": {
+      "eldritchMapping": true
+    },
+    "note": ""
+  },
+  {
+    "type": 355,
+    "size": "Large",
+    "name": "Coalescing Soul",
+    "description": [
+      "When entering a floor, 3% chance to drop a soul stone corresponding to your character.",
+      "This effect can only trigger once per run.",
+      "Doesn't trigger on first floor."
+    ],
+    "modifiers": {
+      "coalescingSoulChance": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 356,
+    "size": "Large",
+    "name": "Warped Coalescence",
+    "description": [
+      "Coalescing Soul can now trigger an additional 2 times per run, and gains +2% base trigger chance.",
+      "40% chance for Coalescing Soul to drop a random soul stone instead of",
+      "the one matching your character."
+    ],
+    "modifiers": {
+      "warpedCoalescence": true,
+      "coalescingSoulChance": 2,
+      "coalescingSoulProcs": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 357,
+    "size": "Small",
+    "name": "Coalescing Soul Chance",
+    "description": [
+      "+0.1% Coalescing Soul trigger chance when clearing a room without taking damage.",
+      "-0.2% Coalescing Soul trigger chance when hit by a monster."
+    ],
+    "modifiers": {
+      "coalSoulRoomClearChance": 0.1,
+      "coalSoulHitChance": -0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 358,
+    "size": "Small",
+    "name": "Soul Stone All Stats",
+    "description": [
+      "+0.5% all stats when using a soul stone matching your character, once per run.",
+      "-0.2% all stats while you haven't used a soul stone matching your character."
+    ],
+    "modifiers": {
+      "soulStoneAllstats": 0.5,
+      "soulStoneUnusedAllstats": -0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 359,
+    "size": "Med",
+    "name": "Coalescing Soul Chance",
+    "description": [
+      "+0.3% Coalescing Soul trigger chance when clearing a room without taking damage.",
+      "-0.5% Coalescing Soul trigger chance when hit by a monster."
+    ],
+    "modifiers": {
+      "coalSoulRoomClearChance": 0.3,
+      "coalSoulHitChance": -0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 360,
+    "size": "Med",
+    "name": "Soul Stone All Stats",
+    "description": [
+      "+1.5% all stats when using a soul stone matching your character, once per run.",
+      "-0.6% all stats while you haven't used a soul stone matching your character."
+    ],
+    "modifiers": {
+      "soulStoneAllstats": 1.5,
+      "soulStoneUnusedAllstats": -0.6
+    },
+    "note": ""
+  },
+  {
+    "type": 361,
+    "size": "Small",
+    "name": "Obtained Item Damage",
+    "description": [
+      "+0.25% damage per obtained item."
+    ],
+    "modifiers": {
+      "obtainedItemDamage": 0.25
+    },
+    "note": ""
+  },
+  {
+    "type": 362,
+    "size": "Small",
+    "name": "Obtained Item Tears",
+    "description": [
+      "+0.25% tears per obtained item."
+    ],
+    "modifiers": {
+      "obtainedItemTears": 0.25
+    },
+    "note": ""
+  },
+  {
+    "type": 363,
+    "size": "Small",
+    "name": "Obtained Item Range",
+    "description": [
+      "+0.3% range per obtained item."
+    ],
+    "modifiers": {
+      "obtainedItemRange": 0.3
+    },
+    "note": ""
+  },
+  {
+    "type": 364,
+    "size": "Small",
+    "name": "Flawless Boss Clear Luck",
+    "description": [
+      "+0.03 luck when clearing a boss room without taking damage."
+    ],
+    "modifiers": {
+      "flawlessBossLuck": 0.03
+    },
+    "note": ""
+  },
+  {
+    "type": 365,
+    "size": "Small",
+    "name": "Void Consumption Luck",
+    "description": [
+      "+0.02 luck when consuming an item with Void."
+    ],
+    "modifiers": {
+      "voidConsumeLuck": 0.02
+    },
+    "note": ""
+  },
+  {
+    "type": 366,
+    "size": "Small",
+    "name": "Rune Shard Spawn",
+    "description": [
+      "3% chance to spawn a Rune Shard when using a Dice Shard."
+    ],
+    "modifiers": {
+      "diceShardRuneShard": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 367,
+    "size": "Small",
+    "name": "Runic Speed",
+    "description": [
+      "+0.2% speed when using a Rune or Rune Shard, up to 22%.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "runicSpeed": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 368,
+    "size": "Med",
+    "name": "Flawless Boss Clear Luck",
+    "description": [
+      "+0.1 luck when clearing a boss room without taking damage."
+    ],
+    "modifiers": {
+      "flawlessBossLuck": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 369,
+    "size": "Med",
+    "name": "Void Consumption Luck",
+    "description": [
+      "+0.06 luck when consuming an item with Void."
+    ],
+    "modifiers": {
+      "voidConsumeLuck": 0.06
+    },
+    "note": ""
+  },
+  {
+    "type": 370,
+    "size": "Med",
+    "name": "Rune Shard Spawn",
+    "description": [
+      "8% chance to spawn a Rune Shard when using a Dice Shard."
+    ],
+    "modifiers": {
+      "diceShardRuneShard": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 371,
+    "size": "Med",
+    "name": "Runic Speed",
+    "description": [
+      "+1% speed when using a Rune or Rune Shard, up to 22%.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "runicSpeed": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 372,
+    "size": "Large",
+    "name": "Vacuophobia",
+    "description": [
+      "Begin the game with Birthright.",
+      "-1% all stats per missing item in your inventory.",
+      "-4% all stats while you're not holding a trinket.",
+      "-4% all stats while you're not holding an active item.",
+      "-4% all stats while your pocket slots are empty."
+    ],
+    "modifiers": {
+      "vacuophobia": true
+    },
+    "note": ""
+  },
+  {
+    "type": 373,
+    "size": "Large",
+    "name": "Consuming Void",
+    "description": [
+      "When entering a floor, if your inventory is full, spawn Void.",
+      "Void now gets consumed on use.",
+      "+20% all stats when consuming an item with void.",
+      "Halve the current stats bonus from this effect when clearing a room."
+    ],
+    "modifiers": {
+      "consumingVoid": true
+    },
+    "note": ""
+  },
+  {
+    "type": 374,
+    "size": "Large",
+    "name": "Fractured Remains",
+    "description": [
+      "Start the game with a Dice Shard.",
+      "Clearing a regular room without taking damage has a 3% chance of spawning a Dice Shard.",
+      "Clearing a regular room without taking damage has a 7% chance of spawning a Rune Shard.",
+      "Clearing a boss room without taking damage has a 75% chance of spawning a Dice Shard.",
+      "Clearing a boss room without taking damage spawns two Rune Shards."
+    ],
+    "modifiers": {
+      "fracturedRemains": true
+    },
+    "note": ""
+  },
+  {
+    "type": 375,
+    "size": "Med",
+    "name": "Rune Shard Stacking",
+    "description": [
+      "You can now stack rune shards. Reaching 15 stacks drops a random rune.",
+      "Stacks can be accumulated while holding any rune or rune shard."
+    ],
+    "modifiers": {
+      "runeshardStacking": true,
+      "runeshardStacksReq": 15
+    },
+    "note": ""
+  },
+  {
+    "type": 376,
+    "size": "Small",
+    "name": "Rune Shard Assembly Stacks",
+    "description": [
+      "-1 required rune shard stacks to assemble a rune."
+    ],
+    "modifiers": {
+      "runeshardStacksReq": -1
+    },
+    "note": ""
+  },
+  {
+    "type": 377,
+    "size": "Small",
+    "name": "Black Rune Assembly",
+    "description": [
+      "1% chance for the random rune assembled from rune shards to be a Black Rune."
+    ],
+    "modifiers": {
+      "blackRuneAssembly": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 378,
+    "size": "Med",
+    "name": "Black Rune Assembly",
+    "description": [
+      "4% chance for the random rune assembled from rune shards to be a Black Rune."
+    ],
+    "modifiers": {
+      "blackRuneAssembly": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 379,
+    "size": "Large",
+    "name": "Sinistral Runemaster",
+    "description": [
+      "+20% chance for items consumed with Black Runes to be obtained as innate items.",
+      "Improve rune effects:",
+      "- Hagalaz: additionally trigger Dad's Key's effect.",
+      "- Jera: duplicated pickups have an 8% chance of becoming a special version.",
+      "- Ehwaz: +3% all stats for the next floor if you step into a trapdoor in the current room.",
+      "- Dagaz: +3% all stats for the current floor per cleansed curse.",
+      "These effects only have a 75% chance to trigger if you have Dextral Runemaster allocated."
+    ],
+    "modifiers": {
+      "sinistralRunemaster": true,
+      "blackRuneAbsorb": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 380,
+    "size": "Large",
+    "name": "Dextral Runemaster",
+    "description": [
+      "+20% chance for items consumed with Black Runes to be obtained as innate items.",
+      "Improve rune effects:",
+      "- Ansuz: on use, +15% chance to trigger a map reveal on the next floor.",
+      "- Perthro: a random item pedestal gains an additional item choice from the treasure room pool.",
+      "- Berkano: gain Hive Mind innately for the current floor. If you already have it, spawn twice as",
+      "many spiders and flies.",
+      "- Algiz: +7% damage and tears for 20 seconds.",
+      "- Blank rune: additionally trigger a Rune Shard's effect.",
+      "These effects only have a 75% chance to trigger if you have Sinistral Runemaster allocated."
+    ],
+    "modifiers": {
+      "dextralRunemaster": true,
+      "blackRuneAbsorb": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 381,
+    "size": "Large",
+    "name": "Tainted Health",
+    "description": [
+      "+0.1 damage per 1/2 remaining red heart above 2 hearts.",
+      "+3% tears per 1/2 remaining soul heart.",
+      "-15% speed while you have 3 or less remaining red hearts."
+    ],
+    "modifiers": {
+      "taintedHealth": true
+    },
+    "note": ""
+  },
+  {
+    "type": 382,
+    "size": "Large",
+    "name": "Test of Temperance",
+    "description": [
+      "5% chance to drop a 1/2 red heart pickup when hitting a boss, which vanishes after 2 seconds.",
+      "This effect has a 0.5 second cooldown once triggered.",
+      "If you have more than 2 remaining red hearts, receive an additional 1/2 heart",
+      "damage when hit in boss rooms."
+    ],
+    "modifiers": {
+      "testOfTemperance": true
+    },
+    "note": ""
+  },
+  {
+    "type": 383,
+    "size": "Large",
+    "name": "Bloodful",
+    "description": [
+      "Start with Blood Oath.",
+      "+1% all stats per red heart collected in the current room, up to +10%.",
+      "-5% all stats while you haven't collected any red hearts in the current room."
+    ],
+    "modifiers": {
+      "bloodful": true
+    },
+    "note": ""
+  },
+  {
+    "type": 384,
+    "size": "Large",
+    "name": "Lingering Malice",
+    "description": [
+      "Start with a smelted Lost Cork.",
+      "Creep left by you can damage flying enemies.",
+      "+20% damage dealt by creep."
+    ],
+    "modifiers": {
+      "lingeringMalice": true,
+      "creepDamage": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 385,
+    "size": "Small",
+    "name": "Remaining Hearts Speed",
+    "description": [
+      "+0.01 speed per 1/2 remaining red heart past 2."
+    ],
+    "modifiers": {
+      "remainingHeartsSpeed": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 386,
+    "size": "Small",
+    "name": "Remaining Hearts Damage",
+    "description": [
+      "+0.01 damage per 1/2 remaining red heart past 2."
+    ],
+    "modifiers": {
+      "remainingHeartsDmg": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 387,
+    "size": "Small",
+    "name": "Remaining Hearts Tears",
+    "description": [
+      "+0.01 tears per 1/2 remaining red heart past 2."
+    ],
+    "modifiers": {
+      "remainingHeartsTears": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 388,
+    "size": "Small",
+    "name": "Temporary Heart Time",
+    "description": [
+      "+0.05 seconds to temporary red heart pickups before they vanish."
+    ],
+    "modifiers": {
+      "temporaryHeartTime": 0.05
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 389,
+    "size": "Small",
+    "name": "Temporary Heart Damage",
+    "description": [
+      "+0.5% damage for 2 seconds after picking up a temporary red heart.",
+      "Modifiers that increase temporary heart duration also affect this buff's time."
+    ],
+    "modifiers": {
+      "temporaryHeartDmg": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 390,
+    "size": "Small",
+    "name": "Temporary Heart Tears",
+    "description": [
+      "+0.5% tears for 2 seconds after picking up a temporary red heart.",
+      "Modifiers that increase temporary heart duration also affect this buff's time."
+    ],
+    "modifiers": {
+      "temporaryHeartTears": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 391,
+    "size": "Small",
+    "name": "Creep Damage",
+    "description": [
+      "+1% damage dealt by creep."
+    ],
+    "modifiers": {
+      "creepDamage": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 392,
+    "size": "Med",
+    "name": "Temporary Heart Time",
+    "description": [
+      "+0.2 seconds to temporary red heart pickups before they vanish."
+    ],
+    "modifiers": {
+      "temporaryHeartTime": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 393,
+    "size": "Med",
+    "name": "Temporary Heart Damage",
+    "description": [
+      "+2% damage for 2 seconds after picking up a temporary red heart."
+    ],
+    "modifiers": {
+      "temporaryHeartDmg": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 394,
+    "size": "Med",
+    "name": "Temporary Heart Tears",
+    "description": [
+      "+2% tears for 2 seconds after picking up a temporary red heart."
+    ],
+    "modifiers": {
+      "temporaryHeartTears": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 395,
+    "size": "Med",
+    "name": "Creep Damage",
+    "description": [
+      "+4% damage dealt by creep."
+    ],
+    "modifiers": {
+      "creepDamage": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 396,
+    "size": "Small",
+    "name": "Half Heart Pickup Conversion",
+    "description": [
+      "0.4% chance to convert dropped 1/2 red heart pickups into full red hearts."
+    ],
+    "modifiers": {
+      "halfHeartPickupToFull": 0.4
+    },
+    "note": ""
+  },
+  {
+    "type": 397,
+    "size": "Med",
+    "name": "Half Heart Pickup Conversion",
+    "description": [
+      "2% chance to convert dropped 1/2 red heart pickups into full red hearts."
+    ],
+    "modifiers": {
+      "halfHeartPickupToFull": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 398,
+    "size": "Small",
+    "name": "Temporary Heart Luck",
+    "description": [
+      "40% chance to gain 0.01 luck when picking up a temporary red heart while its lifetime has 1.8",
+      "seconds or more remaining.",
+      "Total bonus gets halved when entering a new floor."
+    ],
+    "modifiers": {
+      "temporaryHeartLuck": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 399,
+    "size": "Small",
+    "name": "Blood Donation Temporary Hearts",
+    "description": [
+      "2% chance to drop a 1/2 red heart when using a Blood Donation Machine, which vanishes",
+      "after 2 seconds."
+    ],
+    "modifiers": {
+      "bloodDonoTempHeart": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 400,
+    "size": "Med",
+    "name": "Blood Donation Temporary Hearts",
+    "description": [
+      "8% chance to drop a 1/2 red heart when using a Blood Donation Machine, which vanishes",
+      "after 2 seconds."
+    ],
+    "modifiers": {
+      "bloodDonoTempHeart": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 401,
+    "size": "Small",
+    "name": "Troll Bomb Disarm",
+    "description": [
+      "0.2% chance to turn troll and super troll bombs into regular bomb pickups."
+    ],
+    "modifiers": {
+      "trollBombDisarm": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 402,
+    "size": "Med",
+    "name": "Troll Bomb Disarm",
+    "description": [
+      "0.7% chance to turn troll and super troll bombs into regular bomb pickups."
+    ],
+    "modifiers": {
+      "trollBombDisarm": 0.7
+    },
+    "note": ""
+  },
+  {
+    "type": 403,
+    "size": "Large",
+    "name": "Ransacking",
+    "description": [
+      "Bag of Crafting's melee attack gains an additional 25% of your damage.",
+      "Killing an enemy with Bag of Crafting's melee attack has a 10% chance to spawn a",
+      "coin/key/bomb/half heart, up to 5 per room.",
+      "+0.02 luck when killing an enemy with Bag of Crafting's melee attack."
+    ],
+    "modifiers": {
+      "ransacking": true,
+      "craftBagMeleeDmgInherit": 25
+    },
+    "note": ""
+  },
+  {
+    "type": 404,
+    "size": "Large",
+    "name": "Magic Bag",
+    "description": [
+      "When crafting an item, additionally drop one of the pickups used to craft it.",
+      "+0.5% all stats per pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "magicBag": true
+    },
+    "note": ""
+  },
+  {
+    "type": 405,
+    "size": "Large",
+    "name": "Opportunist",
+    "description": [
+      "When grabbing a pickup with the Bag of Crafting, trigger an effect based on the pickup:",
+      "- Red hearts: 30% chance to heal 1/2 red heart.",
+      "- Soul/black hearts: 15% chance to add 1/2 of the grabbed heart.",
+      "- Coins/keys/bombs: 15% chance to grant the grabbed pickup as if collected normally.",
+      "- Batteries: 15% chance to add 2 charges to your active items.",
+      "- Runes: triggers Rune Shard's effect.",
+      "- Cards: permanent +0.5% luck."
+    ],
+    "modifiers": {
+      "opportunist": true
+    },
+    "note": ""
+  },
+  {
+    "type": 406,
+    "size": "Small",
+    "name": "Bag Of Crafting Melee Damage",
+    "description": [
+      "Bag of Crafting's melee attack gains an additional 3% of your damage."
+    ],
+    "modifiers": {
+      "craftBagMeleeDmgInherit": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 407,
+    "size": "Small",
+    "name": "Crafting Pickup Recovery",
+    "description": [
+      "1% chance to spawn one of the consumed pickups when crafting an item."
+    ],
+    "modifiers": {
+      "craftPickupRecovery": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 408,
+    "size": "Small",
+    "name": "Dropped Special Pickups",
+    "description": [
+      "0.05% chance for dropped pickups to be a special variant, such as golden/charged keys, golden",
+      "bombs, etc."
+    ],
+    "modifiers": {
+      "droppedSpecialPickups": 0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 409,
+    "size": "Small",
+    "name": "Item Crafting Luck",
+    "description": [
+      "+0.01 luck when crafting an item."
+    ],
+    "modifiers": {
+      "itemCraftingLuck": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 410,
+    "size": "Small",
+    "name": "Bag Bomb Pickup Buff",
+    "description": [
+      "+0.15% damage per bomb pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagBombDamage": 0.15
+    },
+    "note": ""
+  },
+  {
+    "type": 411,
+    "size": "Small",
+    "name": "Bag Key Pickup Buff",
+    "description": [
+      "+0.15% tears per key pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagKeyTears": 0.15
+    },
+    "note": ""
+  },
+  {
+    "type": 412,
+    "size": "Small",
+    "name": "Bag Coin Pickup Buff",
+    "description": [
+      "+0.15% range and luck per coin pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagCoinRangeLuck": 0.15
+    },
+    "note": ""
+  },
+  {
+    "type": 413,
+    "size": "Small",
+    "name": "Bag Heart Pickup Buff",
+    "description": [
+      "+0.07% speed per heart pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagHeartSpeed": 0.07
+    },
+    "note": ""
+  },
+  {
+    "type": 414,
+    "size": "Med",
+    "name": "Bag Of Crafting Melee Damage",
+    "description": [
+      "Bag of Crafting's melee attack gains an additional 10% of your damage."
+    ],
+    "modifiers": {
+      "craftBagMeleeDmgInherit": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 415,
+    "size": "Med",
+    "name": "Crafting Pickup Recovery",
+    "description": [
+      "4% chance to spawn one of the consumed pickups when crafting an item."
+    ],
+    "modifiers": {
+      "craftPickupRecovery": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 416,
+    "size": "Med",
+    "name": "Dropped Special Pickups",
+    "description": [
+      "0.2% chance for dropped pickups to be a special variant, such as golden/charged keys, golden",
+      "bombs, etc."
+    ],
+    "modifiers": {
+      "droppedSpecialPickups": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 417,
+    "size": "Med",
+    "name": "Bag Bomb Pickup Buff",
+    "description": [
+      "+0.5% damage per bomb pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagBombDamage": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 418,
+    "size": "Med",
+    "name": "Bag Key Pickup Buff",
+    "description": [
+      "+0.5% tears per key pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagKeyTears": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 419,
+    "size": "Med",
+    "name": "Bag Coin Pickup Buff",
+    "description": [
+      "+0.5% range and luck per coin pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagCoinRangeLuck": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 420,
+    "size": "Med",
+    "name": "Bag Heart Pickup Buff",
+    "description": [
+      "+0.2% speed per heart pickup in the crafting bag."
+    ],
+    "modifiers": {
+      "bagHeartSpeed": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 421,
+    "size": "Large",
+    "name": "Overwhelming Voice",
+    "description": [
+      "Siren's Song turns friendly monsters back into hostile enemies on use.",
+      "+5% damage for the current room per monster turned this way, up to 20%.",
+      "Siren's Song deals 6 damage to charmed monsters, which increases each floor."
+    ],
+    "modifiers": {
+      "overwhelmingVoice": true
+    },
+    "note": ""
+  },
+  {
+    "type": 422,
+    "size": "Small",
+    "name": "Additional Pedestal Pickup",
+    "description": [
+      "5% chance to spawn an additional coin/key/bomb/half heart pickup when collecting an",
+      "item pedestal.",
+      "Above 100% total chance, roll multiple times."
+    ],
+    "modifiers": {
+      "additionalPedestalPickup": 5
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 423,
+    "size": "Med",
+    "name": "Additional Pedestal Pickup",
+    "description": [
+      "25% chance to spawn an additional coin/key/bomb/half heart pickup when collecting an",
+      "item pedestal.",
+      "Above 100% total chance, roll multiple times."
+    ],
+    "modifiers": {
+      "additionalPedestalPickup": 25
+    },
+    "note": ""
+  },
+  {
+    "type": 424,
+    "size": "Large",
+    "name": "Grand Ingredient: Coins",
+    "description": [
+      "If the first pickup in the bag is a coin, gain an effect based on its type:",
+      "  - Penny: +3% luck and range.",
+      "  - Lucky Penny: +7% luck.",
+      "  - Nickel: gain 5 coins when crafting an item.",
+      "  - Dime: gain 10 coins when crafting an item.",
+      "  - Golden: +7% all stats.",
+      "Having more than 2 Grand Ingredient nodes allocated nullifies these effects."
+    ],
+    "modifiers": {
+      "grandIngredientCoins": true
+    },
+    "note": ""
+  },
+  {
+    "type": 425,
+    "size": "Large",
+    "name": "Grand Ingredient: Keys",
+    "description": [
+      "If the first pickup in the bag is a key, gain an effect based on its type:",
+      "  - Normal: +3% tears.",
+      "  - Golden: grants you 4 keys and triggers Dad's Key's effect when crafting an item.",
+      "  - Charged: grants an additional charge to your active items when clearing a room.",
+      "Having more than 2 Grand Ingredient nodes allocated nullifies these effects."
+    ],
+    "modifiers": {
+      "grandIngredientKeys": true
+    },
+    "note": ""
+  },
+  {
+    "type": 426,
+    "size": "Large",
+    "name": "Grand Ingredient: Bombs",
+    "description": [
+      "If the first pickup in the bag is a bomb, gain an effect based on its type:",
+      "  - Normal: +5% damage.",
+      "  - Golden: permanent +10% damage when crafting an item.",
+      "  - Giga: +30% damage.",
+      "Having more than 2 Grand Ingredient nodes allocated nullifies these effects."
+    ],
+    "modifiers": {
+      "grandIngredientBombs": true
+    },
+    "note": ""
+  },
+  {
+    "type": 427,
+    "size": "Large",
+    "name": "Grand Ingredient: Hearts",
+    "description": [
+      "If the first pickup in the bag is a heart, gain an effect based on its type:",
+      "  - Red: heal 1 red heart when crafting an item.",
+      "  - Soul: gain a soul heart when crafting an item.",
+      "  - Black: gain a black heart when crafting an item.",
+      "  - Eternal: fully heals you when crafting an item.",
+      "  - Golden: gain 7 coins when crafting an item.",
+      "  - Bone: gain an empty bone heart when crafting an item.",
+      "  - Rotten: spawn 2-4 blue spiders and 2-4 blue flies when crafting an item.",
+      "Having more than 2 Grand Ingredient nodes allocated nullifies these effects."
+    ],
+    "modifiers": {
+      "grandIngredientHearts": true
+    },
+    "note": ""
+  },
+  {
+    "type": 428,
+    "size": "Large",
+    "name": "Agile Expertise",
+    "description": [
+      "Trigger How To Jump's effect when using Dark Arts.",
+      "-2 seconds to Dark Arts' cooldown.",
+      "Reduce Dark Arts' cooldown by 1 second if it hits a boss."
+    ],
+    "modifiers": {
+      "agileExpertise": true,
+      "darkArtsCD": -2
+    },
+    "note": ""
+  },
+  {
+    "type": 429,
+    "size": "Large",
+    "name": "Stealth Tactics",
+    "description": [
+      "Start with 9 Volt.",
+      "Speed cannot exceed 1.2 while Dark Arts is active.",
+      "-60% damage with sources that aren't Dark Arts."
+    ],
+    "modifiers": {
+      "stealthTactics": true,
+      "nonDarkArtsDmg": -60
+    },
+    "note": ""
+  },
+  {
+    "type": 430,
+    "size": "Large",
+    "name": "Bounty For The Lightless",
+    "description": [
+      "Killing an enemy with Dark Arts has a 15% chance of granting half a black heart if you have",
+      "less than 4 black hearts.",
+      "Killing an enemy with Dark Arts grants +0.03 luck, up to +1 per floor."
+    ],
+    "modifiers": {
+      "lightlessBounty": true
+    },
+    "note": ""
+  },
+  {
+    "type": 431,
+    "size": "Large",
+    "name": "Annihilation",
+    "description": [
+      "The first time you hit a boss enemy with Dark Arts, deal an additional 40 damage or",
+      "10% of its HP as damage, whichever is highest.",
+      "Effect can only happen twice per room if multiple bosses are present.",
+      "25% chance to take an additional 1/2 heart damage from bosses if you have 3 or more black hearts."
+    ],
+    "modifiers": {
+      "annihilation": true
+    },
+    "note": ""
+  },
+  {
+    "type": 432,
+    "size": "Large",
+    "name": "Anarchy",
+    "description": [
+      "Enemies hit by Dark Arts have a 25% chance to spawn a troll bomb, up to thrice per room.",
+      "Enemies take 75% reduced damage from troll bombs.",
+      "Enemies killed by bombs reduce Dark Arts' cooldown by 0.5 seconds."
+    ],
+    "modifiers": {
+      "anarchy": true
+    },
+    "note": ""
+  },
+  {
+    "type": 433,
+    "size": "Small",
+    "name": "How To Jump Pulse",
+    "description": [
+      "5% chance to trigger a dark pulse when landing with How to Jump, dealing 150% of your",
+      "damage to nearby enemies."
+    ],
+    "modifiers": {
+      "howToJumpPulse": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 434,
+    "size": "Small",
+    "name": "Dark Arts Cooldown",
+    "description": [
+      "-0.1 seconds to Dark Arts' cooldown."
+    ],
+    "modifiers": {
+      "darkArtsCD": -0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 435,
+    "size": "Small",
+    "name": "Dark Arts Cooldown Reset",
+    "description": [
+      "2% chance to reset Dark Arts' cooldown when a monster hits you."
+    ],
+    "modifiers": {
+      "darkArtsCDReset": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 436,
+    "size": "Small",
+    "name": "Dark Arts Damage",
+    "description": [
+      "+4% Dark Arts damage.",
+      "+0.1 seconds to Dark Arts' cooldown."
+    ],
+    "modifiers": {
+      "darkArtsDmg": 4,
+      "darkArtsCD": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 437,
+    "size": "Small",
+    "name": "Dark Arts Tears Boost",
+    "description": [
+      "+3% tears for 2.5 seconds after using Dark Arts.",
+      "+0.1 seconds to Dark Arts' cooldown."
+    ],
+    "modifiers": {
+      "darkArtsTears": 3,
+      "darkArtsCD": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 438,
+    "size": "Small",
+    "name": "Non Dark Arts Damage",
+    "description": [
+      "+3% damage with sources that aren't Dark Arts."
+    ],
+    "modifiers": {
+      "nonDarkArtsDmg": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 439,
+    "size": "Small",
+    "name": "Dark Arts Kill Stat Boost",
+    "description": [
+      "For every 10th enemy killed with Dark Arts, gain +0.1% to a random stat.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "darkArtsKillStat": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 440,
+    "size": "Small",
+    "name": "Troll Bomb Protection",
+    "description": [
+      "4% chance for troll bombs to deal no damage to you."
+    ],
+    "modifiers": {
+      "trollBombProtection": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 441,
+    "size": "Small",
+    "name": "Troll Bomb Kill Luck",
+    "description": [
+      "+0.01 luck whenever a troll bomb kills an enemy."
+    ],
+    "modifiers": {
+      "trollBombKillLuck": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 442,
+    "size": "Med",
+    "name": "How To Jump Pulse",
+    "description": [
+      "15% chance to trigger a dark pulse when landing with How to Jump, dealing 150% of your",
+      "damage to nearby enemies."
+    ],
+    "modifiers": {
+      "howToJumpPulse": 15
+    },
+    "note": ""
+  },
+  {
+    "type": 443,
+    "size": "Med",
+    "name": "Dark Arts Cooldown",
+    "description": [
+      "-0.25 seconds to Dark Arts' cooldown."
+    ],
+    "modifiers": {
+      "darkArtsCD": -0.25
+    },
+    "note": ""
+  },
+  {
+    "type": 444,
+    "size": "Med",
+    "name": "Dark Arts Cooldown Reset",
+    "description": [
+      "6% chance to reset Dark Arts' cooldown when a monster hits you."
+    ],
+    "modifiers": {
+      "darkArtsCDReset": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 445,
+    "size": "Med",
+    "name": "Dark Arts Damage",
+    "description": [
+      "+20% dark arts damage.",
+      "+0.5 seconds to Dark Arts' cooldown."
+    ],
+    "modifiers": {
+      "darkArtsDmg": 20,
+      "darkArtsCD": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 446,
+    "size": "Med",
+    "name": "Dark Arts Tears Boost",
+    "description": [
+      "+12% tears for 2.5 seconds after using Dark Arts.",
+      "+0.4 seconds to Dark Arts' cooldown."
+    ],
+    "modifiers": {
+      "darkArtsTears": 12,
+      "darkArtsCD": 0.4
+    },
+    "note": ""
+  },
+  {
+    "type": 447,
+    "size": "Med",
+    "name": "Non Dark Arts Damage",
+    "description": [
+      "+10% damage with sources that aren't Dark Arts."
+    ],
+    "modifiers": {
+      "nonDarkArtsDmg": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 448,
+    "size": "Med",
+    "name": "Dark Arts Kill Stat Boost",
+    "description": [
+      "For every 10th enemy killed with Dark Arts, gain +0.5% to a random stat.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "darkArtsKillStat": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 449,
+    "size": "Med",
+    "name": "Troll Bomb Protection",
+    "description": [
+      "12% chance for troll bombs to deal no damage to you."
+    ],
+    "modifiers": {
+      "trollBombProtection": 12
+    },
+    "note": ""
+  },
+  {
+    "type": 450,
+    "size": "Large",
+    "name": "Alacritous Purpose",
+    "description": [
+      "+0.04 tears when destroying poop, up to +0.5. Resets every floor.",
+      "+0.04 luck when destroying poop, up to +2. Resets every floor.",
+      "The first poop you destroy per room spawns 3 blue flies, if you have less than 15",
+      "active blue flies."
+    ],
+    "modifiers": {
+      "alacritousPurpose": true
+    },
+    "note": ""
+  },
+  {
+    "type": 451,
+    "size": "Large",
+    "name": "Treasured Waste",
+    "description": [
+      "Your currently held poop grants a buff based on its type:",
+      "  - Normal: +0.02 all stats.",
+      "  - Corn: +2% all stats.",
+      "  - Flaming: hitting enemies has a 5% chance of applying burning.",
+      "  - Stinky: hitting enemies has a 5% chance of poisoning.",
+      "  - Black: hitting enemies has a 5% chance of confusing.",
+      "  - White: +8% damage and tears.",
+      "  - Stone: 8% chance to receive no damage when hit.",
+      "  - Fart: 40% chance to trigger Butter Bean's effect when hit.",
+      "  - Liquid: +6% speed."
+    ],
+    "modifiers": {
+      "treasuredWaste": true
+    },
+    "note": ""
+  },
+  {
+    "type": 452,
+    "size": "Large",
+    "name": "Ascetic Soul",
+    "description": [
+      "While you have 8 or more poop bombs, killing an enemy has a 7% chance of dropping a",
+      "1/2 soul heart, up to 5 per floor."
+    ],
+    "modifiers": {
+      "asceticSoul": true
+    },
+    "note": ""
+  },
+  {
+    "type": 453,
+    "size": "Large",
+    "name": "Sloth's Legacy",
+    "description": [
+      "Start with Bob's Rotten Head.",
+      "Hitting a boss with Bob's Rotten Head spawns 3 friendly chargers, once per floor.",
+      "Bob's Rotten Head deals 60% less damage."
+    ],
+    "modifiers": {
+      "slothLegacy": true
+    },
+    "note": ""
+  },
+  {
+    "type": 454,
+    "size": "Small",
+    "name": "Hold Poop Regain",
+    "description": [
+      "1% chance to regain the used poop when using Hold."
+    ],
+    "modifiers": {
+      "holdPoopRegain": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 455,
+    "size": "Small",
+    "name": "Hold Buffs",
+    "description": [
+      "+0.4% speed while Hold is empty.",
+      "+0.4% luck while Hold is not empty."
+    ],
+    "modifiers": {
+      "holdEmptySpeed": 0.4,
+      "holdFullLuck": 0.4
+    },
+    "note": ""
+  },
+  {
+    "type": 456,
+    "size": "Small",
+    "name": "Poop Damage Buff",
+    "description": [
+      "Gain +0.5% damage for 2 seconds after destroying room poops."
+    ],
+    "modifiers": {
+      "poopDamageBuff": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 457,
+    "size": "Small",
+    "name": "Poop Transmutation",
+    "description": [
+      "0.5% chance to transmute a random poop in your bar to a different version when obtaining a",
+      "poop pickup, using the following order:",
+      "Poop -> Fart -> Bomb -> Corn -> Stone -> Flaming -> Stinky -> Explosive Diarrhea ->",
+      "Liquid -> Black -> White"
+    ],
+    "modifiers": {
+      "poopTransmutation": 0.5
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 458,
+    "size": "Small",
+    "name": "Small Poop Pickup Upgrade",
+    "description": [
+      "1% chance to turn small poop pickups into large poops."
+    ],
+    "modifiers": {
+      "poopPickupEnlarge": 1
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 459,
+    "size": "Small",
+    "name": "Rainbow Poop Blessing",
+    "description": [
+      "+0.5% luck when destroying a rainbow poop, up to +35%.",
+      "Luck buff gets halved when entering a new floor.",
+      "5% chance to gain a soul heart when destroying a rainbow poop."
+    ],
+    "modifiers": {
+      "rainbowPoopLuck": 0.5,
+      "rainbowPoopSoul": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 460,
+    "size": "Small",
+    "name": "Bob's Head Fly Spawn",
+    "description": [
+      "8% chance for Bob's Rotten Head to spawn a blue fly per enemy hit, up to 8 per room."
+    ],
+    "modifiers": {
+      "bobHeadFlySpawn": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 461,
+    "size": "Small",
+    "name": "Brown Nugget On Hold",
+    "description": [
+      "1% chance to trigger Brown Nugget item's effect when emptying Hold, up to 5 times per room."
+    ],
+    "modifiers": {
+      "holdBrownNugget": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 462,
+    "size": "Small",
+    "name": "Special Poop Find",
+    "description": [
+      "0.5% chance for poops found in rooms to be replaced with special variants.",
+      "Can affect up to 4 poops per room."
+    ],
+    "modifiers": {
+      "specialPoopFind": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 463,
+    "size": "Med",
+    "name": "Hold Poop Regain",
+    "description": [
+      "5% chance to regain the used poop when using Hold."
+    ],
+    "modifiers": {
+      "holdPoopRegain": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 464,
+    "size": "Med",
+    "name": "Hold Buffs",
+    "description": [
+      "+1.2% speed while Hold is empty.",
+      "+1.2% luck while Hold is not empty."
+    ],
+    "modifiers": {
+      "holdEmptySpeed": 1.2,
+      "holdFullLuck": 1.2
+    },
+    "note": ""
+  },
+  {
+    "type": 465,
+    "size": "Med",
+    "name": "Poop Damage Buff",
+    "description": [
+      "Gain +2% damage for 2 seconds after destroying room poops."
+    ],
+    "modifiers": {
+      "poopDamageBuff": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 466,
+    "size": "Med",
+    "name": "Poop Transmutation",
+    "description": [
+      "1.2% chance to transmute a random poop in your bar to a different version when obtaining a",
+      "poop pickup, using the following order:",
+      "Poop -> Fart -> Bomb -> Corn -> Stone -> Flaming -> Stinky -> Explosive Diarrhea ->",
+      "Liquid -> Black -> White"
+    ],
+    "modifiers": {
+      "poopTransmutation": 1.2
+    },
+    "note": ""
+  },
+  {
+    "type": 467,
+    "size": "Med",
+    "name": "Small Poop Pickup Upgrade",
+    "description": [
+      "5% chance to turn small poop pickups into large poops."
+    ],
+    "modifiers": {
+      "poopPickupEnlarge": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 468,
+    "size": "Med",
+    "name": "Rainbow Poop Blessing",
+    "description": [
+      "+2% luck when destroying a rainbow poop, up to +35%.",
+      "Luck buff gets halved when entering a new floor.",
+      "20% chance to gain a soul heart when destroying a rainbow poop."
+    ],
+    "modifiers": {
+      "rainbowPoopLuck": 2,
+      "rainbowPoopSoul": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 469,
+    "size": "Med",
+    "name": "Bob's Head Fly Spawn",
+    "description": [
+      "20% chance for Bob's Rotten Head to spawn a blue fly per enemy hit, up to 8 per room."
+    ],
+    "modifiers": {
+      "bobHeadFlySpawn": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 470,
+    "size": "Med",
+    "name": "Brown Nugget On Hold",
+    "description": [
+      "5% chance to trigger Brown Nugget item's effect when emptying Hold, up to 5 times per room."
+    ],
+    "modifiers": {
+      "holdBrownNugget": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 471,
+    "size": "Med",
+    "name": "Special Poop Find",
+    "description": [
+      "2% chance for poops found in rooms to be replaced with special variants.",
+      "Can affect up to 4 poops per room."
+    ],
+    "modifiers": {
+      "specialPoopFind": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 472,
+    "size": "Large",
+    "name": "Bloodwrath",
+    "description": [
+      "Start with an additional red heart container.",
+      "-1.5% damage per 1/2 remaining red heart.",
+      "Whenever you lose red hearts, turn this reduction positive for 5 seconds."
+    ],
+    "modifiers": {
+      "bloodwrath": true
+    },
+    "note": ""
+  },
+  {
+    "type": 473,
+    "size": "Large",
+    "name": "Resilient Blood",
+    "description": [
+      "Blood clots have a 25% chance to receive no damage when hit.",
+      "Blood clots receive 50% less damage from hits."
+    ],
+    "modifiers": {
+      "resilientBlood": true
+    },
+    "note": ""
+  },
+  {
+    "type": 474,
+    "size": "Large",
+    "name": "Blessed Blood",
+    "description": [
+      "When entering a floor, if you don't have an eternal blood clot, spawn one.",
+      ""
+    ],
+    "modifiers": {
+      "blessedBlood": true
+    },
+    "note": ""
+  },
+  {
+    "type": 475,
+    "size": "Large",
+    "name": "Congealed Buddy",
+    "description": [
+      "Start with a smelted Lil Clot.",
+      "Lil Clot deals 20% more damage.",
+      "You deal 30% less damage."
+    ],
+    "modifiers": {
+      "congealedBuddy": true
+    },
+    "note": ""
+  },
+  {
+    "type": 476,
+    "size": "Small",
+    "name": "Blood Clot Heart Drop",
+    "description": [
+      "Blood clots have a 1% chance to drop their respective heart type when destroyed.",
+      "Dropped heart vanishes after 3 seconds."
+    ],
+    "modifiers": {
+      "clotHeartDrop": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 477,
+    "size": "Small",
+    "name": "Blood Clot Pulse Damage",
+    "description": [
+      "Blood clot pulse gains an additional 8% of your damage."
+    ],
+    "modifiers": {
+      "clotPulseDmgInherit": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 478,
+    "size": "Small",
+    "name": "Lil Clot Damage",
+    "description": [
+      "+2% Lil Clot damage."
+    ],
+    "modifiers": {
+      "lilClotDmg": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 479,
+    "size": "Small",
+    "name": "Red Clot Absorption Damage",
+    "description": [
+      "+0.3% damage for the current room per absorbed red clot.",
+      "Spawning a red clot reduces the current buff by this amount."
+    ],
+    "modifiers": {
+      "redClotAbsorbDmg": 0.3
+    },
+    "note": ""
+  },
+  {
+    "type": 480,
+    "size": "Small",
+    "name": "Soul Clot Absorption Tears",
+    "description": [
+      "+0.3% tears for the current room per absorbed soul clot.",
+      "Spawning a soul clot reduces the current buff by this amount."
+    ],
+    "modifiers": {
+      "soulClotAbsorbTears": 0.3
+    },
+    "note": ""
+  },
+  {
+    "type": 481,
+    "size": "Small",
+    "name": "Blood Clot Damage",
+    "description": [
+      "+2% damage dealt by all blood clots."
+    ],
+    "modifiers": {
+      "clotDmg": 2
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 482,
+    "size": "Small",
+    "name": "Red Clot Damage Per Heart",
+    "description": [
+      "+0.5% damage dealt by red clots per 1/2 remaining red heart."
+    ],
+    "modifiers": {
+      "redClotHeartDmg": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 483,
+    "size": "Small",
+    "name": "Soul Clot Damage Per Soul Heart",
+    "description": [
+      "+1% damage dealt by soul clots per 1/2 remaining soul heart."
+    ],
+    "modifiers": {
+      "soulClotHeartDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 484,
+    "size": "Small",
+    "name": "Black Clot Babylon Spawn",
+    "description": [
+      "2% chance to spawn a black clot when killing enemies while Whore of Babylon is active, if you",
+      "have less than 3 active black clots."
+    ],
+    "modifiers": {
+      "blackClotBabylon": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 485,
+    "size": "Med",
+    "name": "Blood Clot On-Hit Pulse",
+    "description": [
+      "Blood clots release a damaging pulse when hit, dealing 3 damage to nearby enemies."
+    ],
+    "modifiers": {
+      "clotHitPulse": true
+    },
+    "note": ""
+  },
+  {
+    "type": 486,
+    "size": "Small",
+    "name": "Clot Destroyed Luck",
+    "description": [
+      "2% chance to gain +0.03 luck when any clot is destroyed."
+    ],
+    "modifiers": {
+      "clotDestroyedLuck": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 487,
+    "size": "Large",
+    "name": "Mystic Vampirism",
+    "description": [
+      "Start with Charm of the Vampire.",
+      "Every 13 kills, 20% chance to transform an existing red heart clot into a random different",
+      "type of clot, up to 8 times per floor."
+    ],
+    "modifiers": {
+      "mysticVampirism": true
+    },
+    "note": ""
+  },
+  {
+    "type": 488,
+    "size": "Med",
+    "name": "Blood Clot Heart Drop",
+    "description": [
+      "Blood clots have a 3% chance to drop their respective heart type when destroyed.",
+      "Dropped heart vanishes after 3 seconds."
+    ],
+    "modifiers": {
+      "clotHeartDrop": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 489,
+    "size": "Med",
+    "name": "Lil Clot Damage",
+    "description": [
+      "+8% Lil Clot damage."
+    ],
+    "modifiers": {
+      "lilClotDmg": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 490,
+    "size": "Med",
+    "name": "Red Clot Absorption Damage",
+    "description": [
+      "+1% damage for the current room per absorbed red clot.",
+      "Spawning a red clot reduces the current buff by this amount."
+    ],
+    "modifiers": {
+      "redClotAbsorbDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 491,
+    "size": "Med",
+    "name": "Soul Clot Absorption Tears",
+    "description": [
+      "+1% tears for the current room per absorbed soul clot.",
+      "Spawning a soul clot reduces the current buff by this amount."
+    ],
+    "modifiers": {
+      "soulClotAbsorbTears": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 492,
+    "size": "Med",
+    "name": "Blood Clot Damage",
+    "description": [
+      "+6% damage dealt by all blood clots."
+    ],
+    "modifiers": {
+      "clotDmg": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 493,
+    "size": "Med",
+    "name": "Red Clot Damage Per Heart",
+    "description": [
+      "+2% damage dealt by red clots per 1/2 remaining red heart."
+    ],
+    "modifiers": {
+      "redClotHeartDmg": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 494,
+    "size": "Med",
+    "name": "Soul Clot Damage Per Soul Heart",
+    "description": [
+      "+4% damage dealt by soul clots per 1/2 remaining soul heart."
+    ],
+    "modifiers": {
+      "soulClotHeartDmg": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 495,
+    "size": "Med",
+    "name": "Black Clot Babylon Spawn",
+    "description": [
+      "8% chance to spawn a black clot when killing enemies while Whore of Babylon is active, if you",
+      "have less than 3 active black clots."
+    ],
+    "modifiers": {
+      "blackClotBabylon": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 496,
+    "size": "Large",
+    "name": "Balanced Approach",
+    "description": [
+      "Start with Libra."
+    ],
+    "modifiers": {
+      "balancedApproach": true
+    },
+    "note": ""
+  },
+  {
+    "type": 497,
+    "size": "Large",
+    "name": "Tempered",
+    "description": [
+      "When you enter a room with monsters, lose 30% of the current berserk charge.",
+      "Gain tears for the current room based on the lost charge.",
+      "If Absolute Rage is allocated, +30% tears while berserk."
+    ],
+    "modifiers": {
+      "tempered": true
+    },
+    "note": ""
+  },
+  {
+    "type": 498,
+    "size": "Large",
+    "name": "Violent Marauder",
+    "description": [
+      "Start with Suplex!.",
+      "Suplex! can only be used while berserk.",
+      "Using Suplex! while berserk is about to end removes it for the rest of the current floor."
+    ],
+    "modifiers": {
+      "violentMarauder": true
+    },
+    "note": ""
+  },
+  {
+    "type": 499,
+    "size": "Large",
+    "name": "Absolute Rage",
+    "description": [
+      "You are now berserk by default, and dealing damage reduces berserk's duration.",
+      "Once berserk runs out, passively gain berserk charge.",
+      "-70% damage while berserk.",
+      "-50% speed while berserk.",
+      "-30% tears while berserk.",
+      "If you obtain Birthright, halve the damage and speed reduction while berserk, and halve",
+      "the rate at which berserk's duration runs out on hit."
+    ],
+    "modifiers": {
+      "absoluteRage": true,
+      "berserkDmg": -70,
+      "berserkSpeed": -50
+    },
+    "note": ""
+  },
+  {
+    "type": 500,
+    "size": "Small",
+    "name": "Melee Damage",
+    "description": [
+      "+1% melee damage.",
+      "-0.5% non-melee damage."
+    ],
+    "modifiers": {
+      "meleeDmg": 1,
+      "nonMeleeDmg": -0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 501,
+    "size": "Small",
+    "name": "Berserk On-Hit Charge Gain",
+    "description": [
+      "When hitting enemies, gain an additional 0.4% berserk charge."
+    ],
+    "modifiers": {
+      "berserkHitChargeGain": 0.4
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 502,
+    "size": "Small",
+    "name": "Berserk Duration",
+    "description": [
+      "+0.05 seconds to total berserk duration."
+    ],
+    "modifiers": {
+      "berserkDuration": 0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 503,
+    "size": "Small",
+    "name": "Berserk Damage Vs Duration",
+    "description": [
+      "+2% damage during berserk.",
+      "-0.05 seconds to berserk duration."
+    ],
+    "modifiers": {
+      "berserkDmg": 2,
+      "berserkDuration": -0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 504,
+    "size": "Small",
+    "name": "Suplex Cooldown",
+    "description": [
+      "-0.05 seconds to Suplex's cooldown."
+    ],
+    "modifiers": {
+      "suplexCooldown": -0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 505,
+    "size": "Small",
+    "name": "Berserk Character Size",
+    "description": [
+      "+1% character size while berserk.",
+      "(Suplex! damage increases with character size)"
+    ],
+    "modifiers": {
+      "berserkSize": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 506,
+    "size": "Small",
+    "name": "Berserk Kill Vanishing Heart Drop",
+    "description": [
+      "2% chance for enemies to drop a 1/2 red heart on kill while berserk, which vanishes after 2 seconds."
+    ],
+    "modifiers": {
+      "berserkKillTempHeart": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 507,
+    "size": "Small",
+    "name": "Red Heart Pickup Luck",
+    "description": [
+      "2% chance to gain +0.03 luck when picking up red hearts, up to +1 per floor.",
+      "Triple the chance for vanishing red hearts."
+    ],
+    "modifiers": {
+      "redHeartLuckSamson": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 508,
+    "size": "Med",
+    "name": "Melee Damage",
+    "description": [
+      "+3% melee damage.",
+      "-1.5% non-melee damage."
+    ],
+    "modifiers": {
+      "meleeDmg": 3,
+      "nonMeleeDmg": -1.5
+    },
+    "note": ""
+  },
+  {
+    "type": 509,
+    "size": "Med",
+    "name": "Berserk On-Hit Charge Gain",
+    "description": [
+      "When hitting enemies, gain an additional 1% berserk charge."
+    ],
+    "modifiers": {
+      "berserkHitChargeGain": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 510,
+    "size": "Med",
+    "name": "Berserk Duration",
+    "description": [
+      "+0.2 seconds to total berserk duration."
+    ],
+    "modifiers": {
+      "berserkDuration": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 511,
+    "size": "Med",
+    "name": "Berserk Damage Vs Duration",
+    "description": [
+      "+6% damage during berserk.",
+      "-0.15 seconds to berserk duration."
+    ],
+    "modifiers": {
+      "berserkDmg": 6,
+      "berserkDuration": -0.15
+    },
+    "note": ""
+  },
+  {
+    "type": 512,
+    "size": "Med",
+    "name": "Suplex Cooldown",
+    "description": [
+      "-0.2 seconds to Suplex's cooldown."
+    ],
+    "modifiers": {
+      "suplexCooldown": -0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 513,
+    "size": "Med",
+    "name": "Berserk Character Size",
+    "description": [
+      "+3% character size while berserk.",
+      "(Suplex! damage increases with character size)"
+    ],
+    "modifiers": {
+      "berserkSize": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 514,
+    "size": "Med",
+    "name": "Berserk Kill Vanishing Heart Drop",
+    "description": [
+      "6% chance for enemies to drop a 1/2 red heart on kill while berserk, which vanishes after 2 seconds."
+    ],
+    "modifiers": {
+      "berserkKillTempHeart": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 515,
+    "size": "Small",
+    "name": "Berserk Speed Tradeoff",
+    "description": [
+      "+1% speed while not berserk.",
+      "-0.01 maximum speed while berserk"
+    ],
+    "modifiers": {
+      "berserkSpdTradeoff": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 516,
+    "size": "Med",
+    "name": "Berserk Speed Tradeoff",
+    "description": [
+      "+5% speed while not berserk.",
+      "-0.05 maximum speed while berserk"
+    ],
+    "modifiers": {
+      "berserkSpdTradeoff": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 517,
+    "size": "Large",
+    "name": "Curseborne",
+    "description": [
+      "When entering a room with monsters, apply Hemoptysis' curse to 1 random enemy for every 0.8 tears",
+      "stat you have.",
+      "Affects at least 1 monster."
+    ],
+    "modifiers": {
+      "curseborne": true,
+      "tears": -0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 518,
+    "size": "Large",
+    "name": "Gilded Regrowth",
+    "description": [
+      "Start with a smelted golden Bat Wing.",
+      "Gain demon wings if you kill 5 marked enemies in the current room.",
+      "-0.1 speed while you don't have flight."
+    ],
+    "modifiers": {
+      "gildedRegrowth": true
+    },
+    "note": ""
+  },
+  {
+    "type": 519,
+    "size": "Large",
+    "name": "Brimsoul",
+    "description": [
+      "Gain Brimstone while you have exactly 2 total black hearts.",
+      "Lose Brimstone while this condition is not met.",
+      "-40% damage while you have Brimstone.",
+      "Brimstone can no longer show up naturally."
+    ],
+    "modifiers": {
+      "brimsoul": true,
+      "brimstoneDmg": -40
+    },
+    "note": ""
+  },
+  {
+    "type": 520,
+    "size": "Large",
+    "name": "Dark Bestowal",
+    "description": [
+      "Every 20 cursed enemies killed, gain a random passive devil pool item.",
+      "Can only trigger once per room, and stops counting kills until you lose the granted item.",
+      "Lose the granted item after clearing 3 rooms while holding it."
+    ],
+    "modifiers": {
+      "darkBestowal": true
+    },
+    "note": ""
+  },
+  {
+    "type": 521,
+    "size": "Small",
+    "name": "Hemoptysis Slow Chance",
+    "description": [
+      "2% chance to slow enemies for 2 seconds when hitting them with Hemoptysis."
+    ],
+    "modifiers": {
+      "hemoptysisSlowChance": 2
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 522,
+    "size": "Small",
+    "name": "Cursed Enemy Kill Tears",
+    "description": [
+      "1% chance to gain +0.01 tears for the current floor when killing cursed enemies, up to +1."
+    ],
+    "modifiers": {
+      "cursedKillTears": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 523,
+    "size": "Small",
+    "name": "Proximity Damage",
+    "description": [
+      "+1% damage dealt to enemies, which falls off the further they are."
+    ],
+    "modifiers": {
+      "proximityDamage": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 524,
+    "size": "Small",
+    "name": "Hemoptysis Speed",
+    "description": [
+      "+1% speed for 1 second after hitting enemies with Hemoptysis."
+    ],
+    "modifiers": {
+      "hemoptysisSpeed": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 525,
+    "size": "Small",
+    "name": "Brimstone Damage",
+    "description": [
+      "+1% damage while you have Brimstone."
+    ],
+    "modifiers": {
+      "brimstoneDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 526,
+    "size": "Small",
+    "name": "Flightless Free Devil Deal Chance",
+    "description": [
+      "0.5% chance for devil deals to be free while you don't have flight."
+    ],
+    "modifiers": {
+      "flightlessDevilDeal": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 527,
+    "size": "Small",
+    "name": "Hemoptysis Kill Luck",
+    "description": [
+      "2% chance to gain +0.03 luck when killing enemies with Hemoptysis.",
+      "Double the chance while you have flight."
+    ],
+    "modifiers": {
+      "hemoptysisKillLuck": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 528,
+    "size": "Med",
+    "name": "Hemoptysis Slow Chance",
+    "description": [
+      "6% chance to slow enemies for 2 seconds when hitting them with Hemoptysis."
+    ],
+    "modifiers": {
+      "hemoptysisSlowChance": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 529,
+    "size": "Med",
+    "name": "Cursed Enemy Kill Tears",
+    "description": [
+      "4% chance to gain +0.01 tears for the current floor when killing cursed enemies, up to +1."
+    ],
+    "modifiers": {
+      "cursedKillTears": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 530,
+    "size": "Med",
+    "name": "Proximity Damage",
+    "description": [
+      "+4% damage dealt to enemies, which falls off the further they are."
+    ],
+    "modifiers": {
+      "proximityDamage": 4
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 531,
+    "size": "Med",
+    "name": "Hemoptysis Speed",
+    "description": [
+      "+3% speed for 1 second after hitting enemies with Hemoptysis."
+    ],
+    "modifiers": {
+      "hemoptysisSpeed": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 532,
+    "size": "Med",
+    "name": "Brimstone Damage",
+    "description": [
+      "+4% damage while you have Brimstone."
+    ],
+    "modifiers": {
+      "brimstoneDmg": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 533,
+    "size": "Med",
+    "name": "Flightless Free Devil Deal Chance",
+    "description": [
+      "2% chance for devil deals to be free while you don't have flight."
+    ],
+    "modifiers": {
+      "flightlessDevilDeal": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 534,
+    "size": "Large",
+    "name": "Ephemeral Bond",
+    "description": [
+      "+1 Ephemeral Bond.",
+      "When entering a floor, for each Ephemeral Bond, copy a random passive item you",
+      "currently have to your opposite form.",
+      "Copied items are removed when entering the next floor."
+    ],
+    "modifiers": {
+      "ephemeralBond": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 535,
+    "size": "Large",
+    "name": "Great Overlap",
+    "description": [
+      "Clearing a room without taking damage restores an additional charge of Flip.",
+      "30% chance to keep 2 charges of Flip on use. If charges aren't kept by this, roll a 50%",
+      "chance to keep 1 charge instead.",
+      "Taking damage has a 50% chance to remove 1 charge from Flip."
+    ],
+    "modifiers": {
+      "greatOverlap": true
+    },
+    "note": ""
+  },
+  {
+    "type": 536,
+    "size": "Large",
+    "name": "Entanglement",
+    "description": [
+      "Tainted Lazarus and Dead Tainted Lazarus' stats become the average between the two.",
+      "+5% all stats.",
+      "When you receive fatal damage, trigger flip instead of dying, and set the resulting form's",
+      "health to a 1/2 soul heart. This can only trigger once per run."
+    ],
+    "modifiers": {
+      "entanglement": true,
+      "allstatsPerc": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 537,
+    "size": "Large",
+    "name": "Spiritus",
+    "description": [
+      "Completing a floor without taking damage grants you Birthright for the next floor.",
+      "Birthright can no longer show up naturally."
+    ],
+    "modifiers": {
+      "spiritus": true
+    },
+    "note": ""
+  },
+  {
+    "type": 538,
+    "size": "Small",
+    "name": "Ephemeral Bond On Hitless Boss",
+    "description": [
+      "When entering a floor, 5% chance to gain 1 Ephemeral Bond if you defeated the last floor's",
+      "boss without taking damage.",
+      "Gained Ephemeral Bond lasts until next floor."
+    ],
+    "modifiers": {
+      "ephBondBossHitless": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 539,
+    "size": "Small",
+    "name": "Floor Ephemeral Bond",
+    "description": [
+      "When entering a floor, 2% chance to gain 1 Ephemeral Bond for the current floor."
+    ],
+    "modifiers": {
+      "ephBondFloor": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 540,
+    "size": "Small",
+    "name": "Flip Boss Hit Charge Recovery",
+    "description": [
+      "0.1% chance to recover 1 charge of Flip when hitting a Boss."
+    ],
+    "modifiers": {
+      "flipBossHitCharge": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 541,
+    "size": "Small",
+    "name": "Flip Special Room Charge",
+    "description": [
+      "2% chance to fully charge Flip when first entering a treasure, shop, devil or angel room."
+    ],
+    "modifiers": {
+      "flipSpecialRoomCharge": 2
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 542,
+    "size": "Small",
+    "name": "Monster HP Down On Flip",
+    "description": [
+      "-0.2% to all room monsters' hp when using Flip, up to 4 times per room."
+    ],
+    "modifiers": {
+      "flipMobHPDown": 0.3
+    },
+    "note": ""
+  },
+  {
+    "type": 543,
+    "size": "Small",
+    "name": "Wooden Chest On Floor",
+    "description": [
+      "1% chance to spawn a wooden chest when entering a floor.",
+      "Doesn't trigger on the first floor."
+    ],
+    "modifiers": {
+      "floorWoodenChest": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 544,
+    "size": "Small",
+    "name": "Form Stat Up On Kills",
+    "description": [
+      "+0.15% to a random stat for the current form, every 8 kills with the current form.",
+      "Resets every floor.",
+      "Triggers up to 8 times per floor."
+    ],
+    "modifiers": {
+      "lazFormKillStat": 0.15
+    },
+    "note": ""
+  },
+  {
+    "type": 545,
+    "size": "Small",
+    "name": "Form Heart Difference Luck",
+    "description": [
+      "+0.02 luck for every 1/2 heart difference between the two forms, up to +2. Counts total hearts of any type."
+    ],
+    "modifiers": {
+      "formHeartDiffLuck": 0.02
+    },
+    "note": ""
+  },
+  {
+    "type": 546,
+    "size": "Med",
+    "name": "Ephemeral Bond On Hitless Boss",
+    "description": [
+      "When entering a floor, 15% chance to gain 1 Ephemeral Bond if you defeated the last floor's",
+      "boss without taking damage.",
+      "Gained Ephemeral Bond lasts until next floor."
+    ],
+    "modifiers": {
+      "ephBondBossHitless": 15
+    },
+    "note": ""
+  },
+  {
+    "type": 547,
+    "size": "Med",
+    "name": "Floor Ephemeral Bond",
+    "description": [
+      "When entering a floor, 6% chance to gain 1 Ephemeral Bond for the current floor."
+    ],
+    "modifiers": {
+      "ephBondFloor": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 548,
+    "size": "Med",
+    "name": "Flip Boss Hit Charge Recovery",
+    "description": [
+      "0.5% chance to recover 1 charge of Flip when hitting a Boss."
+    ],
+    "modifiers": {
+      "flipBossHitCharge": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 549,
+    "size": "Med",
+    "name": "Flip Special Room Charge",
+    "description": [
+      "6% chance to fully charge Flip when first entering a treasure, shop, devil or angel room."
+    ],
+    "modifiers": {
+      "flipSpecialRoomCharge": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 550,
+    "size": "Med",
+    "name": "Monster HP Down On Flip",
+    "description": [
+      "-1% to all room monsters' hp when using Flip, up to 4 times per room."
+    ],
+    "modifiers": {
+      "flipMobHPDown": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 551,
+    "size": "Med",
+    "name": "Wooden Chest On Floor",
+    "description": [
+      "4% chance to spawn a wooden chest when entering a floor.",
+      "Doesn't trigger on the first floor."
+    ],
+    "modifiers": {
+      "floorWoodenChest": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 552,
+    "size": "Med",
+    "name": "Form Stat Up On Kills",
+    "description": [
+      "+0.5% to a random stat for the current form, every 8 kills with the current form.",
+      "Resets every floor.",
+      "Triggers up to 8 times per floor."
+    ],
+    "modifiers": {
+      "lazFormKillStat": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 553,
+    "size": "Large",
+    "name": "Serendipitous Soul",
+    "description": [
+      "Start with Eden's Soul.",
+      "Eden's Soul cannot be re-rolled, and you cannot grab other active items while holding it.",
+      "Empty Eden's Soul's charges when hit.",
+      "When using Eden's Soul, gain Birthright if you don't currently have it.",
+      "While holding Birthright, using any active item has a 25% chance of removing it.",
+      "Birthright can no longer show up naturally."
+    ],
+    "modifiers": {
+      "serendipitousSoul": true,
+      "birthrightActiveRemoveChance": 25
+    },
+    "note": ""
+  },
+  {
+    "type": 554,
+    "size": "Large",
+    "name": "Blessed Crucifix",
+    "description": [
+      "Start with a smelted Wooden Cross.",
+      "When you receive fatal damage while having a Wooden Cross (smelted or otherwise),",
+      "block the incoming hit and remove one Wooden Cross."
+    ],
+    "modifiers": {
+      "blessedCrucifix": true
+    },
+    "note": ""
+  },
+  {
+    "type": 555,
+    "size": "Large",
+    "name": "Normalized Vitality",
+    "description": [
+      "When entering a floor:",
+      "  - If you have less than 3 red hearts, gain a red heart container.",
+      "  - If you have more than 5 red hearts, lose a red heart container.",
+      "  - If you have less than 2 soul/black hearts, gain a soul heart.",
+      "  - If you have more than 4 soul/black hearts, lose a soul/black heart.",
+      "  - If you have broken hearts, remove one."
+    ],
+    "modifiers": {
+      "normalizedVitality": true
+    },
+    "note": ""
+  },
+  {
+    "type": 556,
+    "size": "Large",
+    "name": "Chaos Take The World",
+    "description": [
+      "Start with Chaos as an innate effect.",
+      "Getting hit triggers the effect of D10, once per room.",
+      "Using an active item with at least 2 charges additionally triggers the effect of Dead Sea Scrolls."
+    ],
+    "modifiers": {
+      "chaosTakeTheWorld": true
+    },
+    "note": ""
+  },
+  {
+    "type": 557,
+    "size": "Small",
+    "name": "Item Reroll Avoidance",
+    "description": [
+      "1% chance to not reroll items when hit by monsters."
+    ],
+    "modifiers": {
+      "rerollAvoidance": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 558,
+    "size": "Small",
+    "name": "Devil Active On Hit",
+    "description": [
+      "1% chance to trigger a random active item effect from the Devil item pool when hit, once per room."
+    ],
+    "modifiers": {
+      "devilActiveOnHit": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 559,
+    "size": "Small",
+    "name": "Angel Active On Hit",
+    "description": [
+      "1% chance to trigger a random active item effect from the Angel item pool when hit, once per room."
+    ],
+    "modifiers": {
+      "angelActiveOnHit": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 560,
+    "size": "Small",
+    "name": "Birthright Removal Chance",
+    "description": [
+      "-2% chance to remove Birthright when using an active item."
+    ],
+    "modifiers": {
+      "birthrightActiveRemoveChance": -2
+    },
+    "note": ""
+  },
+  {
+    "type": 561,
+    "size": "Small",
+    "name": "Shield Active Stat",
+    "description": [
+      "+0.2% to a random stat when using an active item while having a holy mantle or wooden cross",
+      "shield and there are monsters in the room, once per room.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "shieldActiveStat": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 562,
+    "size": "Small",
+    "name": "Treasure Item On Hit",
+    "description": [
+      "When hit, 1% chance to gain a random passive item from the treasure room pool for the current",
+      "room as an innate effect, excluding HP up items and items you already have.",
+      "This effect can only trigger once per room."
+    ],
+    "modifiers": {
+      "treasureItemOnHit": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 563,
+    "size": "Small",
+    "name": "Higher Quality Reroll Chance",
+    "description": [
+      "When items are re-rolled, 0.5% chance to additionally reroll one of the resulting items into an item",
+      "that's 1 quality higher.",
+      "This effect can only trigger up to 5 times per floor."
+    ],
+    "modifiers": {
+      "higherQualityReroll": 0.5
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 564,
+    "size": "Small",
+    "name": "Minimum Luck",
+    "description": [
+      "+0.05 minimum luck.",
+      "Requires allocating the \"Base Minimum Luck\" node to have any effect."
+    ],
+    "modifiers": {
+      "minLuck": 0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 565,
+    "size": "Med",
+    "name": "Base Minimum Luck",
+    "description": [
+      "Your minimum luck is now -1."
+    ],
+    "modifiers": {
+      "minLuckSet": true,
+      "minLuck": -1
+    },
+    "note": ""
+  },
+  {
+    "type": 566,
+    "size": "Med",
+    "name": "Item Reroll Avoidance",
+    "description": [
+      "4% chance to not reroll items when hit by monsters."
+    ],
+    "modifiers": {
+      "rerollAvoidance": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 567,
+    "size": "Med",
+    "name": "Devil Active On Hit",
+    "description": [
+      "4% chance to trigger a random active item effect from the Devil item pool when hit, once per room."
+    ],
+    "modifiers": {
+      "devilActiveOnHit": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 568,
+    "size": "Med",
+    "name": "Angel Active On Hit",
+    "description": [
+      "4% chance to trigger a random active item effect from the Angel item pool when hit, once per room."
+    ],
+    "modifiers": {
+      "angelActiveOnHit": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 569,
+    "size": "Med",
+    "name": "Birthright Removal Chance",
+    "description": [
+      "-5% chance to remove Birthright when using an active item."
+    ],
+    "modifiers": {
+      "birthrightActiveRemoveChance": -5
+    },
+    "note": ""
+  },
+  {
+    "type": 570,
+    "size": "Med",
+    "name": "Shield Active Stat",
+    "description": [
+      "+0.5% to a random stat when using an active item while having a holy mantle or wooden cross",
+      "shield and there are monsters in the room, once per room.",
+      "Resets every floor."
+    ],
+    "modifiers": {
+      "shieldActiveStat": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 571,
+    "size": "Med",
+    "name": "Treasure Item On Hit",
+    "description": [
+      "When hit, 4% chance to gain a random passive item from the treasure room pool for the current",
+      "room as an innate effect, excluding HP up items and items you already have.",
+      "This effect can only trigger once per room."
+    ],
+    "modifiers": {
+      "treasureItemOnHit": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 572,
+    "size": "Med",
+    "name": "Higher Quality Reroll Chance",
+    "description": [
+      "When items are re-rolled, 2% chance to additionally reroll one of the resulting items into an item",
+      "that's 1 quality higher.",
+      "This effect can only trigger up to 5 times per floor."
+    ],
+    "modifiers": {
+      "higherQualityReroll": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 573,
+    "size": "Large",
+    "name": "Glass Specter",
+    "description": [
+      "+0.12 speed and damage.",
+      "Your speed becomes a damage multiplier when above 1.",
+      "Halve the damage bonus while having a shield.",
+      "Every 4 rooms cleared while having any type of shield, remove all shields.",
+      "You no longer start with a Holy Card."
+    ],
+    "modifiers": {
+      "glassSpecter": true,
+      "damage": 0.12,
+      "speed": 0.12
+    },
+    "note": ""
+  },
+  {
+    "type": 574,
+    "size": "Large",
+    "name": "Helping Hands",
+    "description": [
+      "Devil/Angel rooms have a 50% chance of containing an additional Holy Card if you're not",
+      "currently holding one.",
+      "Picking up a Holy Card removes all other items in Devil/Angel rooms.",
+      "Picking up an item or deal in Devil/Angel rooms removes all dropped Holy Cards.",
+      "When defeating Mom, spawn a Holy Card if you're not currently holding one.",
+      "You can now stack Holy Cards by picking more up while holding one."
+    ],
+    "modifiers": {
+      "helpingHands": true
+    },
+    "note": ""
+  },
+  {
+    "type": 575,
+    "size": "Large",
+    "name": "Deferred Aegis",
+    "description": [
+      "Completing an entire floor without using more than 1 Holy Card grants you a holy mantle shield.",
+      "If Glass Specter is allocated, increase its shield removal delay by another 4 rooms."
+    ],
+    "modifiers": {
+      "deferredAegis": true
+    },
+    "note": ""
+  },
+  {
+    "type": 576,
+    "size": "Large",
+    "name": "Spin-down",
+    "description": [
+      "Start with Spindown Dice.",
+      "Remove Spindown Dice after using it twice.",
+      "-0.05 speed for each affected item in the room when using Spindown Dice, up to a total -0.35."
+    ],
+    "modifiers": {
+      "spindown": true
+    },
+    "note": ""
+  },
+  {
+    "type": 577,
+    "size": "Small",
+    "name": "Quality 0 Upgrade",
+    "description": [
+      "When first entering a room, 3% chance to reroll quality 0 items into a random quality 1 item",
+      "of the same pool.",
+      "Quality upgrade nodes only proc once depending on the item's initial quality."
+    ],
+    "modifiers": {
+      "quality0Upgrade": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 578,
+    "size": "Small",
+    "name": "Quality 1 Upgrade",
+    "description": [
+      "When first entering a room, 1% chance to reroll quality 1 items into a random quality 2 item",
+      "of the same pool.",
+      "Quality upgrade nodes only proc once depending on the item's initial quality."
+    ],
+    "modifiers": {
+      "quality1Upgrade": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 579,
+    "size": "Small",
+    "name": "Quality 2 Upgrade",
+    "description": [
+      "When first entering a room, 0.5% chance to reroll quality 2 items into a random quality 3 item",
+      "of the same pool.",
+      "Quality upgrade nodes only proc once depending on the item's initial quality."
+    ],
+    "modifiers": {
+      "quality2Upgrade": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 580,
+    "size": "Small",
+    "name": "Room Enter Speed",
+    "description": [
+      "+0.5% speed when entering a room with monsters, which decays to 0 over 4 seconds."
+    ],
+    "modifiers": {
+      "roomEnterSpd": 0.5
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 581,
+    "size": "Small",
+    "name": "Speed Decay Duration",
+    "description": [
+      "+0.1 seconds to the speed decay timer."
+    ],
+    "modifiers": {
+      "roomEnterSpdDecayDur": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 582,
+    "size": "Small",
+    "name": "Shieldless Boss Speed",
+    "description": [
+      "+0.01 speed for the next floor if you clear the boss room without having or receiving shields",
+      "at any point in the fight."
+    ],
+    "modifiers": {
+      "shieldlessBossSpeed": 0.01
+    },
+    "note": ""
+  },
+  {
+    "type": 583,
+    "size": "Small",
+    "name": "Champion Holy Card Drop",
+    "description": [
+      "0.1% chance for champion monsters to drop a Holy Card on death, once every 2 floors."
+    ],
+    "modifiers": {
+      "champHolyCardDrop": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 584,
+    "size": "Small",
+    "name": "Stairway Boon",
+    "description": [
+      "1% chance to receive The Stairway when clearing a boss room.",
+      "Getting hit halves the total chance for this effect to trigger, even if shields are present.",
+      "Entering a devil/angel room halves the total chance for this effect to trigger.",
+      "Remove The Stairway once it triggers when entering a floor."
+    ],
+    "modifiers": {
+      "stairwayBoon": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 585,
+    "size": "Small",
+    "name": "Death's Trial",
+    "description": [
+      "When receiving a fatal blow, 2% chance to trigger Forget Me Now's effect instead of dying.",
+      "After this happens:",
+      "  - Spawn Death.",
+      "  - Lose all holy cards and present shields.",
+      "  - Deactivate your items during this fight.",
+      "This effect can only trigger once per run."
+    ],
+    "modifiers": {
+      "deathTrial": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 586,
+    "size": "Small",
+    "name": "Holy Card Luck",
+    "description": [
+      "+0.05 luck for the current floor when using a Holy Card."
+    ],
+    "modifiers": {
+      "holyCardLuck": 0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 587,
+    "size": "Med",
+    "name": "Quality 0 Upgrade",
+    "description": [
+      "When first entering a room, 10% chance to reroll quality 0 items into a random quality 1 item",
+      "of the same pool.",
+      "Quality upgrade nodes only proc once depending on the item's initial quality."
+    ],
+    "modifiers": {
+      "quality0Upgrade": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 588,
+    "size": "Med",
+    "name": "Quality 1 Upgrade",
+    "description": [
+      "When first entering a room, 4% chance to reroll quality 1 items into a random quality 2 item",
+      "of the same pool.",
+      "Quality upgrade nodes only proc once depending on the item's initial quality."
+    ],
+    "modifiers": {
+      "quality1Upgrade": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 589,
+    "size": "Med",
+    "name": "Quality 2 Upgrade",
+    "description": [
+      "When first entering a room, 2% chance to reroll quality 2 items into a random quality 3 item",
+      "of the same pool.",
+      "Quality upgrade nodes only proc once depending on the item's initial quality."
+    ],
+    "modifiers": {
+      "quality2Upgrade": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 590,
+    "size": "Med",
+    "name": "Room Enter Speed",
+    "description": [
+      "+2% speed when entering a room with monsters, which decays to 0 over 4 seconds."
+    ],
+    "modifiers": {
+      "roomEnterSpd": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 591,
+    "size": "Med",
+    "name": "Speed Decay Duration",
+    "description": [
+      "+0.3 seconds to the speed decay timer."
+    ],
+    "modifiers": {
+      "roomEnterSpdDecayDur": 0.3
+    },
+    "note": ""
+  },
+  {
+    "type": 592,
+    "size": "Med",
+    "name": "Shieldless Boss Speed",
+    "description": [
+      "+0.04 speed for the next floor if you clear the boss room without having or receiving shields",
+      "at any point in the fight."
+    ],
+    "modifiers": {
+      "shieldlessBossSpeed": 0.04
+    },
+    "note": ""
+  },
+  {
+    "type": 593,
+    "size": "Med",
+    "name": "Champion Holy Card Drop",
+    "description": [
+      "0.5% chance for champion monsters to drop a Holy Card on death, once every 2 floors."
+    ],
+    "modifiers": {
+      "champHolyCardDrop": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 594,
+    "size": "Med",
+    "name": "Stairway Boon",
+    "description": [
+      "3% chance to receive The Stairway when clearing a boss room.",
+      "Getting hit halves the total chance for this effect to trigger, even if shields are present.",
+      "Entering a devil/angel room halves the total chance for this effect to trigger.",
+      "Remove The Stairway once it triggers when entering a floor."
+    ],
+    "modifiers": {
+      "stairwayBoon": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 595,
+    "size": "Med",
+    "name": "Death's Trial",
+    "description": [
+      "When receiving a fatal blow, 8% chance to trigger Forget Me Now's effect instead of dying.",
+      "After this happens:",
+      "  - Spawn Death.",
+      "  - Lose all holy cards and present shields.",
+      "  - Deactivate your items during this fight.",
+      "This effect can only trigger once per run."
+    ],
+    "modifiers": {
+      "deathTrial": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 596,
+    "size": "Large",
+    "name": "Charging Behemoth",
+    "description": [
+      "Deal 30% increased damage with the whip attack.",
+      "Enemies hit by the whip attack are slowed for 1 second.",
+      "-20% tears.",
+      "Deal 50% decreased damage with non-whip hits."
+    ],
+    "modifiers": {
+      "chargingBehemoth": true,
+      "tearsPerc": -20,
+      "whipDmg": 30,
+      "nonWhipDmg": -50
+    },
+    "note": ""
+  },
+  {
+    "type": 597,
+    "size": "Large",
+    "name": "Mighty Gestation",
+    "description": [
+      "Start with a smelted Baby-Bender.",
+      "+15% tears.",
+      "+20% non-whip damage.",
+      "Deal 50% decreased damage with the whip attack."
+    ],
+    "modifiers": {
+      "mightyGestation": true,
+      "tearsPerc": 15,
+      "nonWhipDmg": 20,
+      "whipDmg": -50
+    },
+    "note": ""
+  },
+  {
+    "type": 598,
+    "size": "Large",
+    "name": "Coordinated Demons",
+    "description": [
+      "While firing, periodically trigger a pulse around Gello dealing 70% of your damage to nearby enemies.",
+      "Delay between pulses is based on your tears stat.",
+      "After retracting Gello, waiting 2 seconds increases the damage of your next whip attack by 30%.",
+      "-0.15 speed while firing."
+    ],
+    "modifiers": {
+      "coordinatedDemons": true
+    },
+    "note": ""
+  },
+  {
+    "type": 599,
+    "size": "Large",
+    "name": "Chimeric Amalgam",
+    "description": [
+      "Every 2 floors, spawn Birthright in the first room if you don't currently have it.",
+      "When obtaining Birthright, turn all your current familiar items into Lil Delirium.",
+      "When obtaining Birthright, receive -40% damage.",
+      "While holding Birthright, +8% damage when entering a new floor, up to a total +50%.",
+      "Birthright can no longer show up naturally."
+    ],
+    "modifiers": {
+      "chimericAmalgam": true
+    },
+    "note": ""
+  },
+  {
+    "type": 600,
+    "size": "Small",
+    "name": "Whip Damage Vs Tears",
+    "description": [
+      "+2% whip attack damage.",
+      "-0.5% tears."
+    ],
+    "modifiers": {
+      "whipDmg": 2,
+      "tearsPerc": -1
+    },
+    "note": ""
+  },
+  {
+    "type": 601,
+    "size": "Small",
+    "name": "Pulse Damage",
+    "description": [
+      "Damaging pulse inherits an additional 3% of your damage."
+    ],
+    "modifiers": {
+      "gelloPulseDmg": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 602,
+    "size": "Small",
+    "name": "Black Heart On Pulse Kill",
+    "description": [
+      "Enemies killed by the damaging pulse have a 1% chance to drop a black heart, if you have",
+      "less than 2 black hearts, up to once per room.",
+      "Black heart dropped from this effect vanish after 3 seconds."
+    ],
+    "modifiers": {
+      "pulseKillBlackHeart": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 603,
+    "size": "Small",
+    "name": "Whip Speed Buff",
+    "description": [
+      "+0.5% speed for 1 second after using the whip attack."
+    ],
+    "modifiers": {
+      "whipSpeed": 0.5
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 604,
+    "size": "Small",
+    "name": "Gello Tears Bonus",
+    "description": [
+      "Slowly gain up to +0.02 tears while Gello is retracted.",
+      "While firing, bonus decays to 0 over 3 seconds."
+    ],
+    "modifiers": {
+      "gelloTearsBonus": 0.02
+    },
+    "note": ""
+  },
+  {
+    "type": 605,
+    "size": "Small",
+    "name": "Cord Damage",
+    "description": [
+      "While Gello is held out, deal 3% of your damage to enemies caught in the cord every second.",
+      "0.5% chance to inflict bleed for 4 seconds on caught enemies."
+    ],
+    "modifiers": {
+      "cordDamage": 3,
+      "cordBleed": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 606,
+    "size": "Small",
+    "name": "Treasure Room Familiar",
+    "description": [
+      "While not holding Birthright, 2% chance to replace treasure room items with a random baby familiar."
+    ],
+    "modifiers": {
+      "tLilithTreasureBaby": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 607,
+    "size": "Small",
+    "name": "Nearby Kill Luck",
+    "description": [
+      "1% chance to gain +0.03 luck when killing enemies within 1.5 tiles of you.",
+      "Halve the total bonus when entering a new floor."
+    ],
+    "modifiers": {
+      "nearbyKillLuck": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 608,
+    "size": "Med",
+    "name": "Whip Damage Vs Tears",
+    "description": [
+      "+6% whip attack damage.",
+      "-1% tears."
+    ],
+    "modifiers": {
+      "whipDmg": 6,
+      "tearsPerc": -1
+    },
+    "note": ""
+  },
+  {
+    "type": 609,
+    "size": "Med",
+    "name": "Pulse Damage",
+    "description": [
+      "Damaging pulse inherits an additional 8% of your damage."
+    ],
+    "modifiers": {
+      "gelloPulseDmg": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 610,
+    "size": "Med",
+    "name": "Black Heart On Pulse Kill",
+    "description": [
+      "Enemies killed by the damaging pulse have a 3% chance to drop a black heart, if you have",
+      "less than 2 black hearts, up to once per room.",
+      "Black heart dropped from this effect vanish after 3 seconds."
+    ],
+    "modifiers": {
+      "pulseKillBlackHeart": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 611,
+    "size": "Med",
+    "name": "Whip Speed Buff",
+    "description": [
+      "+2% speed for 1 second after using the whip attack."
+    ],
+    "modifiers": {
+      "whipSpeed": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 612,
+    "size": "Med",
+    "name": "Gello Tears Bonus",
+    "description": [
+      "Slowly gain up to +0.08 tears while Gello is retracted.",
+      "While firing, bonus decays to 0 over 3 seconds."
+    ],
+    "modifiers": {
+      "gelloTearsBonus": 0.08
+    },
+    "note": ""
+  },
+  {
+    "type": 613,
+    "size": "Med",
+    "name": "Cord Damage",
+    "description": [
+      "While Gello is held out, deal 10% of your damage to enemies caught in the cord every second.",
+      "2% chance to inflict bleed for 4 seconds on caught enemies."
+    ],
+    "modifiers": {
+      "cordDamage": 10,
+      "cordBleed": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 614,
+    "size": "Med",
+    "name": "Treasure Room Familiar",
+    "description": [
+      "While not holding Birthright, 6% chance to replace treasure room items with a random baby familiar."
+    ],
+    "modifiers": {
+      "tLilithTreasureBaby": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 615,
+    "size": "Med",
+    "name": "Nearby Kill Luck",
+    "description": [
+      "4% chance to gain +0.03 luck when killing enemies within 1.5 tiles of you.",
+      "Halve the total bonus when entering a new floor."
+    ],
+    "modifiers": {
+      "nearbyKillLuck": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 616,
+    "size": "Large",
+    "name": "Fortunate Spender",
+    "description": [
+      "+1.5 luck for the current floor while you haven't purchased items.",
+      "+0.02 luck per coin spent on purchases, up to a total +3.",
+      "When entering a floor, -0.5 luck if you made less than 4 purchases in the previous floor.",
+      "Luck reduction doesn't apply during the Ascent."
+    ],
+    "modifiers": {
+      "fortunateSpender": true
+    },
+    "note": ""
+  },
+  {
+    "type": 617,
+    "size": "Large",
+    "name": "Marquess Of Flies",
+    "description": [
+      "Whenever you gain coins, 50% chance to spawn a blue fly if you have less than 20 blue flies.",
+      "Whenever a coin heals you, 20% chance to gain Hive Mind for the current room if you don't",
+      "have it.",
+      "Increase damage dealt by blue flies by 1% per coin you own, up to 50%.",
+      "-1% speed and tears per active blue fly."
+    ],
+    "modifiers": {
+      "marquessOfFlies": true
+    },
+    "note": ""
+  },
+  {
+    "type": 618,
+    "size": "Large",
+    "name": "Strange Coupon",
+    "description": [
+      "Start with Coupon.",
+      "Whenever you gain charges with Coupon, 50% chance to nullify the gained charges.",
+      "After using Coupon a total of 4 times, replace it with Steam Sale.",
+      "Purchasing 4 items while holding Steam Sale removes it."
+    ],
+    "modifiers": {
+      "strangeCoupon": true,
+      "couponNullifyChance": 50
+    },
+    "note": ""
+  },
+  {
+    "type": 619,
+    "size": "Large",
+    "name": "Blessed Pennies",
+    "description": [
+      "Shops have a 25% chance to sell an additional penny trinket, at twice its regular price.",
+      "When defeating a floor's boss, if you took no damage in the rest of the floor, smelt your",
+      "currently held penny trinkets, if present.",
+      "Spawn a penny when a penny trinket gets smelted this way.",
+      "When hit, 20% chance to lose held penny trinkets (not smelted)."
+    ],
+    "modifiers": {
+      "blessedPennies": true
+    },
+    "note": ""
+  },
+  {
+    "type": 620,
+    "size": "Large",
+    "name": "Voodoo Trick",
+    "description": [
+      "Completing a floor without getting hit more than 3 times grants you Voodoo Head for the next floor.",
+      "Voodoo Head can no longer show up naturally."
+    ],
+    "modifiers": {
+      "voodooTrick": true
+    },
+    "note": ""
+  },
+  {
+    "type": 621,
+    "size": "Small",
+    "name": "Vanishing Coins Time",
+    "description": [
+      "+0.04 seconds to vanishing coins' timer."
+    ],
+    "modifiers": {
+      "vanishCoinTimer": 0.04
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 622,
+    "size": "Small",
+    "name": "Coin Tears Chance",
+    "description": [
+      "2% chance for fired tears to be coin tears from Head of the Keeper.",
+      "If total chance is above 40%, Head of the Keeper can no longer show up.",
+      "Coin tears deal 10% increased damage against gilded monsters."
+    ],
+    "modifiers": {
+      "coinTearsChance": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 623,
+    "size": "Small",
+    "name": "Gilded Monster Penny Drop",
+    "description": [
+      "2% chance for Gilded monsters to drop an additional non-vanishing penny on death."
+    ],
+    "modifiers": {
+      "gildMonsterPenny": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 624,
+    "size": "Small",
+    "name": "Gilded Monster Luck",
+    "description": [
+      "2% chance to gain +0.05 luck for the current floor when killing a Gilded monster."
+    ],
+    "modifiers": {
+      "gildMonsterLuck": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 625,
+    "size": "Small",
+    "name": "Gilded Monster Speed Buff",
+    "description": [
+      "+1% speed for the current room when killing a Gilded monster."
+    ],
+    "modifiers": {
+      "gildMonsterSpeed": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 626,
+    "size": "Small",
+    "name": "Gilded Monster Penny Trinket Upgrade",
+    "description": [
+      "1% chance to upgrade 1 held penny trinket into its golden version when killing a",
+      "Gilded monster."
+    ],
+    "modifiers": {
+      "gildMonsterPennyUpgrade": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 627,
+    "size": "Small",
+    "name": "Voodoo Curse Room Nickel",
+    "description": [
+      "While holding Voodoo Head, 2% chance for curse rooms to contain an additional nickel."
+    ],
+    "modifiers": {
+      "voodooCurseNickel": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 628,
+    "size": "Small",
+    "name": "Coupon Charge Nullification Chance",
+    "description": [
+      "-3% chance to nullify gained charges with Coupon."
+    ],
+    "modifiers": {
+      "couponNullifyChance": -3
+    },
+    "note": ""
+  },
+  {
+    "type": 629,
+    "size": "Med",
+    "name": "Gilded Monsters",
+    "description": [
+      "15% chance for room monsters to be Gilded. Cannot affect bosses."
+    ],
+    "modifiers": {
+      "gildMonsters": 15
+    },
+    "note": ""
+  },
+  {
+    "type": 630,
+    "size": "Small",
+    "name": "Blue Fly Damage",
+    "description": [
+      "+1% damage dealt by blue flies."
+    ],
+    "modifiers": {
+      "blueFlyDamage": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 631,
+    "size": "Small",
+    "name": "Steam Sale Keep Chance",
+    "description": [
+      "3% chance to keep Steam Sale when purchasing more than 4 items while holding it."
+    ],
+    "modifiers": {
+      "steamSaleKeep": 3
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 632,
+    "size": "Med",
+    "name": "Vanishing Coins Time",
+    "description": [
+      "+0.1 seconds to vanishing coins' timer."
+    ],
+    "modifiers": {
+      "vanishCoinTimer": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 633,
+    "size": "Med",
+    "name": "Coin Tears Chance",
+    "description": [
+      "6% chance for fired tears to be coin tears from Head of the Keeper.",
+      "If total chance is above 40%, Head of the Keeper can no longer show up.",
+      "Coin tears deal 10% increased damage against gilded monsters."
+    ],
+    "modifiers": {
+      "coinTearsChance": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 634,
+    "size": "Med",
+    "name": "Gilded Monster Penny Drop",
+    "description": [
+      "6% chance for Gilded monsters to drop an additional non-vanishing penny on death."
+    ],
+    "modifiers": {
+      "gildMonsterPenny": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 635,
+    "size": "Med",
+    "name": "Gilded Monster Luck",
+    "description": [
+      "6% chance to gain +0.05 luck for the current floor when killing a Gilded monster."
+    ],
+    "modifiers": {
+      "gildMonsterLuck": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 636,
+    "size": "Med",
+    "name": "Gilded Monster Speed Buff",
+    "description": [
+      "+4% speed for the current room when killing a Gilded monster."
+    ],
+    "modifiers": {
+      "gildMonsterSpeed": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 637,
+    "size": "Med",
+    "name": "Gilded Monster Penny Trinket Upgrade",
+    "description": [
+      "3% chance to upgrade 1 held penny trinket into its golden version when killing a",
+      "Gilded monster."
+    ],
+    "modifiers": {
+      "gildMonsterPennyUpgrade": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 638,
+    "size": "Med",
+    "name": "Voodoo Curse Room Nickel",
+    "description": [
+      "While holding Voodoo Head, 6% chance for curse rooms to contain an additional nickel."
+    ],
+    "modifiers": {
+      "voodooCurseNickel": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 639,
+    "size": "Med",
+    "name": "Coupon Charge Nullification Chance",
+    "description": [
+      "-8% chance to nullify gained charges with Coupon."
+    ],
+    "modifiers": {
+      "couponNullifyChance": -8
+    },
+    "note": ""
+  },
+  {
+    "type": 640,
+    "size": "Med",
+    "name": "Blue Fly Damage",
+    "description": [
+      "+5% damage dealt by blue flies."
+    ],
+    "modifiers": {
+      "blueFlyDamage": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 641,
+    "size": "Med",
+    "name": "Steam Sale Keep Chance",
+    "description": [
+      "8% chance to keep Steam Sale when purchasing more than 4 items while holding it."
+    ],
+    "modifiers": {
+      "steamSaleKeep": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 642,
+    "size": "Large",
+    "name": "Electrified Swarm",
+    "description": [
+      "Start with a smelted Extension Cord.",
+      "Tears fired by locusts have a 33% chance to be electrified.",
+      "Extension Cord beams deal 33% less damage."
+    ],
+    "modifiers": {
+      "electrifiedSwarm": true
+    },
+    "note": ""
+  },
+  {
+    "type": 643,
+    "size": "Large",
+    "name": "Close Keeper",
+    "description": [
+      "Locusts follow you much more closely.",
+      "+2% damage received by enemies per locust near it, up to 20%."
+    ],
+    "modifiers": {
+      "closeKeeper": true
+    },
+    "note": ""
+  },
+  {
+    "type": 644,
+    "size": "Large",
+    "name": "Carrion Locusts",
+    "description": [
+      "+1% to a random stat whenever a locust kills an enemy, up to +12% of each stat.",
+      "For every 20 enemies killed by locusts, gain a random smelted Locust trinket you",
+      "don't currently have.",
+      "Entering a floor halves your current bonuses and removes smelted Locust trinkets."
+    ],
+    "modifiers": {
+      "carrionLocusts": true
+    },
+    "note": ""
+  },
+  {
+    "type": 645,
+    "size": "Large",
+    "name": "Great Devourer",
+    "description": [
+      "You can now only have up to 1 locust.",
+      "Whenever you would have gained a locust, instead add +8% damage and speed to the existing locust,",
+      "up to a total 200%.",
+      "Double extension cord beam damage if it targets a locust.",
+      "Triple your total chance for locusts to fire tears, and these inherit an additional 40%",
+      "of your damage.",
+      "If Electrified Swarm is allocated, locust tears are always electrified."
+    ],
+    "modifiers": {
+      "greatDevourer": true,
+      "locustTearDmgInherit": 40
+    },
+    "note": ""
+  },
+  {
+    "type": 646,
+    "size": "Small",
+    "name": "Extension Cord Beam Damage",
+    "description": [
+      "Extension Cord beams deal an additional 4% of your damage if they target a locust."
+    ],
+    "modifiers": {
+      "extCordDmgInherit": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 647,
+    "size": "Small",
+    "name": "Extension Cord Beam Slow",
+    "description": [
+      "3% chance for Extension Cord beams to slow enemies for 2 seconds on hit if they target a locust."
+    ],
+    "modifiers": {
+      "extCordSlow": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 648,
+    "size": "Small",
+    "name": "Locust Tears",
+    "description": [
+      "1.5% chance for locusts to shoot a small tear towards enemies close to them whenever you shoot.",
+      "Locust tears deal a base 20% of your damage."
+    ],
+    "modifiers": {
+      "locustTears": 1.5
+    },
+    "note": ""
+  },
+  {
+    "type": 649,
+    "size": "Small",
+    "name": "Locust Tear Damage",
+    "description": [
+      "Locust tears gain an additional 3% of your damage."
+    ],
+    "modifiers": {
+      "locustTearDmgInherit": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 650,
+    "size": "Small",
+    "name": "Locust Lost Contact Tears",
+    "description": [
+      "4% chance for tears fired by locusts to be spectral and piercing."
+    ],
+    "modifiers": {
+      "locustTearSpectral": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 651,
+    "size": "Small",
+    "name": "Locust Kill Pickup Drop",
+    "description": [
+      "0.2% chance for enemies killed by locusts to drop an additional coin/key/bomb, up to twice",
+      "per room."
+    ],
+    "modifiers": {
+      "locustKillPickup": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 652,
+    "size": "Small",
+    "name": "Locust Kill Tear Boost",
+    "description": [
+      "+1% tears for 2 seconds when a locust kills an enemy."
+    ],
+    "modifiers": {
+      "locustKillTears": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 653,
+    "size": "Small",
+    "name": "Cricket Leg On Kill",
+    "description": [
+      "2% chance to gain a smelted Cricket Leg for the current room when you kill an enemy."
+    ],
+    "modifiers": {
+      "killCricketLeg": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 654,
+    "size": "Small",
+    "name": "Cricket Leg Speed",
+    "description": [
+      "+1% speed while you have Cricket Leg."
+    ],
+    "modifiers": {
+      "cricketLegSpeed": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 655,
+    "size": "Small",
+    "name": "Locust Kill Luck",
+    "description": [
+      "1% chance to gain +0.04 luck when a locust kills an enemy.",
+      "Halve your total bonus when entering a new floor."
+    ],
+    "modifiers": {
+      "locustKillLuck": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 656,
+    "size": "Med",
+    "name": "Extension Cord Beam Damage",
+    "description": [
+      "Extension Cord beams deal an additional 10% of your damage if they target a locust."
+    ],
+    "modifiers": {
+      "extCordDmgInherit": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 657,
+    "size": "Med",
+    "name": "Extension Cord Beam Slow",
+    "description": [
+      "7% chance for Extension Cord beams to slow enemies for 2 seconds on hit if they target a locust."
+    ],
+    "modifiers": {
+      "extCordSlow": 7
+    },
+    "note": ""
+  },
+  {
+    "type": 658,
+    "size": "Med",
+    "name": "Locust Tears",
+    "description": [
+      "4% chance for locusts to shoot a small tear towards enemies close to them whenever you shoot.",
+      "Locust tears deal a base 20% of your damage."
+    ],
+    "modifiers": {
+      "locustTears": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 659,
+    "size": "Med",
+    "name": "Locust Tear Damage",
+    "description": [
+      "Locust tears gain an additional 8% of your damage."
+    ],
+    "modifiers": {
+      "locustTearDmgInherit": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 660,
+    "size": "Med",
+    "name": "Locust Lost Contact Tears",
+    "description": [
+      "10% chance for tears fired by locusts to be spectral and piercing."
+    ],
+    "modifiers": {
+      "locustTearSpectral": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 661,
+    "size": "Med",
+    "name": "Locust Kill Pickup Drop",
+    "description": [
+      "0.6% chance for enemies killed by locusts to drop an additional coin/key/bomb, up to twice",
+      "per room."
+    ],
+    "modifiers": {
+      "locustKillPickup": 0.6
+    },
+    "note": ""
+  },
+  {
+    "type": 662,
+    "size": "Med",
+    "name": "Locust Kill Tear Boost",
+    "description": [
+      "+4% tears for 2 seconds when a locust kills an enemy."
+    ],
+    "modifiers": {
+      "locustKillTears": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 663,
+    "size": "Med",
+    "name": "Cricket Leg On Kill",
+    "description": [
+      "6% chance to gain a smelted Cricket Leg for the current room when you kill an enemy."
+    ],
+    "modifiers": {
+      "killCricketLeg": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 664,
+    "size": "Med",
+    "name": "Cricket Leg Speed",
+    "description": [
+      "+4% speed while you have Cricket Leg."
+    ],
+    "modifiers": {
+      "cricketLegSpeed": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 665,
+    "size": "Small",
+    "name": "Locust Damage",
+    "description": [
+      "+1% damage dealt by locusts."
+    ],
+    "modifiers": {
+      "locustDmg": 1
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 666,
+    "size": "Med",
+    "name": "Locust Damage",
+    "description": [
+      "+4% damage dealt by locusts."
+    ],
+    "modifiers": {
+      "locustDmg": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 667,
+    "size": "Large",
+    "name": "Recall!",
+    "description": [
+      "Start with Birthright.",
+      "+0.4 seconds to Recall's cooldown on use, up to +4.",
+      "Reset Recall's cooldown when entering a new floor.",
+      "Birthright can no longer show up naturally."
+    ],
+    "modifiers": {
+      "forgRecall": true
+    },
+    "note": ""
+  },
+  {
+    "type": 668,
+    "size": "Large",
+    "name": "Harmonized Specters",
+    "description": [
+      "+12% damage dealt by Tainted Forgotten while on the floor.",
+      "+12% damage dealt by Tainted Forgotten to enemies near Tainted Soul.",
+      "-20% damage dealt if neither of the above conditions is fulfilled."
+    ],
+    "modifiers": {
+      "harmonizedSpecters": true
+    },
+    "note": ""
+  },
+  {
+    "type": 669,
+    "size": "Large",
+    "name": "Ballistosseous",
+    "description": [
+      "Tainted Forgotten shoots bone tears towards Tainted Soul while on the ground, if there are",
+      "monsters in the room.",
+      "While holding Tainted Forgotten, fire bone tears towards nearby enemies instead.",
+      "Bone tears' rate of fire is based on your tears stat.",
+      "Bone tears deal 50% of your damage on hit.",
+      "Fired bone tears have a 50% chance of gaining homing if Tainted Forgotten is on the ground."
+    ],
+    "modifiers": {
+      "ballistosseous": true
+    },
+    "note": ""
+  },
+  {
+    "type": 670,
+    "size": "Large",
+    "name": "Magnetized Shell",
+    "description": [
+      "Start with Strange Attractor.",
+      "-10% speed.",
+      "+2% speed for the current room when killing an enemy near Tainted Forgotten, up to +20%."
+    ],
+    "modifiers": {
+      "magnetizedShell": true,
+      "speedPerc": -10
+    },
+    "note": ""
+  },
+  {
+    "type": 671,
+    "size": "Small",
+    "name": "Held Forgotten Speed Boost",
+    "description": [
+      "+0.5% speed while holding Tainted Forgotten.",
+      "-0.25% speed while not holding Tainted Forgotten."
+    ],
+    "modifiers": {
+      "forgHoldSpeed": 0.5,
+      "forgNoHoldSpeed": -0.25
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 672,
+    "size": "Small",
+    "name": "Forgotten Bone Tear Damage",
+    "description": [
+      "Tainted Forgotten's bone tears gain an additional 2% of your damage."
+    ],
+    "modifiers": {
+      "forgBoneTearDmg": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 673,
+    "size": "Small",
+    "name": "Forgotten Bone Tear Paralysis",
+    "description": [
+      "0.5% chance for Tainted Forgotten's bone tears to paralyze enemies for 1 second on hit."
+    ],
+    "modifiers": {
+      "forgBoneTearPara": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 674,
+    "size": "Small",
+    "name": "Forgotten Bone Tear Speed Debuff",
+    "description": [
+      "1% chance for Tainted Forgotten's bone tears to slow enemies on hit for 2 seconds."
+    ],
+    "modifiers": {
+      "forgBoneTearSlow": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 675,
+    "size": "Small",
+    "name": "Paralyzed Enemy Damage",
+    "description": [
+      "+1% damage received by paralyzed enemies."
+    ],
+    "modifiers": {
+      "paraEnemyDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 676,
+    "size": "Small",
+    "name": "Recall Damage Buff",
+    "description": [
+      "+1% damage for 2 seconds after using Recall."
+    ],
+    "modifiers": {
+      "recallDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 677,
+    "size": "Small",
+    "name": "Forgotten Launch Telekinesis",
+    "description": [
+      "1% chance to trigger Telekinesis' effect when launching Tainted Forgotten."
+    ],
+    "modifiers": {
+      "forgTelekinesis": 1
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 678,
+    "size": "Small",
+    "name": "Flawless Clear Polished Bone",
+    "description": [
+      "1% chance to gain a smelted Polished Bone for the rest of the floor when clearing a room without",
+      "taking damage.",
+      "When hit by a monster, same chance to lose a smelted Polished Bone."
+    ],
+    "modifiers": {
+      "flawlessClearPBone": 1
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 679,
+    "size": "Small",
+    "name": "Forgotten Bone Tear Kill Luck",
+    "description": [
+      "2% chance to gain +0.03 luck when Tainted Forgotten's bone tears kill an enemy.",
+      "Halve your total bonus when entering a new floor."
+    ],
+    "modifiers": {
+      "forgBoneTearKillLuck": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 680,
+    "size": "Med",
+    "name": "Held Forgotten Speed Boost",
+    "description": [
+      "+1.5% speed while holding Tainted Forgotten.",
+      "-0.75% speed while not holding Tainted Forgotten."
+    ],
+    "modifiers": {
+      "forgHoldSpeed": 1.5,
+      "forgNoHoldSpeed": -0.75
+    },
+    "note": ""
+  },
+  {
+    "type": 681,
+    "size": "Med",
+    "name": "Forgotten Bone Tear Damage",
+    "description": [
+      "Tainted Forgotten's bone tears gain an additional 8% of your damage."
+    ],
+    "modifiers": {
+      "forgBoneTearDmg": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 682,
+    "size": "Med",
+    "name": "Forgotten Bone Tear Paralysis",
+    "description": [
+      "3% chance for Tainted Forgotten's bone tears to paralyze enemies for 1 second on hit."
+    ],
+    "modifiers": {
+      "forgBoneTearPara": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 683,
+    "size": "Med",
+    "name": "Forgotten Bone Tear Speed Debuff",
+    "description": [
+      "4% chance for Tainted Forgotten's bone tears to slow enemies on hit for 2 seconds."
+    ],
+    "modifiers": {
+      "forgBoneTearSlow": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 684,
+    "size": "Med",
+    "name": "Paralyzed Enemy Damage",
+    "description": [
+      "+4% damage received by paralyzed enemies."
+    ],
+    "modifiers": {
+      "paraEnemyDmg": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 685,
+    "size": "Med",
+    "name": "Recall Damage Buff",
+    "description": [
+      "+5% damage for 2 seconds after using Recall."
+    ],
+    "modifiers": {
+      "recallDmg": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 686,
+    "size": "Med",
+    "name": "Forgotten Launch Telekinesis",
+    "description": [
+      "5% chance to trigger Telekinesis' effect when launching Tainted Forgotten."
+    ],
+    "modifiers": {
+      "forgTelekinesis": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 687,
+    "size": "Med",
+    "name": "Flawless Clear Polished Bone",
+    "description": [
+      "5% chance to gain a smelted Polished Bone for the rest of the floor when clearing a room without",
+      "taking damage.",
+      "When hit by a monster, same chance to lose a smelted Polished Bone."
+    ],
+    "modifiers": {
+      "flawlessClearPBone": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 688,
+    "size": "Med",
+    "name": "Forgotten Bone Tear Kill Luck",
+    "description": [
+      "6% chance to gain +0.03 luck when Tainted Forgotten's bone tears kill an enemy.",
+      "Halve your total bonus when entering a new floor."
+    ],
+    "modifiers": {
+      "forgBoneTearKillLuck": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 689,
+    "size": "Large",
+    "name": "Blood Harvest",
+    "description": [
+      "Killing an enemy has a 25% chance of dropping a 1/2 red heart, which vanishes after 3 seconds,",
+      "up to 6 per room.",
+      "Hitting a boss has a 7% chance of dropping a 1/2 red heart, which vanishes after 3 seconds,",
+      "up to 4 per room.",
+      "-1% damage and speed per blood charge past 20, up to -25%."
+    ],
+    "modifiers": {
+      "bloodHarvest": true
+    },
+    "note": ""
+  },
+  {
+    "type": 690,
+    "size": "Large",
+    "name": "Resilient Flickers",
+    "description": [
+      "Lemegeton wisps take 60% reduced damage.",
+      "Lemegeton wisps deal 35% increased contact damage.",
+      "Fully heal a wisp when it kills an enemy with contact damage.",
+      "-0.03 luck per active wisp past 5."
+    ],
+    "modifiers": {
+      "resilientFlickers": true
+    },
+    "note": ""
+  },
+  {
+    "type": 691,
+    "size": "Large",
+    "name": "Otherside Seeker",
+    "description": [
+      "Start with 3 smelted Crystal Keys.",
+      "Defeating Mom without taking damage grants you an additional smelted Crystal Key.",
+      "+1% all stats for the current floor when clearing a red room, up to +10%."
+    ],
+    "modifiers": {
+      "othersideSeeker": true
+    },
+    "note": ""
+  },
+  {
+    "type": 692,
+    "size": "Large",
+    "name": "Inherited Chaos",
+    "description": [
+      "When entering a floor, spawn a Chaos wisp if you don't currently have one.",
+      "Chaos wisps receive 200% more damage when hit.",
+      "-3% all stats whenever a Chaos wisp is destroyed, up to -12%."
+    ],
+    "modifiers": {
+      "inheritedChaos": true
+    },
+    "note": ""
+  },
+  {
+    "type": 693,
+    "size": "Small",
+    "name": "Red Heart Room Damage",
+    "description": [
+      "+0.05% damage for the current room when picking up a red heart, up to +15%."
+    ],
+    "modifiers": {
+      "redHeartRoomDmg": 0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 694,
+    "size": "Small",
+    "name": "Wisp Homing Tear Retaliation",
+    "description": [
+      "4% chance for Wisps to fire a homing tear away from you when they get hit.",
+      "These tears deal 5 damage."
+    ],
+    "modifiers": {
+      "wispHomingTearRetal": 4
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 695,
+    "size": "Small",
+    "name": "Wisp Active Homing Tears",
+    "description": [
+      "4% chance for Wisps to fire a small homing tear towards you when using an active item.",
+      "These tears deal 30% of your damage + an additional 2 damage per used charge."
+    ],
+    "modifiers": {
+      "wispActiveTears": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 696,
+    "size": "Small",
+    "name": "Destroyed Wisp Item",
+    "description": [
+      "2% chance to gain a destroyed wisp's item for the rest of the floor."
+    ],
+    "modifiers": {
+      "destroyedWispItem": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 697,
+    "size": "Small",
+    "name": "Blue Key On Red Clear",
+    "description": [
+      "3% chance to gain a smelted Blue Key for the current floor when clearing a red room, if",
+      "you don't already have one."
+    ],
+    "modifiers": {
+      "blueKeyRedClear": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 698,
+    "size": "Small",
+    "name": "Stat Boost On Blood Charge",
+    "description": [
+      "2% chance to gain +0.4% to a random stat per consumed blood charge, up to 30 times per floor."
+    ],
+    "modifiers": {
+      "bloodChargeStat": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 699,
+    "size": "Small",
+    "name": "Wisp Kill Soul Heart",
+    "description": [
+      "3% chance for enemies killed by Wisps or their tears to drop a 1/2 soul heart if you have",
+      "less than 3 soul hearts, up to 4 per room."
+    ],
+    "modifiers": {
+      "wispKillSoul": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 700,
+    "size": "Small",
+    "name": "Homing Tear Firing Time Requirement",
+    "description": [
+      "-0.2 seconds to Coalescing Homing Tear's total firing time required.",
+      "2% chance for the shot tear to cause fear on enemies it hits."
+    ],
+    "modifiers": {
+      "tBethHomingTear": -0.2,
+      "tBethHomingTearFear": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 701,
+    "size": "Small",
+    "name": "Luck On Kill",
+    "description": [
+      "1% chance to gain +0.03 luck when killing enemies while you have 1 soul/black heart or less.",
+      "Triple the chance and luck gain against bosses."
+    ],
+    "modifiers": {
+      "tBethKillLuck": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 702,
+    "size": "Med",
+    "name": "Red Heart Room Damage",
+    "description": [
+      "+0.25% damage for the current room when picking up a red heart, up to +15%."
+    ],
+    "modifiers": {
+      "redHeartRoomDmg": 0.25
+    },
+    "note": ""
+  },
+  {
+    "type": 703,
+    "size": "Med",
+    "name": "Wisp Homing Tear Retaliation",
+    "description": [
+      "10% chance for Wisps to fire a homing tear away from you when they get hit.",
+      "These tears deal 5 damage."
+    ],
+    "modifiers": {
+      "wispHomingTearRetal": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 704,
+    "size": "Med",
+    "name": "Wisp Active Homing Tears",
+    "description": [
+      "10% chance for Wisps to fire a small homing tear towards you when using an active item.",
+      "These tears deal 30% of your damage."
+    ],
+    "modifiers": {
+      "wispActiveTears": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 705,
+    "size": "Med",
+    "name": "Destroyed Wisp Item",
+    "description": [
+      "6% chance to gain a destroyed wisp's item for the rest of the floor."
+    ],
+    "modifiers": {
+      "destroyedWispItem": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 706,
+    "size": "Med",
+    "name": "Blue Key On Red Clear",
+    "description": [
+      "8% chance to gain a smelted Blue Key for the current floor when clearing a red room, if",
+      "you don't already have one."
+    ],
+    "modifiers": {
+      "blueKeyRedClear": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 707,
+    "size": "Med",
+    "name": "Stat Boost On Blood Charge",
+    "description": [
+      "6% chance to gain +0.4% to a random stat per consumed blood charge, up to 30 times per floor."
+    ],
+    "modifiers": {
+      "bloodChargeStat": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 708,
+    "size": "Med",
+    "name": "Wisp Kill Soul Heart",
+    "description": [
+      "8% chance for enemies killed by Wisps or their tears to drop a 1/2 soul heart if you have",
+      "less than 3 soul hearts, up to 4 per room."
+    ],
+    "modifiers": {
+      "wispKillSoul": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 709,
+    "size": "Med",
+    "name": "Coalescing Homing Tear",
+    "description": [
+      "Every 5 total seconds spent firing, shoot an additional piercing and homing tear that deals",
+      "150% of your damage."
+    ],
+    "modifiers": {
+      "tBethHomingTear": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 710,
+    "size": "Med",
+    "name": "Luck On Kill",
+    "description": [
+      "5% chance to gain +0.03 luck when killing enemies while you have 1 soul/black heart or less.",
+      "Triple the chance and luck gain against bosses."
+    ],
+    "modifiers": {
+      "tBethKillLuck": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 711,
+    "size": "Large",
+    "name": "Reaper Wraiths",
+    "description": [
+      "Start with Holy Mantle.",
+      "Start with an additional eternal heart. Entering a floor grants you an eternal heart if",
+      "you don't have one.",
+      "When entering a floor, remove all soul/black hearts.",
+      "Tainted Jacob now starts in his dead spirit state, and entering a floor no longer revives you.",
+      "Dark Esau no longer deals contact damage to you."
+    ],
+    "modifiers": {
+      "reaperWraiths": true
+    },
+    "note": ""
+  },
+  {
+    "type": 712,
+    "size": "Large",
+    "name": "Wrathful Chains",
+    "description": [
+      "When Dark Esau is unchained from Anima Sola, all non-boss enemies are slowed for 3 seconds.",
+      "Using Anima Sola while Dark Esau is present additionally chains another random enemy in the room.",
+      "Enemies chained by Anima Sola receive 15% more damage.",
+      "Hitting an enemy chained by Anima Sola deals 40% of the damage to other nearby enemies."
+    ],
+    "modifiers": {
+      "wrathfulChains": true,
+      "chainedEnemyDmg": 15
+    },
+    "note": ""
+  },
+  {
+    "type": 713,
+    "size": "Large",
+    "name": "Spiritual Covenant",
+    "description": [
+      "Hitting an enemy causes Dark Esau to target it if Tainted Jacob is in the dead spirit state.",
+      "Dark Esau's base contact damage is now 200% of your damage stat, capped at 40."
+    ],
+    "modifiers": {
+      "spiritualCovenant": true
+    },
+    "note": ""
+  },
+  {
+    "type": 714,
+    "size": "Small",
+    "name": "Dark Esau Proximity Buff",
+    "description": [
+      "+1% speed and damage when near Dark Esau.",
+      "Buff lingers for 2 seconds when the condition is no longer met."
+    ],
+    "modifiers": {
+      "darkEsauProxDmgSpeed": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 715,
+    "size": "Small",
+    "name": "Dark Esau Damage",
+    "description": [
+      "+1% damage dealt by Dark Esau to monsters."
+    ],
+    "modifiers": {
+      "darkEsauDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 716,
+    "size": "Small",
+    "name": "Anima Sola Cooldown",
+    "description": [
+      "-0.2 seconds to Anima Sola's cooldown."
+    ],
+    "modifiers": {
+      "animaSolaCooldown": -0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 717,
+    "size": "Small",
+    "name": "Anima Sola Tears Buff",
+    "description": [
+      "+0.05% tears for the current floor when killing an enemy chained by Anima Sola, up to +15%."
+    ],
+    "modifiers": {
+      "animaSolaKillTears": 0.05
+    },
+    "note": ""
+  },
+  {
+    "type": 718,
+    "size": "Small",
+    "name": "Eternal Heart Drop Conversion",
+    "description": [
+      "0.3% chance for dropped red heart pickups to be replaced with eternal hearts while Jacob is in his",
+      "dead spirit state."
+    ],
+    "modifiers": {
+      "heartEternalConv": 0.3
+    },
+    "note": ""
+  },
+  {
+    "type": 719,
+    "size": "Small",
+    "name": "Slowed Enemies Damage",
+    "description": [
+      "Slowed enemies receive 1% more damage."
+    ],
+    "modifiers": {
+      "slowEnemyDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 720,
+    "size": "Small",
+    "name": "Anima Sola Duration",
+    "description": [
+      "+1% to Anima Sola's chains duration."
+    ],
+    "modifiers": {
+      "animaSolaDuration": 1
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 721,
+    "size": "Small",
+    "name": "Dark Esau Kill Luck",
+    "description": [
+      "1% chance to gain +0.04 luck for the current floor when Dark Esau kills an enemy."
+    ],
+    "modifiers": {
+      "darkEsauKillLuck": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 722,
+    "size": "Med",
+    "name": "Dark Esau Proximity Buff",
+    "description": [
+      "+3% speed and damage when near Dark Esau.",
+      "Buff lingers for 2 seconds when the condition is no longer met."
+    ],
+    "modifiers": {
+      "darkEsauProxDmgSpeed": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 723,
+    "size": "Med",
+    "name": "Dark Esau Damage",
+    "description": [
+      "+3% damage dealt by Dark Esau to monsters."
+    ],
+    "modifiers": {
+      "darkEsauDmg": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 724,
+    "size": "Med",
+    "name": "Anima Sola Cooldown",
+    "description": [
+      "-0.8 seconds to Anima Sola's cooldown."
+    ],
+    "modifiers": {
+      "animaSolaCooldown": -0.8
+    },
+    "note": ""
+  },
+  {
+    "type": 725,
+    "size": "Med",
+    "name": "Anima Sola Tears Buff",
+    "description": [
+      "+0.2% tears for the current floor when killing an enemy chained by Anima Sola, up to +15%."
+    ],
+    "modifiers": {
+      "animaSolaKillTears": 0.2
+    },
+    "note": ""
+  },
+  {
+    "type": 726,
+    "size": "Med",
+    "name": "Eternal Heart Drop Conversion",
+    "description": [
+      "0.8% chance for dropped red heart pickups to be replaced with eternal hearts while Jacob is in his",
+      "dead spirit state."
+    ],
+    "modifiers": {
+      "heartEternalConv": 0.8
+    },
+    "note": ""
+  },
+  {
+    "type": 727,
+    "size": "Med",
+    "name": "Slowed Enemies Damage",
+    "description": [
+      "Slowed enemies receive 4% more damage."
+    ],
+    "modifiers": {
+      "slowEnemyDmg": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 728,
+    "size": "Med",
+    "name": "Anima Sola Duration",
+    "description": [
+      "+4% to Anima Sola's chains duration."
+    ],
+    "modifiers": {
+      "animaSolaDuration": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 729,
+    "size": "Med",
+    "name": "Dark Esau Kill Luck",
+    "description": [
+      "4% chance to gain +0.04 luck for the current floor when Dark Esau kills an enemy."
+    ],
+    "modifiers": {
+      "darkEsauKillLuck": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 730,
+    "size": "Small",
+    "name": "Anima Sola Additional Chaining",
+    "description": [
+      "8% chance for Anima Sola to chain an additional enemy on use.",
+      "Effect rolls multiple times above 100% chance."
+    ],
+    "modifiers": {
+      "animaAddChains": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 731,
+    "size": "Med",
+    "name": "Anima Sola Additional Chaining",
+    "description": [
+      "20% chance for Anima Sola to chain an additional enemy on use.",
+      "Effect rolls multiple times above 100% chance."
+    ],
+    "modifiers": {
+      "animaAddChains": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 732,
+    "size": "Large",
+    "name": "Kinetic Vengeance",
+    "description": [
+      "Dark Esau deals 25% increased damage while charging.",
+      "Dark Esau deals 25% reduced damage while not charging."
+    ],
+    "modifiers": {
+      "kineticVengeance": true
+    },
+    "note": ""
+  },
+  {
+    "type": 733,
+    "size": "Large",
+    "name": "Shadowmeld",
+    "description": [
+      "While in a room with monsters, Manifest Melody becomes Shadowmeld.",
+      "Shadowmeld creates a marked shadow at your current position.",
+      "Re-using Shadowmeld causes you to sink into the shadows then reappear at the marked shadow's",
+      "location.",
+      "While sinking or reappearing, and for 0.5 seconds afterwards, you can't be damaged.",
+      "Press the Drop key to remove placed markers."
+    ],
+    "modifiers": {
+      "shadowmeld": true
+    },
+    "note": ""
+  },
+  {
+    "type": 734,
+    "size": "Large",
+    "name": "Dark Arpeggio",
+    "description": [
+      "Every 4 total seconds spent firing, your Siren Minions fire a homing tear that inflicts fear",
+      "on enemies hit."
+    ],
+    "modifiers": {
+      "darkArpeggio": true
+    },
+    "note": ""
+  },
+  {
+    "type": 735,
+    "size": "Large",
+    "name": "Chromatic Blessing",
+    "description": [
+      "When successfully summoning a familiar through Manifest Melody, gain stats based on the",
+      "used notes:",
+      "  - Left: +0.5% speed",
+      "  - Right: +0.5% tears",
+      "  - Up: +0.5% damage",
+      "  - Down: +0.5% range and luck",
+      "Each individual buff has a limit of 15%."
+    ],
+    "modifiers": {
+      "chromaticBlessing": true
+    },
+    "note": ""
+  },
+  {
+    "type": 736,
+    "size": "Large",
+    "name": "Grand Consonance",
+    "description": [
+      "Whenever you gain a familiar, instead absorb its power and gain an effect based on the familiar.",
+      "-4% damage dealt to enemies for each damage-dealing familiar you obtain, up to -48%."
+    ],
+    "modifiers": {
+      "grandConsonance": true
+    },
+    "note": ""
+  },
+  {
+    "type": 737,
+    "size": "Large",
+    "name": "Song Of The Few",
+    "description": [
+      "Start with a smelted Forgotten Lullaby.",
+      "Once you have at least 2 damage-dealing familiar items, 20% chance to lose a smelted",
+      "Forgotten Lullaby when obtaining more familiar items.",
+      "This chance increases by 15% per familiar item obtained past 3."
+    ],
+    "modifiers": {
+      "songOfTheFew": true
+    },
+    "note": ""
+  },
+  {
+    "type": 738,
+    "size": "Small",
+    "name": "Feared Enemy Damage",
+    "description": [
+      "Feared enemies receive 1% more damage."
+    ],
+    "modifiers": {
+      "fearedDmg": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 739,
+    "size": "Small",
+    "name": "Tear Burst On Feared Death",
+    "description": [
+      "0.5% chance for feared enemies to release 3-4 homing tears on death that cause fear.",
+      "These tears deal 4% of the killed monster's HP as damage on hit, minimum 3 damage."
+    ],
+    "modifiers": {
+      "fearedTearBurst": 0.5
+    },
+    "note": ""
+  },
+  {
+    "type": 740,
+    "size": "Small",
+    "name": "Acrid Gaze",
+    "description": [
+      "Every 1.5 total seconds spent firing, unleash a pulse that damages and fears nearby enemies",
+      "for 2 seconds.",
+      "Damage dealt by the pulse is 120% of your luck stat, up to 10.",
+      "+8% pulse size."
+    ],
+    "modifiers": {
+      "acridGaze": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 741,
+    "size": "Small",
+    "name": "Siren Minion Damage",
+    "description": [
+      "1% more damage dealt by your Siren Minions."
+    ],
+    "modifiers": {
+      "sirenMinionDmg": 1
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 742,
+    "size": "Small",
+    "name": "Dark Arpeggio Tear Delay",
+    "description": [
+      "-0.1 total seconds required for Siren Minions to fire the Dark Arpeggio tear."
+    ],
+    "modifiers": {
+      "darkArpeggioTearDelay": -0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 743,
+    "size": "Small",
+    "name": "Shadowmeld Explosion",
+    "description": [
+      "5% chance to cause a dark explosion when reappearing with Shadowmeld, dealing 100% of your",
+      "damage to nearby enemies and fearing them."
+    ],
+    "modifiers": {
+      "shadowmeldExplosion": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 744,
+    "size": "Small",
+    "name": "Shadowmeld Explosion Damage",
+    "description": [
+      "Shadowmeld explosion deals an additional 8% of your damage."
+    ],
+    "modifiers": {
+      "shadowmeldExplosionDmg": 8
+    },
+    "note": ""
+  },
+  {
+    "type": 745,
+    "size": "Small",
+    "name": "Black Heart On Feared Kill",
+    "description": [
+      "1% chance to receive 1/2 a black heart when killing a feared enemy, if you have less than",
+      "3 black hearts, up to twice per room."
+    ],
+    "modifiers": {
+      "blackHeartFearKill": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 746,
+    "size": "Small",
+    "name": "Luck On Feared Kill",
+    "description": [
+      "2% chance to gain +0.02 luck when killing a feared enemy, up to a total +3."
+    ],
+    "modifiers": {
+      "fearedKillLuck": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 747,
+    "size": "Med",
+    "name": "Feared Enemy Damage",
+    "description": [
+      "Feared enemies receive 4% more damage."
+    ],
+    "modifiers": {
+      "fearedDmg": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 748,
+    "size": "Med",
+    "name": "Tear Burst On Feared Death",
+    "description": [
+      "2% chance for feared enemies to release 3-4 homing tears on death that cause fear.",
+      "These tears deal 4% of the killed monster's HP as damage on hit, minimum 3 damage."
+    ],
+    "modifiers": {
+      "fearedTearBurst": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 749,
+    "size": "Med",
+    "name": "Acrid Gaze",
+    "description": [
+      "Every 1.5 total seconds spent firing, unleash a pulse that damages and fears nearby enemies",
+      "for 2 seconds.",
+      "Damage dealt by the pulse is 120% of your luck stat, up to 10.",
+      "+20% pulse size."
+    ],
+    "modifiers": {
+      "acridGaze": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 750,
+    "size": "Med",
+    "name": "Siren Minion Damage",
+    "description": [
+      "4% more damage dealt by your Siren Minions."
+    ],
+    "modifiers": {
+      "sirenMinionDmg": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 751,
+    "size": "Med",
+    "name": "Dark Arpeggio Tear Delay",
+    "description": [
+      "-0.4 total seconds required for Siren Minions to fire the Dark Arpeggio tear."
+    ],
+    "modifiers": {
+      "darkArpeggioTearDelay": -0.4
+    },
+    "note": ""
+  },
+  {
+    "type": 752,
+    "size": "Med",
+    "name": "Shadowmeld Explosion",
+    "description": [
+      "20% chance to cause a dark explosion when reappearing with Shadowmeld, dealing 100% of your",
+      "damage to nearby enemies and fearing them."
+    ],
+    "modifiers": {
+      "shadowmeldExplosion": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 753,
+    "size": "Med",
+    "name": "Shadowmeld Explosion Damage",
+    "description": [
+      "Shadowmeld explosion deals an additional 20% of your damage."
+    ],
+    "modifiers": {
+      "shadowmeldExplosionDmg": 20
+    },
+    "note": ""
+  },
+  {
+    "type": 754,
+    "size": "Med",
+    "name": "Black Heart On Feared Kill",
+    "description": [
+      "4% chance to receive 1/2 a black heart when killing a feared enemy, if you have less than",
+      "3 black hearts, up to twice per room."
+    ],
+    "modifiers": {
+      "blackHeartFearKill": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 755,
+    "size": "Med",
+    "name": "Luck On Feared Kill",
+    "description": [
+      "6% chance to gain +0.02 luck when killing a feared enemy, up to a total +3."
+    ],
+    "modifiers": {
+      "fearedKillLuck": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 756,
+    "size": "Large",
+    "name": "Soul Of The Siren",
+    "description": [
+      "Allocate this to unlock Soul Of The Siren as a soul stone variant.",
+      "Requires Boss Rush and Hush completion marks on Tainted Siren.",
+      "Soul of the Siren: charm monsters in the room for 10 seconds. For the next 60 seconds,",
+      "gain 3 random baby familiars, a smelted Friendship Necklace, and charm monsters for",
+      "10 seconds when entering a room."
+    ],
+    "modifiers": {
+      "soulOfTheSiren": true
+    },
+    "note": "",
+    "alwaysAvail": true
+  },
+  {
+    "type": 757,
+    "size": "Large",
+    "name": "Arcane Astrolabe",
+    "description": [
+      "Unlocks Astral Expeditions.",
+      "Once allocated, press the Allocate button to access the expeditions menu.",
+      "Access requires the currently selected character to be level 60+."
+    ],
+    "modifiers": {
+      "arcaneAstrolabe": true
+    },
+    "note": "",
+    "alwaysAvail": true,
+    "reqs": {}
+  },
+  {
+    "type": 758,
+    "size": "Large",
+    "name": "Sidereal Tree",
+    "description": [
+      "Unlocks the Sidereal Tree.",
+      "Each character has their own Sidereal Tree progression.",
+      "Utilize Arcane Obols from Astral Expeditions to unlock new features and power for",
+      "the currently selected character.",
+      "Initially this tree applies exclusively to expedition runs, but further unlocks",
+      "allow applying its features to all runs."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {}
+  },
+  {
+    "type": 759,
+    "size": "Large",
+    "name": "Obol Exchange",
+    "description": [
+      "Once allocated, press the Allocate button to convert 1 global SP into 10 Arcane Obols."
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 760,
+    "size": "Large",
+    "name": "Astral Forge",
+    "description": [
+      "Unlocks the Astral Forge and Astral Weapons.",
+      "Once allocated, press the Allocate button to access the forge menu."
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 761,
+    "size": "Large",
+    "name": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 762,
+    "size": "Small",
+    "name": "Sidereal Vicinity",
+    "description": [
+      "Sidereal tree travel node. Costs no global SP to allocate, and costs Arcane Obols instead."
+    ],
+    "modifiers": {},
+    "note": "",
+    "alwaysAvail": false,
+    "reqs": {
+      "obols": {
+        "var": "siderealVicinityCost"
+      }
+    }
+  },
+  {
+    "type": 763,
+    "size": "Small",
+    "name": "Sidereal Region",
+    "description": [
+      "Sidereal tree travel node. Costs no global SP to allocate, and costs Arcane Obols instead."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "obols": {
+        "var": "siderealRegionCost"
+      },
+      "expeditionDepth": 5
+    }
+  },
+  {
+    "type": 764,
+    "size": "Small",
+    "name": "Sidereal Expanse",
+    "description": [
+      "Sidereal tree travel node. Costs no global SP to allocate, and costs Arcane Obols instead."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "obols": {
+        "var": "siderealExpanseCost"
+      },
+      "expeditionDepth": 15
+    }
+  },
+  {
+    "type": 765,
+    "size": "Small",
+    "name": "Boss Astral Weapon Drop Rate",
+    "description": [
+      "+7% chance for bosses to drop an Astral Weapon on death, up to 4 per room.",
+      "Above 100% total chance, roll for multiple weapon drops."
+    ],
+    "modifiers": {
+      "astralWepBossRate": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 150
+    }
+  },
+  {
+    "type": 766,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Longswords",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Longswords."
+    ],
+    "modifiers": {
+      "astralWepRateLongsword": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 767,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Estocs",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Estocs."
+    ],
+    "modifiers": {
+      "astralWepRateEstoc": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 768,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Daggers",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Daggers."
+    ],
+    "modifiers": {
+      "astralWepRateDagger": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 769,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Quickblades",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Quickblades."
+    ],
+    "modifiers": {
+      "astralWepRateQuickblade": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 770,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Spears",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Spears."
+    ],
+    "modifiers": {
+      "astralWepRateSpear": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 771,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Tridents",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Tridents."
+    ],
+    "modifiers": {
+      "astralWepRateTrident": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 772,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Scythes",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Scythes."
+    ],
+    "modifiers": {
+      "astralWepRateScythe": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 773,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Axes",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Axes."
+    ],
+    "modifiers": {
+      "astralWepRateAxe": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 774,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Greataxes",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Greataxes."
+    ],
+    "modifiers": {
+      "astralWepRateGreataxe": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 775,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Shortbows",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Shortbows."
+    ],
+    "modifiers": {
+      "astralWepRateShortbow": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 776,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Bows",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Bows."
+    ],
+    "modifiers": {
+      "astralWepRateBow": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 777,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Crossbows",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Crossbows."
+    ],
+    "modifiers": {
+      "astralWepRateCrossbow": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 778,
+    "size": "Small",
+    "name": "Magic Astral Weapons",
+    "description": [
+      "+0.6% chance for dropped Astral Weapons to be Magic."
+    ],
+    "modifiers": {
+      "astralWepMagicRate": 0.6
+    },
+    "note": "",
+    "reqs": {
+      "obols": 40
+    }
+  },
+  {
+    "type": 779,
+    "size": "Small",
+    "name": "Ancient Astral Weapons",
+    "description": [
+      "+0.1% chance for dropped Astral Weapons to be Ancient."
+    ],
+    "modifiers": {
+      "astralWepAncientRate": 0.1
+    },
+    "note": "",
+    "reqs": {}
+  },
+  {
+    "type": 780,
+    "size": "Large",
+    "name": "Sidereal Universalization",
+    "description": [
+      "Sidereal tree effects can now affect normal, non-expedition runs.",
+      "Can't respec this node once allocated."
+    ],
+    "modifiers": {
+      "siderealUniv": true
+    },
+    "note": "",
+    "reqs": {
+      "obols": 1000
+    }
+  },
+  {
+    "type": 781,
+    "size": "Small",
+    "name": "Sidereal Caches Chance Boost",
+    "description": [
+      "When entering a new floor, +0.05% chance added to all Sidereal Cache sources from other nodes.",
+      "Does not apply during the Ascent."
+    ],
+    "modifiers": {
+      "sideCacheFloorChance": 0.05
+    },
+    "note": "",
+    "reqs": {
+      "obols": 120
+    }
+  },
+  {
+    "type": 782,
+    "size": "Small",
+    "name": "Sidereal Caches - Challenge Rooms",
+    "description": [
+      "6% chance for a Sidereal Cache to drop when clearing a challenge room."
+    ],
+    "modifiers": {
+      "sideCacheChallenge": 6
+    },
+    "note": "",
+    "reqs": {
+      "obols": 90
+    }
+  },
+  {
+    "type": 783,
+    "size": "Small",
+    "name": "Sidereal Caches - Boss Room Clear",
+    "description": [
+      "5% chance for a Sidereal Cache to drop when clearing a boss room past the first floor."
+    ],
+    "modifiers": {
+      "sideCacheBoss": 5
+    },
+    "note": "",
+    "reqs": {
+      "obols": 90
+    }
+  },
+  {
+    "type": 784,
+    "size": "Small",
+    "name": "Sidereal Caches - Regular Chests",
+    "description": [
+      "2% chance for regular chests to be replaced with a Sidereal Cache when spawned.",
+      "Affects up to 2 chests per room."
+    ],
+    "modifiers": {
+      "sideCacheRegChest": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 90
+    }
+  },
+  {
+    "type": 785,
+    "size": "Small",
+    "name": "Sidereal Caches Key Consumption",
+    "description": [
+      "5% chance for Sidereal Caches to consume no keys when opened."
+    ],
+    "modifiers": {
+      "sideCacheNoKey": 5
+    },
+    "note": "",
+    "reqs": {
+      "obols": 80
+    }
+  },
+  {
+    "type": 786,
+    "size": "Small",
+    "name": "Sidereal Cache Replication",
+    "description": [
+      "2% chance for Sidereal Caches to drop an additional cache when opened, once per room."
+    ],
+    "modifiers": {
+      "sideCacheReplica": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 150
+    }
+  },
+  {
+    "type": 787,
+    "size": "Small",
+    "name": "Sidereal Cache Sacks",
+    "description": [
+      "2% chance for Sidereal Caches to additionally drop 1-2 sacks when opened."
+    ],
+    "modifiers": {
+      "sideCacheSacks": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 50
+    }
+  },
+  {
+    "type": 788,
+    "size": "Small",
+    "name": "Sidereal Cache Astral Weapons",
+    "description": [
+      "9% chance for Sidereal Caches to additionally drop a random Astral Weapon.",
+      "Above 100% total chance, roll for multiple weapon drops."
+    ],
+    "modifiers": {
+      "sideCacheAstralWep": 9
+    },
+    "note": "",
+    "reqs": {
+      "obols": 180,
+      "allocate": [
+        "Astral Forge"
+      ]
+    }
+  },
+  {
+    "type": 789,
+    "size": "Small",
+    "name": "Boss Sparkling Stardust",
+    "description": [
+      "+3% chance for Bosses to grant Sparkling Stardust on death."
+    ],
+    "modifiers": {
+      "bossSparkStardust": 3
+    },
+    "note": "",
+    "reqs": {
+      "obols": 70
+    }
+  },
+  {
+    "type": 790,
+    "size": "Small",
+    "name": "Final Boss Ancient Stardust",
+    "description": [
+      "+2% chance for Final Bosses to grant an additional Ancient Stardust on death."
+    ],
+    "modifiers": {
+      "bossExtraAncientStardust": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 200
+    }
+  },
+  {
+    "type": 791,
+    "size": "Small",
+    "name": "Pre-honed Weapon Drops",
+    "description": [
+      "10% chance for dropped Astral Weapons to have +1 Honing.",
+      "This chance is applied once per allocated node of this type."
+    ],
+    "modifiers": {
+      "preHonedWeps": 1
+    },
+    "note": "",
+    "reqs": {
+      "obols": 20
+    }
+  },
+  {
+    "type": 792,
+    "size": "Large",
+    "name": "Timeless Bazaar",
+    "description": [
+      "Once allocated, press the Allocate button to access the Timeless Bazaar Menu.",
+      "The Timeless Bazaar allows you to spend global SP and obols to purchase one-time items",
+      "to be added to the next run you start."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "obols": 150
+    }
+  },
+  {
+    "type": 793,
+    "size": "Small",
+    "name": "Bazaar Item Quality 0 to 1",
+    "description": [
+      "5% chance on Bazaar refresh to upgrade quality 0 items to quality 1."
+    ],
+    "modifiers": {
+      "bazaarQual1": 5
+    },
+    "note": "",
+    "reqs": {
+      "obols": 20
+    }
+  },
+  {
+    "type": 794,
+    "size": "Small",
+    "name": "Bazaar Item Quality 1 to 2",
+    "description": [
+      "3% chance on Bazaar refresh to upgrade quality 1 items to quality 2."
+    ],
+    "modifiers": {
+      "bazaarQual2": 3
+    },
+    "note": "",
+    "reqs": {
+      "obols": 50
+    }
+  },
+  {
+    "type": 795,
+    "size": "Small",
+    "name": "Bazaar Item Quality 2 to 3",
+    "description": [
+      "2% chance on Bazaar refresh to upgrade quality 2 items to quality 3."
+    ],
+    "modifiers": {
+      "bazaarQual3": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 100
+    }
+  },
+  {
+    "type": 796,
+    "size": "Small",
+    "name": "Bazaar Additional Offerings",
+    "description": [
+      "8% chance on Bazaar refresh to include an additional item choice.",
+      "Past 100% total chance, roll multiple times."
+    ],
+    "modifiers": {
+      "bazaarExtraItem": 8
+    },
+    "note": "",
+    "reqs": {
+      "obols": 120
+    }
+  },
+  {
+    "type": 797,
+    "size": "Small",
+    "name": "Bazaar Selection Keeping",
+    "description": [
+      "2% chance to keep the other item choices when purchasing an item in the Bazaar."
+    ],
+    "modifiers": {
+      "bazaarSelKeep": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 100
+    }
+  },
+  {
+    "type": 798,
+    "size": "Small",
+    "name": "Bazaar Devil Items",
+    "description": [
+      "2% chance for offered items to be Devil pool items on Bazaar refresh."
+    ],
+    "modifiers": {
+      "bazaarDevil": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 100
+    }
+  },
+  {
+    "type": 799,
+    "size": "Small",
+    "name": "Bazaar Angel Items",
+    "description": [
+      "2% chance for offered items to be Angel pool items on Bazaar refresh."
+    ],
+    "modifiers": {
+      "bazaarAngel": 2
+    },
+    "note": "",
+    "reqs": {
+      "obols": 100
+    }
+  },
+  {
+    "type": 800,
+    "size": "Med",
+    "name": "Bazaar Refresh",
+    "description": [
+      "Enables the Bazaar's \"Refresh\" functionality, allowing you to spend global SP and obols",
+      "to reroll the item selection."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "obols": 250
+    }
+  },
+  {
+    "type": 801,
+    "size": "Small",
+    "name": "Bazaar Refresh Keeper",
+    "description": [
+      "20% chance to keep the Bazaar's Refresh button enabled on use."
+    ],
+    "modifiers": {
+      "bazaarRefreshKeep": 20
+    },
+    "note": "",
+    "reqs": {
+      "obols": 300
+    }
+  },
+  {
+    "type": 802,
+    "size": "Small",
+    "name": "Champion Monster XP",
+    "description": [
+      "+1% champion monster XP on death."
+    ],
+    "modifiers": {
+      "championXP": 1
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 803,
+    "size": "Small",
+    "name": "Champion Regular Chest",
+    "description": [
+      "1% chance for champion monsters to drop a regular chest on death, up to 1 per floor."
+    ],
+    "modifiers": {
+      "championChest": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 804,
+    "size": "Small",
+    "name": "Champion Stone Chest",
+    "description": [
+      "When a champion drops a regular chest, 2% chance for it to be a stone chest instead."
+    ],
+    "modifiers": {
+      "championStoneChest": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 805,
+    "size": "Med",
+    "name": "Champion Chest Limit",
+    "description": [
+      "+1 max chests dropped by champions per floor."
+    ],
+    "modifiers": {
+      "championMaxChests": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 806,
+    "size": "Small",
+    "name": "Spiked Chest Replacement",
+    "description": [
+      "2% chance to replace spiked and mimic chests with regular chests."
+    ],
+    "modifiers": {
+      "spikedChestReplace": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 807,
+    "size": "Med",
+    "name": "Spiked Chest Replacement",
+    "description": [
+      "6% chance to replace spiked and mimic chests with regular chests."
+    ],
+    "modifiers": {
+      "spikedChestReplace": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 808,
+    "size": "Small",
+    "name": "Charged Key Conversion",
+    "description": [
+      "0.5% chance to convert dropped keys into charged keys if you have any active item that's",
+      "not fully charged."
+    ],
+    "modifiers": {
+      "chargedKeyConv": 0.5
+    },
+    "note": "",
+    "alwaysAvail": false
+  },
+  {
+    "type": 809,
+    "size": "Med",
+    "name": "Charged Key Conversion",
+    "description": [
+      "1.5% chance to convert dropped keys into charged keys if you have any active item that's",
+      "not fully charged."
+    ],
+    "modifiers": {
+      "chargedKeyConv": 1.5
+    },
+    "note": ""
+  },
+  {
+    "type": 810,
+    "size": "Small",
+    "name": "Throwable Bomb Clear Reward",
+    "description": [
+      "0.4% chance to additionally drop a throwable bomb when clearing a room."
+    ],
+    "modifiers": {
+      "clearThrowableBomb": 0.4
+    },
+    "note": ""
+  },
+  {
+    "type": 811,
+    "size": "Med",
+    "name": "Throwable Bomb Clear Reward",
+    "description": [
+      "1% chance to additionally drop a throwable bomb when clearing a room."
+    ],
+    "modifiers": {
+      "clearThrowableBomb": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 812,
+    "size": "Small",
+    "name": "Deadly Sin Key On Death",
+    "description": [
+      "3% chance for Deadly Sin minibosses to drop a key on death.",
+      "Double the chance for Super Deadly Sin versions."
+    ],
+    "modifiers": {
+      "deadlySinKey": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 813,
+    "size": "Small",
+    "name": "Deadly Sin Battery On Death",
+    "description": [
+      "4% chance for Deadly Sin minibosses to drop a lil battery on death.",
+      "Double the chance for Super Deadly Sin versions."
+    ],
+    "modifiers": {
+      "deadlySinBattery": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 814,
+    "size": "Med",
+    "name": "Deadly Sin Key On Death",
+    "description": [
+      "9% chance for Deadly Sin minibosses to drop a key on death.",
+      "Double the chance for Super Deadly Sin versions."
+    ],
+    "modifiers": {
+      "deadlySinKey": 9
+    },
+    "note": ""
+  },
+  {
+    "type": 815,
+    "size": "Small",
+    "name": "Dono Machine Restore On Entrance",
+    "description": [
+      "When first entering a shop room, 2% chance to restore the Donation Machine if it's jammed."
+    ],
+    "modifiers": {
+      "donoEntranceRestore": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 816,
+    "size": "Med",
+    "name": "Dono Machine Restore On Entrance",
+    "description": [
+      "When first entering a shop room, 6% chance to restore the Donation Machine if it's jammed."
+    ],
+    "modifiers": {
+      "donoEntranceRestore": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 817,
+    "size": "Small",
+    "name": "Dono Machine Restore On Purchase",
+    "description": [
+      "In shop rooms, 2% chance to restore the Donation Machine after purchasing any item worth",
+      "at least 15 coins, if it's jammed."
+    ],
+    "modifiers": {
+      "donoPurchaseRestore": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 818,
+    "size": "Small",
+    "name": "Dono Machine Purchase Restoration Price",
+    "description": [
+      "-1 coin price threshold for Donation Machine restoration on purchase."
+    ],
+    "modifiers": {
+      "donoPurchaseThresh": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 819,
+    "size": "Med",
+    "name": "Dono Machine Restore On Purchase",
+    "description": [
+      "In shop rooms, 6% chance to restore the Donation Machine after purchasing any item worth",
+      "at least 15 coins, if it's jammed."
+    ],
+    "modifiers": {
+      "donoPurchaseRestore": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 820,
+    "size": "Large",
+    "name": "Generosity In Steps",
+    "description": [
+      "Donation Machine always jams after donating 10 coins.",
+      "Purchasing any shop item restores a jammed Donation Machine."
+    ],
+    "modifiers": {
+      "generosityInSteps": true
+    },
+    "note": ""
+  },
+  {
+    "type": 821,
+    "size": "Small",
+    "name": "Boss Rush Door Timer Increase",
+    "description": [
+      "+5 seconds to the total time limit for the Boss Rush door to open."
+    ],
+    "modifiers": {
+      "bossRushTimer": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 822,
+    "size": "Med",
+    "name": "Boss Rush Door Timer Increase",
+    "description": [
+      "+10 seconds to the total time limit for the Boss Rush door to open."
+    ],
+    "modifiers": {
+      "bossRushTimer": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 823,
+    "size": "Large",
+    "name": "Beast-hunter's Rush",
+    "description": [
+      "Triple the additional seconds given for the Boss Rush door to open.",
+      "-3 seconds to the total time limit for the Boss Rush door to open whenever you get hit."
+    ],
+    "modifiers": {
+      "beasthunterRush": true
+    },
+    "note": ""
+  },
+  {
+    "type": 824,
+    "size": "Small",
+    "name": "Hush Door Timer Increase",
+    "description": [
+      "+5 seconds to the total time limit for Hush's door to open."
+    ],
+    "modifiers": {
+      "hushTimer": 5
+    },
+    "note": ""
+  },
+  {
+    "type": 825,
+    "size": "Med",
+    "name": "Hush Door Timer Increase",
+    "description": [
+      "+10 seconds to the total time limit for Hush's door to open."
+    ],
+    "modifiers": {
+      "hushTimer": 10
+    },
+    "note": ""
+  },
+  {
+    "type": 826,
+    "size": "Small",
+    "name": "Boss Clear Locked Chest",
+    "description": [
+      "2% chance to spawn a locked chest after clearing the boss room.",
+      "Only 1 chest may spawn from effects of this type, once per floor."
+    ],
+    "modifiers": {
+      "bossLockedChest": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 827,
+    "size": "Small",
+    "name": "Boss Clear Red Chest",
+    "description": [
+      "2% chance to spawn a red chest after clearing the boss room.",
+      "Only 1 chest may spawn from effects of this type, once per floor."
+    ],
+    "modifiers": {
+      "bossRedChest": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 828,
+    "size": "Small",
+    "name": "Boss Clear Stone Chest",
+    "description": [
+      "2% chance to spawn a stone chest after clearing the boss room.",
+      "Only 1 chest may spawn from effects of this type, once per floor."
+    ],
+    "modifiers": {
+      "bossStoneChest": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 829,
+    "size": "Small",
+    "name": "Giga Bomb On Troll Disarm",
+    "description": [
+      "When disarming a troll bomb, 1% chance for the resulting bomb pickup to be a giga bomb."
+    ],
+    "modifiers": {
+      "trollDisarmGiga": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 830,
+    "size": "Med",
+    "name": "Giga Bomb On Troll Disarm",
+    "description": [
+      "When disarming a troll bomb, 4% chance for the resulting bomb pickup to be a giga bomb."
+    ],
+    "modifiers": {
+      "trollDisarmGiga": 4
+    },
+    "note": ""
+  },
+  {
+    "type": 831,
+    "size": "Large",
+    "name": "Dark Expertise",
+    "description": [
+      "Reduce Dark Arts' cooldown by 0.5 seconds per non-boss enemy hit with it.",
+      "Reduce Dark Arts' cooldown by 1 second per boss enemy hit with it.",
+      "+3 seconds to Dark Arts' cooldown."
+    ],
+    "modifiers": {
+      "darkExpertise": true,
+      "darkArtsCD": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 832,
+    "size": "Small",
+    "name": "Sidereal Cache Starcursed Jewels",
+    "description": [
+      "3% chance for Sidereal Caches to additionally drop a Starcursed Jewel when opened."
+    ],
+    "modifiers": {
+      "sideCacheJewel": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 833,
+    "size": "Small",
+    "name": "Donation Machine Stat Boost",
+    "description": [
+      "+0.1% to a random stat every 5 coins given to the Donation machine, up to 5 times",
+      "per floor."
+    ],
+    "modifiers": {
+      "donoMachineStatBoost": 0.1
+    },
+    "note": ""
+  },
+  {
+    "type": 834,
+    "size": "Small",
+    "name": "More Boss Rush Waves",
+    "description": [
+      "+1 boss rush waves."
+    ],
+    "modifiers": {
+      "bossRushWaves": 1
+    },
+    "note": ""
+  },
+  {
+    "type": 835,
+    "size": "Small",
+    "name": "Less Boss Rush Waves",
+    "description": [
+      "-1 boss rush waves."
+    ],
+    "modifiers": {
+      "bossRushWaves": -1
+    },
+    "note": ""
+  },
+  {
+    "type": 836,
+    "size": "Small",
+    "name": "Beggar Help XP",
+    "description": [
+      "Gain +50 xp when fully helping any beggar (teleports away)."
+    ],
+    "modifiers": {
+      "beggarHelpXP": 50
+    },
+    "note": ""
+  },
+  {
+    "type": 837,
+    "size": "Small",
+    "name": "Shell Game XP",
+    "description": [
+      "Gain +6 xp when spending coins on shell games, up to 50 times per floor."
+    ],
+    "modifiers": {
+      "shellGameXP": 6
+    },
+    "note": ""
+  },
+  {
+    "type": 838,
+    "size": "Small",
+    "name": "Slot Machine XP",
+    "description": [
+      "Gain +3 xp when spending coins on slot machines, up to 50 times per floor."
+    ],
+    "modifiers": {
+      "slotMachineXP": 3
+    },
+    "note": ""
+  },
+  {
+    "type": 839,
+    "size": "Small",
+    "name": "Fortune Machine XP",
+    "description": [
+      "Gain between 0 and 7 xp when spending coins on fortune machines, up to 50 times per floor."
+    ],
+    "modifiers": {
+      "fortuneMachineXPmax": 7
+    },
+    "note": ""
+  },
+  {
+    "type": 840,
+    "size": "Small",
+    "name": "Flawless XP",
+    "description": [
+      "+2% xp gain while you haven't taken damage in the current floor."
+    ],
+    "modifiers": {
+      "flawlessXP": 2
+    },
+    "note": ""
+  },
+  {
+    "type": 841,
+    "size": "Large",
+    "name": "Character SP Conversion",
+    "description": [
+      "Once allocated, press the Allocate button to convert 1 character SP into 1 global SP."
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 842,
+    "size": "Large",
+    "name": "Dynamic Tree Mode",
+    "description": [
+      "If you begin a run with this node allocated, changes to the tree will be applied to that run",
+      "in real time.",
+      "Only applies to node allocations/respecs.",
+      "Allows progressing multiple Astral Expedition objectives within the same run."
+    ],
+    "modifiers": {
+      "dynamicMode": true
+    },
+    "note": ""
+  },
+  {
+    "type": 843,
+    "size": "Large",
+    "name": "Bazaar's Permanence Blessing",
+    "description": [
+      "Your purchased items from the Timeless Bazaar last one additional run.",
+      "The Timeless Bazaar now takes twice as long to refresh automatically (from run wins/losses)."
+    ],
+    "modifiers": {
+      "bazaarPermanence": true
+    },
+    "note": "",
+    "reqs": {
+      "obols": 700
+    }
+  },
+  {
+    "type": 844,
+    "size": "Large",
+    "name": "Ancient Weapon Bounties",
+    "description": [
+      "Allocate to unlock Ancient Weapon Bounties.",
+      "This allows you to spend obols to generate a bounty for a chosen weapon type.",
+      "Bounties provide a series of objectives you need to complete, and reward a random",
+      "Ancient weapon of the chosen type on completion."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "obols": 200
+    }
+  },
+  {
+    "type": 845,
+    "size": "Large",
+    "name": "",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": ""
+  },
+  {
+    "type": 846,
+    "size": "Large",
+    "name": "Deep-space Astrolabe",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "expeditionDepth": 20
+    }
+  },
+  {
+    "type": 847,
+    "size": "Large",
+    "name": "Core Crimson Node",
+    "description": [
+      "Allocate to choose any medium node from this character tree.",
+      "Gain the effects of the chosen node while allocated."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "crimsonStarcore": 1
+    }
+  },
+  {
+    "type": 848,
+    "size": "Large",
+    "name": "Universal Crimson Node",
+    "description": [
+      "Allocate to choose any medium node from the global skill tree.",
+      "Gain the effects of the chosen node while allocated."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "crimsonStarcore": 1
+    }
+  },
+  {
+    "type": 849,
+    "size": "Large",
+    "name": "Divergent Crimson Node",
+    "description": [
+      "Allocate to choose any medium node from another character's tree.",
+      "Gain the effects of the chosen node while allocated."
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "crimsonStarcore": 1
+    }
+  },
+  {
+    "type": 850,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Gauntlets",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Gauntlets."
+    ],
+    "modifiers": {
+      "astralWepRateGauntlet": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 851,
+    "size": "Small",
+    "name": "Astral Weapon Drops: Great Maces",
+    "description": [
+      "+7% chance for dropped Astral Weapons to be Great Maces."
+    ],
+    "modifiers": {
+      "astralWepRateGreatMace": 7
+    },
+    "note": "",
+    "reqs": {
+      "obols": 30
+    }
+  },
+  {
+    "type": 852,
+    "size": "Large",
+    "name": "Description Box Style",
+    "description": [
+      "Press Allocate to switch the display style for node description boxes."
+    ],
+    "modifiers": {},
+    "note": "",
+    "alwaysAvail": true
+  },
+  {
+    "type": 853,
+    "size": "Large",
+    "name": "Save Backups Addon",
+    "description": [
+      "No Save Backups Addon detected!",
+      "Be warned that if data loss occurs, it will be permanent.",
+      "The addon allows the automatic creation of mod save backups for safety. If data loss is",
+      "detected, a prompt will appear when opening the tree that allows you to select a backup to",
+      "try and load.",
+      "You can find a download for the addon in the mod's workshop description page.",
+      "This node will disappear once the addon is installed and detected."
+    ],
+    "modifiers": {},
+    "note": "",
+    "alwaysAvail": true
+  },
+  {
+    "type": 854,
+    "size": "Large",
+    "name": "Global Skill Point Exchange",
+    "description": [
+      ""
+    ],
+    "modifiers": {},
+    "note": "",
+    "reqs": {
+      "obols": 100
+    }
   }
 ]
